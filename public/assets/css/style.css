@@ -1,0 +1,252 @@
+body {
+    line-height: 1.46;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+} 
+
+a{color:#333;text-decoration:none;}
+a:hover,a:focus{color:#666;}
+
+pre code {
+    background: #272822;
+    color: #fff;
+    padding: 2px 14px 2px 10px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+section {
+	 
+}
+
+header {
+    height: 45px;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
+    width: 100%;
+    z-index: 10;
+    background: #fff;
+    display: flex;
+}
+
+footer {
+	background: #edeeef;
+	clear: both;
+	color: #333;
+	overflow: hidden;
+	margin-top: 20px;
+    padding: 10px 0;
+
+}
+.menu-footer {
+    float: right;
+}
+.wrap {
+    max-width: 1110px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 8px;
+
+}
+
+header .wrap {
+	display: flex;
+	width: calc(100% - 16px);
+}
+
+.title, .menu  {
+    margin-top: 8px;
+}
+
+.menu {
+    position: relative;
+    margin-left: auto;
+    align-items: center;
+}
+
+.menu ul{
+    text-align: center;
+    margin: 0 0 0 5px;
+    list-style: none;
+}
+
+.menu ul > li {
+    float: left;
+    margin-left: 20px;
+}
+
+.menu ul > li > a {
+	padding: 0.2143em;
+}
+.menu-lf {
+	margin-left: 20px;
+}
+.nav.active > a {
+    color: #f56400;
+}
+/* Buttons */
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: #555;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  box-sizing: border-box; }
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  color: #333;
+  border-color: #888;
+  outline: 0; }
+.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+  color: #FFF;
+  background-color: #33C3F0;
+  border-color: #33C3F0; }
+.button.button-primary:hover,
+button.button-primary:hover,
+input[type="submit"].button-primary:hover,
+input[type="reset"].button-primary:hover,
+input[type="button"].button-primary:hover,
+.button.button-primary:focus,
+button.button-primary:focus,
+input[type="submit"].button-primary:focus,
+input[type="reset"].button-primary:focus,
+input[type="button"].button-primary:focus {
+  color: #FFF;
+  background-color: #1EAEDB;
+  border-color: #1EAEDB; }
+
+
+/* Forms */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  height: 38px;
+  padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box; }
+/* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; }
+textarea {
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px; }
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #33C3F0;
+  outline: 0; }
+label,
+legend {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 600; }
+fieldset {
+  padding: 0;
+  border-width: 0; }
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline; }
+label > .label-body {
+  display: inline-block;
+  margin-left: .5rem;
+  font-weight: normal; }
+
+.form-group {
+    margin-top: 15px;
+}
+
+.head {
+    font-size: 21px;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.md-icon {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: #666;
+    vertical-align: middle;
+    margin-top: 4px;
+}
+
+/* Диалог */
+.alert-danger {
+   color: #e83e8c; 
+}
+.alert-success {
+   color: #339900; 
+}
+
+/* Изображаем смену цвета */
+.black {
+    background: #333;
+    color: #fff;
+}
+.black header, .black footer {
+    background: #111;
+    color: #fff; 
+}
+.black a {
+   color: #fff; 
+}

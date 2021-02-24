@@ -1,0 +1,750 @@
+ERROR - 2021-02-24 00:03:26 --> mysqli_sql_exception: Invalid default value for 'created_at' in D:\xampp\htdocs\emlog.loc\system\Database\MySQLi\Connection.php:329
+Stack trace:
+#0 D:\xampp\htdocs\emlog.loc\system\Database\MySQLi\Connection.php(329): mysqli->query('CREATE TABLE IF...')
+#1 D:\xampp\htdocs\emlog.loc\system\Database\BaseConnection.php(713): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE IF...')
+#2 D:\xampp\htdocs\emlog.loc\system\Database\BaseConnection.php(641): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE IF...')
+#3 D:\xampp\htdocs\emlog.loc\system\Database\Forge.php(525): CodeIgniter\Database\BaseConnection->query('CREATE TABLE IF...')
+#4 D:\xampp\htdocs\emlog.loc\app\Database\Migrations\2021-02-23-000001_create_tables.php(36): CodeIgniter\Database\Forge->createTable('users', true)
+#5 D:\xampp\htdocs\emlog.loc\system\Database\MigrationRunner.php(1057): App\Database\Migrations\CreateAuthTables->up()
+#6 D:\xampp\htdocs\emlog.loc\system\Database\MigrationRunner.php(202): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 D:\xampp\htdocs\emlog.loc\system\Commands\Database\Migrate.php(94): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 D:\xampp\htdocs\emlog.loc\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 D:\xampp\htdocs\emlog.loc\system\CLI\CommandRunner.php(80): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 D:\xampp\htdocs\emlog.loc\system\CLI\CommandRunner.php(58): CodeIgniter\CLI\CommandRunner->index(Array)
+#11 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(932): CodeIgniter\CLI\CommandRunner->_remap('index', 'migrate')
+#12 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(CodeIgniter\CLI\CommandRunner))
+#13 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 D:\xampp\htdocs\emlog.loc\system\CLI\Console.php(61): CodeIgniter\CodeIgniter->run()
+#15 D:\xampp\htdocs\emlog.loc\spark(66): CodeIgniter\CLI\Console->run()
+#16 {main}
+CRITICAL - 2021-02-24 01:25:57 --> Недопустимый файл: index.php
+#0 D:\xampp\htdocs\emlog.loc\system\View\View.php(203): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('index.php')
+#1 D:\xampp\htdocs\emlog.loc\system\Common.php(1257): CodeIgniter\View\View->render('index', Array, true)
+#2 D:\xampp\htdocs\emlog.loc\app\Controllers\BaseController.php(63): view('index', Array)
+#3 D:\xampp\htdocs\emlog.loc\app\Controllers\Home.php(9): App\Controllers\BaseController->render('index')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Home->index()
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-02-24 01:26:23 --> Недопустимый файл: index.php
+#0 D:\xampp\htdocs\emlog.loc\system\View\View.php(203): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('index.php')
+#1 D:\xampp\htdocs\emlog.loc\system\Common.php(1257): CodeIgniter\View\View->render('index', Array, true)
+#2 D:\xampp\htdocs\emlog.loc\app\Controllers\BaseController.php(63): view('index', Array)
+#3 D:\xampp\htdocs\emlog.loc\app\Controllers\Home.php(9): App\Controllers\BaseController->render('index')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Home->index()
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-02-24 01:26:24 --> Недопустимый файл: index.php
+#0 D:\xampp\htdocs\emlog.loc\system\View\View.php(203): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('index.php')
+#1 D:\xampp\htdocs\emlog.loc\system\Common.php(1257): CodeIgniter\View\View->render('index', Array, true)
+#2 D:\xampp\htdocs\emlog.loc\app\Controllers\BaseController.php(63): view('index', Array)
+#3 D:\xampp\htdocs\emlog.loc\app\Controllers\Home.php(9): App\Controllers\BaseController->render('index')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Home->index()
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-02-24 01:28:25 --> Недопустимый файл: index.php
+#0 D:\xampp\htdocs\emlog.loc\system\View\View.php(203): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('index.php')
+#1 D:\xampp\htdocs\emlog.loc\system\Common.php(1257): CodeIgniter\View\View->render('index', Array, true)
+#2 D:\xampp\htdocs\emlog.loc\app\Controllers\BaseController.php(63): view('index', Array)
+#3 D:\xampp\htdocs\emlog.loc\app\Controllers\Home.php(9): App\Controllers\BaseController->render('index')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Home->index()
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-02-24 01:28:26 --> Недопустимый файл: index.php
+#0 D:\xampp\htdocs\emlog.loc\system\View\View.php(203): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('index.php')
+#1 D:\xampp\htdocs\emlog.loc\system\Common.php(1257): CodeIgniter\View\View->render('index', Array, true)
+#2 D:\xampp\htdocs\emlog.loc\app\Controllers\BaseController.php(63): view('index', Array)
+#3 D:\xampp\htdocs\emlog.loc\app\Controllers\Home.php(9): App\Controllers\BaseController->render('index')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Home->index()
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-02-24 01:28:27 --> Недопустимый файл: index.php
+#0 D:\xampp\htdocs\emlog.loc\system\View\View.php(203): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('index.php')
+#1 D:\xampp\htdocs\emlog.loc\system\Common.php(1257): CodeIgniter\View\View->render('index', Array, true)
+#2 D:\xampp\htdocs\emlog.loc\app\Controllers\BaseController.php(63): view('index', Array)
+#3 D:\xampp\htdocs\emlog.loc\app\Controllers\Home.php(9): App\Controllers\BaseController->render('index')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Home->index()
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-02-24 01:31:10 --> Недопустимый файл: index.php
+#0 D:\xampp\htdocs\emlog.loc\system\View\View.php(203): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('index.php')
+#1 D:\xampp\htdocs\emlog.loc\system\Common.php(1257): CodeIgniter\View\View->render('index', Array, true)
+#2 D:\xampp\htdocs\emlog.loc\app\Controllers\BaseController.php(63): view('index', Array)
+#3 D:\xampp\htdocs\emlog.loc\app\Controllers\Home.php(10): App\Controllers\BaseController->render('index')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Home->index()
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-02-24 01:31:11 --> Недопустимый файл: index.php
+#0 D:\xampp\htdocs\emlog.loc\system\View\View.php(203): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('index.php')
+#1 D:\xampp\htdocs\emlog.loc\system\Common.php(1257): CodeIgniter\View\View->render('index', Array, true)
+#2 D:\xampp\htdocs\emlog.loc\app\Controllers\BaseController.php(63): view('index', Array)
+#3 D:\xampp\htdocs\emlog.loc\app\Controllers\Home.php(10): App\Controllers\BaseController->render('index')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Home->index()
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-02-24 01:31:12 --> Недопустимый файл: index.php
+#0 D:\xampp\htdocs\emlog.loc\system\View\View.php(203): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('index.php')
+#1 D:\xampp\htdocs\emlog.loc\system\Common.php(1257): CodeIgniter\View\View->render('index', Array, true)
+#2 D:\xampp\htdocs\emlog.loc\app\Controllers\BaseController.php(63): view('index', Array)
+#3 D:\xampp\htdocs\emlog.loc\app\Controllers\Home.php(10): App\Controllers\BaseController->render('index')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Home->index()
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-02-24 02:03:27 --> Uncaught ErrorException: Use of undefined constant LANG_404 - assumed 'LANG_404' (this will throw an Error in a future version of PHP) in D:\xampp\htdocs\emlog.loc\app\Views\errors\html\error_404.php:4
+Stack trace:
+#0 D:\xampp\htdocs\emlog.loc\app\Views\errors\html\error_404.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefine...', 'D:\\xampp\\htdocs...', 4, Array)
+#1 D:\xampp\htdocs\emlog.loc\system\Debug\Exceptions.php(278): include('D:\\xampp\\htdocs...')
+#2 D:\xampp\htdocs\emlog.loc\system\Debug\Exceptions.php(147): CodeIgniter\Debug\Exceptions->render(Object(CodeIgniter\Exceptions\PageNotFoundException), 404)
+#3 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Exceptions\PageNotFoundException))
+#4 {main}
+  thrown
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-24 02:15:16 --> Недопустимый файл: header.php
+#0 D:\xampp\htdocs\emlog.loc\system\View\View.php(203): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('header.php')
+#1 D:\xampp\htdocs\emlog.loc\system\Common.php(1257): CodeIgniter\View\View->render('header', Array, true)
+#2 D:\xampp\htdocs\emlog.loc\app\Controllers\Auth.php(87): view('header')
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Auth->login()
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-02-24 02:38:21 --> Cannot redeclare App\Controllers\Profile::index()
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-24 02:38:36 --> Cannot redeclare App\Controllers\Profile::index()
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-24 02:57:44 --> Call to undefined method App\Controllers\Profile::request()
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:00:47 --> Call to undefined method App\Controllers\Profile::request()
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:01:13 --> Too few arguments to function App\Controllers\Profile::user(), 0 passed in D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php on line 936 and exactly 1 expected
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:01:14 --> Too few arguments to function App\Controllers\Profile::user(), 0 passed in D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php on line 936 and exactly 1 expected
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:01:14 --> Too few arguments to function App\Controllers\Profile::user(), 0 passed in D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php on line 936 and exactly 1 expected
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:01:15 --> Too few arguments to function App\Controllers\Profile::user(), 0 passed in D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php on line 936 and exactly 1 expected
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:17:25 --> Call to a member function segment() on null
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:17:27 --> Call to a member function segment() on null
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:17:31 --> Call to a member function segment() on null
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:17:32 --> Call to a member function segment() on null
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:17:33 --> Call to a member function segment() on null
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:17:34 --> Call to a member function segment() on null
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:17:35 --> Call to a member function segment() on null
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:17:36 --> Call to a member function segment() on null
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:18:02 --> Call to a member function segment() on null
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:18:03 --> Call to a member function segment() on null
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:18:03 --> Call to a member function segment() on null
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:18:04 --> Call to a member function segment() on null
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:18:18 --> Call to a member function segment() on null
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:18:19 --> Call to a member function segment() on null
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:21:12 --> Too few arguments to function CodeIgniter\HTTP\URI::getSegment(), 0 passed in D:\xampp\htdocs\emlog.loc\app\Controllers\Profile.php on line 19 and at least 1 expected
+#0 D:\xampp\htdocs\emlog.loc\app\Controllers\Profile.php(19): CodeIgniter\HTTP\URI->getSegment()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-02-24 03:21:13 --> Too few arguments to function CodeIgniter\HTTP\URI::getSegment(), 0 passed in D:\xampp\htdocs\emlog.loc\app\Controllers\Profile.php on line 19 and at least 1 expected
+#0 D:\xampp\htdocs\emlog.loc\app\Controllers\Profile.php(19): CodeIgniter\HTTP\URI->getSegment()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-02-24 03:21:28 --> Call to undefined method App\Controllers\Profile::service()
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:24:58 --> Call to undefined method CodeIgniter\HTTP\IncomingRequest::segments()
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 03:47:05 --> Call to undefined method CodeIgniter\HTTP\IncomingRequest::Method()
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('(:any)')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 04:00:38 --> Call to undefined method CodeIgniter\HTTP\IncomingRequest::protected()
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('Evg')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 04:00:46 --> Call to undefined method CodeIgniter\HTTP\IncomingRequest::uriString()
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('Evg')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 04:01:03 --> Call to undefined method CodeIgniter\HTTP\IncomingRequest::uri()
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('Evg')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 04:01:04 --> Call to undefined method CodeIgniter\HTTP\IncomingRequest::uri()
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('Evg')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 04:01:16 --> Call to undefined method App\Controllers\Profile::uri()
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user('Evg')
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 04:04:07 --> Call to undefined method App\Controllers\Profile::uri()
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 04:04:22 --> Call to undefined method CodeIgniter\HTTP\IncomingRequest::uriString()
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 04:04:53 --> Call to undefined method CodeIgniter\HTTP\IncomingRequest::uri()
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 04:05:11 --> Cannot use object of type CodeIgniter\HTTP\IncomingRequest as array
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 04:05:12 --> Cannot use object of type CodeIgniter\HTTP\IncomingRequest as array
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-24 04:25:27 --> Cannot declare class App\Controllers\Profile because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-24 04:26:24 --> Cannot declare class App\Controllers\Profile because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-24 04:26:25 --> Cannot declare class App\Controllers\Profile because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-24 04:26:26 --> Cannot declare class App\Controllers\Profile because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-24 04:28:06 --> Cannot declare class App\Controllers\Profile because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-24 04:29:01 --> Cannot declare class App\Controllers\Profile because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-24 04:29:02 --> Cannot declare class App\Controllers\Profile because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-24 04:33:57 --> Cannot declare class App\Controllers\Profile because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-24 04:33:58 --> Cannot declare class App\Controllers\Profile because the name is already in use
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-24 04:40:05 --> print_r() expects at least 1 parameter, 0 given
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'print_r() expec...', 'D:\\xampp\\htdocs...', 29, Array)
+#1 D:\xampp\htdocs\emlog.loc\app\Controllers\Profile.php(29): print_r()
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Profile->user()
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profile))
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 07:13:20 --> syntax error, unexpected '==' (T_IS_EQUAL)
+#0 D:\xampp\htdocs\emlog.loc\system\Autoloader\Autoloader.php(265): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs...')
+#1 D:\xampp\htdocs\emlog.loc\system\Autoloader\Autoloader.php(228): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(893): class_exists('\\App\\Controller...', true)
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(417): CodeIgniter\CodeIgniter->startController()
+#6 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-02-24 07:14:53 --> syntax error, unexpected '$this' (T_VARIABLE)
+#0 D:\xampp\htdocs\emlog.loc\system\Autoloader\Autoloader.php(265): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs...')
+#1 D:\xampp\htdocs\emlog.loc\system\Autoloader\Autoloader.php(228): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers...')
+#3 [internal function]: spl_autoload_call('App\\Controllers...')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(893): class_exists('\\App\\Controller...', true)
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(417): CodeIgniter\CodeIgniter->startController()
+#6 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-02-24 08:19:05 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('profile', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 08:19:56 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('profile', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 08:20:22 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('profile', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 08:20:57 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('profile', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 08:25:06 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('profile', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 08:31:00 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 08:32:27 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 08:33:39 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 08:39:35 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 08:43:39 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 08:47:05 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 08:49:44 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 08:52:10 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 08:52:36 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 08:54:20 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 09:01:07 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 09:01:39 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 09:06:29 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 09:07:06 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 09:07:30 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 09:11:54 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 09:12:24 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 09:13:17 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 09:13:31 --> Too few arguments to function CodeIgniter\HTTP\URI::getSegment(), 0 passed in D:\xampp\htdocs\emlog.loc\app\Controllers\Auth.php on line 229 and at least 1 expected
+#0 D:\xampp\htdocs\emlog.loc\app\Controllers\Auth.php(229): CodeIgniter\HTTP\URI->getSegment()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Auth->color('1')
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-02-24 09:14:08 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 09:21:46 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 09:25:38 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('setting/color/1', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 09:42:50 --> Return value of CodeIgniter\BaseModel::transformDataToArray() must be of the type array, string returned
+#0 D:\xampp\htdocs\emlog.loc\system\BaseModel.php(864): CodeIgniter\BaseModel->transformDataToArray('1', 'update')
+#1 D:\xampp\htdocs\emlog.loc\system\Model.php(737): CodeIgniter\BaseModel->update(NULL, '1')
+#2 D:\xampp\htdocs\emlog.loc\app\Controllers\Auth.php(226): CodeIgniter\Model->update(NULL, '1')
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Auth->color('1')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-02-24 09:43:41 --> Return value of CodeIgniter\BaseModel::transformDataToArray() must be of the type array, string returned
+#0 D:\xampp\htdocs\emlog.loc\system\BaseModel.php(864): CodeIgniter\BaseModel->transformDataToArray('1', 'update')
+#1 D:\xampp\htdocs\emlog.loc\system\Model.php(737): CodeIgniter\BaseModel->update(NULL, '1')
+#2 D:\xampp\htdocs\emlog.loc\app\Controllers\Auth.php(226): CodeIgniter\Model->update(NULL, '1')
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Auth->color('1')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-02-24 09:48:02 --> Return value of CodeIgniter\BaseModel::transformDataToArray() must be of the type array, string returned
+#0 D:\xampp\htdocs\emlog.loc\system\BaseModel.php(864): CodeIgniter\BaseModel->transformDataToArray('1', 'update')
+#1 D:\xampp\htdocs\emlog.loc\system\Model.php(737): CodeIgniter\BaseModel->update(Array, '1')
+#2 D:\xampp\htdocs\emlog.loc\app\Controllers\Auth.php(226): CodeIgniter\Model->update('Evg', '1')
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Auth->color('1')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-02-24 09:50:49 --> The action you requested is not allowed.
+#0 D:\xampp\htdocs\emlog.loc\system\Security\Security.php(235): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\xampp\htdocs\emlog.loc\system\Filters\CSRF.php(57): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\xampp\htdocs\emlog.loc\system\Filters\Filters.php(181): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(403): CodeIgniter\Filters\Filters->run('users/setting/c...', 'before')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2021-02-24 09:55:34 --> Return value of CodeIgniter\BaseModel::transformDataToArray() must be of the type array, string returned
+#0 D:\xampp\htdocs\emlog.loc\system\BaseModel.php(864): CodeIgniter\BaseModel->transformDataToArray('1', 'update')
+#1 D:\xampp\htdocs\emlog.loc\system\Model.php(737): CodeIgniter\BaseModel->update(Array, '1')
+#2 D:\xampp\htdocs\emlog.loc\app\Controllers\Auth.php(226): CodeIgniter\Model->update('Evg', '1')
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Auth->color('1')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-02-24 10:02:25 --> Return value of CodeIgniter\BaseModel::transformDataToArray() must be of the type array, string returned
+#0 D:\xampp\htdocs\emlog.loc\system\BaseModel.php(864): CodeIgniter\BaseModel->transformDataToArray('1', 'update')
+#1 D:\xampp\htdocs\emlog.loc\system\Model.php(737): CodeIgniter\BaseModel->update(Array, '1')
+#2 D:\xampp\htdocs\emlog.loc\app\Controllers\Auth.php(226): CodeIgniter\Model->update('1', '1')
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Auth->color('1')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2021-02-24 10:15:45 --> syntax error, unexpected ''date'' (T_CONSTANT_ENCAPSED_STRING), expecting ']'
+#0 D:\xampp\htdocs\emlog.loc\system\Autoloader\Autoloader.php(265): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs...')
+#1 D:\xampp\htdocs\emlog.loc\system\Autoloader\Autoloader.php(228): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\libraries\\A...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\libraries\\A...')
+#3 D:\xampp\htdocs\emlog.loc\app\Controllers\Auth.php(22): spl_autoload_call('App\\libraries\\A...')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(908): App\Controllers\Auth->__construct()
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(422): CodeIgniter\CodeIgniter->createController()
+#6 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2021-02-24 10:15:50 --> syntax error, unexpected ''date'' (T_CONSTANT_ENCAPSED_STRING), expecting ']'
+#0 D:\xampp\htdocs\emlog.loc\system\Autoloader\Autoloader.php(265): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs...')
+#1 D:\xampp\htdocs\emlog.loc\system\Autoloader\Autoloader.php(228): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\libraries\\A...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\libraries\\A...')
+#3 D:\xampp\htdocs\emlog.loc\app\Controllers\Auth.php(22): spl_autoload_call('App\\libraries\\A...')
+#4 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(908): App\Controllers\Auth->__construct()
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(422): CodeIgniter\CodeIgniter->createController()
+#6 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#8 {main}
+ERROR - 2021-02-24 10:18:02 --> mysqli_sql_exception: Unknown column 'color' in 'field list' in D:\xampp\htdocs\emlog.loc\system\Database\MySQLi\Connection.php:329
+Stack trace:
+#0 D:\xampp\htdocs\emlog.loc\system\Database\MySQLi\Connection.php(329): mysqli->query('INSERT INTO `au...')
+#1 D:\xampp\htdocs\emlog.loc\system\Database\BaseConnection.php(713): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `au...')
+#2 D:\xampp\htdocs\emlog.loc\system\Database\BaseConnection.php(641): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `au...')
+#3 D:\xampp\htdocs\emlog.loc\system\Database\BaseBuilder.php(2279): CodeIgniter\Database\BaseConnection->query('INSERT INTO `au...', Array, false)
+#4 D:\xampp\htdocs\emlog.loc\app\Models\AuthModel.php(66): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 D:\xampp\htdocs\emlog.loc\app\Libraries\AuthLibrary.php(563): App\Models\AuthModel->LogLogin(Array)
+#6 D:\xampp\htdocs\emlog.loc\app\Libraries\AuthLibrary.php(531): App\libraries\AuthLibrary->loginlog()
+#7 D:\xampp\htdocs\emlog.loc\app\Libraries\AuthLibrary.php(145): App\libraries\AuthLibrary->setUserSession(Array)
+#8 D:\xampp\htdocs\emlog.loc\app\Controllers\Auth.php(74): App\libraries\AuthLibrary->LoginUser('admin@admin.ru', NULL)
+#9 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Auth->login()
+#10 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#11 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2021-02-24 10:50:16 --> Too few arguments to function App\Models\User::__construct(), 0 passed in D:\xampp\htdocs\emlog.loc\app\Controllers\Home.php on line 12 and exactly 1 expected
+#0 D:\xampp\htdocs\emlog.loc\app\Controllers\Home.php(12): App\Models\User->__construct()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Home->index()
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2021-02-24 11:32:00 --> Call to a member function get_csrf_token_name() on null
+#0 D:\xampp\htdocs\emlog.loc\system\View\View.php(220): include()
+#1 D:\xampp\htdocs\emlog.loc\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 D:\xampp\htdocs\emlog.loc\system\Common.php(1257): CodeIgniter\View\View->render('user/setting', Array, true)
+#3 D:\xampp\htdocs\emlog.loc\app\Controllers\BaseController.php(64): view('user/setting', Array)
+#4 D:\xampp\htdocs\emlog.loc\app\Controllers\Auth.php(210): App\Controllers\BaseController->render('user/setting')
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Auth->setting()
+#6 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2021-02-24 11:38:15 --> Call to a member function get_csrf_token_name() on null
+#0 D:\xampp\htdocs\emlog.loc\system\View\View.php(220): include()
+#1 D:\xampp\htdocs\emlog.loc\system\View\View.php(222): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#2 D:\xampp\htdocs\emlog.loc\system\Common.php(1257): CodeIgniter\View\View->render('user/setting', Array, true)
+#3 D:\xampp\htdocs\emlog.loc\app\Controllers\BaseController.php(64): view('user/setting', Array)
+#4 D:\xampp\htdocs\emlog.loc\app\Controllers\Auth.php(210): App\Controllers\BaseController->render('user/setting')
+#5 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Auth->setting()
+#6 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2021-02-24 11:45:41 --> mysqli_sql_exception: Column 'nickname' cannot be null in D:\xampp\htdocs\emlog.loc\system\Database\MySQLi\Connection.php:329
+Stack trace:
+#0 D:\xampp\htdocs\emlog.loc\system\Database\MySQLi\Connection.php(329): mysqli->query('INSERT INTO `au...')
+#1 D:\xampp\htdocs\emlog.loc\system\Database\BaseConnection.php(713): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `au...')
+#2 D:\xampp\htdocs\emlog.loc\system\Database\BaseConnection.php(641): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `au...')
+#3 D:\xampp\htdocs\emlog.loc\system\Database\BaseBuilder.php(2279): CodeIgniter\Database\BaseConnection->query('INSERT INTO `au...', Array, false)
+#4 D:\xampp\htdocs\emlog.loc\app\Models\AuthModel.php(66): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 D:\xampp\htdocs\emlog.loc\app\Libraries\AuthLibrary.php(561): App\Models\AuthModel->LogLogin(Array)
+#6 D:\xampp\htdocs\emlog.loc\app\Libraries\AuthLibrary.php(530): App\libraries\AuthLibrary->loginlog()
+#7 D:\xampp\htdocs\emlog.loc\app\Libraries\AuthLibrary.php(224): App\libraries\AuthLibrary->setUserSession(Array)
+#8 D:\xampp\htdocs\emlog.loc\app\Controllers\Auth.php(203): App\libraries\AuthLibrary->editProfile(Array)
+#9 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Auth->setting()
+#10 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#11 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#13 {main}

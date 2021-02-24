@@ -1,0 +1,36 @@
+CRITICAL - 2021-02-22 23:21:58 --> Call to undefined function App\Controllers\views()
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Info->index()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Info))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-22 23:22:40 --> Call to undefined function App\Controllers\views()
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Info->index()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Info))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-22 23:22:41 --> Call to undefined function App\Controllers\views()
+#0 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(936): App\Controllers\Info->index()
+#1 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(432): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Info))
+#2 D:\xampp\htdocs\emlog.loc\system\CodeIgniter.php(333): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\xampp\htdocs\emlog.loc\public\index.php(44): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2021-02-22 23:25:03 --> Namespace declaration statement has to be the very first statement or after any declare call in the script
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-22 23:25:04 --> Namespace declaration statement has to be the very first statement or after any declare call in the script
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-22 23:26:54 --> Namespace declaration statement has to be the very first statement or after any declare call in the script
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-22 23:26:55 --> Namespace declaration statement has to be the very first statement or after any declare call in the script
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-22 23:26:55 --> Namespace declaration statement has to be the very first statement or after any declare call in the script
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2021-02-22 23:26:55 --> Namespace declaration statement has to be the very first statement or after any declare call in the script
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
