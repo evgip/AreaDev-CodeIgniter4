@@ -26,7 +26,7 @@
 		<div class="menu">
 			<ul>  
                 <?php if (session()->get('isLoggedIn')) : ?>
-                    <?php if ($do == 'home') { ?>
+                    <?php if ($uri == '') { ?>
                         <li class="nav">
                               <?php if ($color == 1) { ?>
                                 <a class="my-color" data-csrf_name="<?= csrf_token() ?>" data-csrf="<?= csrf_hash() ?>" data-color="0"> 

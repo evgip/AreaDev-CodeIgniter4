@@ -210,6 +210,8 @@ label > .label-body {
   margin-left: .5rem;
   font-weight: normal; }
 
+input:disabled {background: #f1f1f1;}
+
 .form-group {
     margin-top: 15px;
 }
