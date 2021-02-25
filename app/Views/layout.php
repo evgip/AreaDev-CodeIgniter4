@@ -12,11 +12,11 @@
         
         <link rel="icon" href="<?=base_url()?>/favicon.ico">
         
-        <?php if (session()->get('isLoggedIn')) : ?>        
+        <?php if ($usr_id != 0) : ?>        
             <script src="<?=base_url()?>/assets/js/common.js"></script>
         <?php endif; ?> 
     </head>
-<body class="bd<?php if ($uri == '') { ?> black<?php } ?>">
+<body class="bd<?php if ($usr_color == 1) { ?> black<?php } ?>">
 
 <header> 
 	<div class="wrap">
@@ -25,28 +25,26 @@
 		</div>
 		<div class="menu">
 			<ul>  
-                <?php if (session()->get('isLoggedIn')) : ?>
-                    <?php if ($uri == '') { ?>
-                        <li class="nav">
-                              <?php if ($color == 1) { ?>
-                                <a class="my-color" data-csrf_name="<?= csrf_token() ?>" data-csrf="<?= csrf_hash() ?>" data-color="0"> 
-                                    <span class="my-color-m">
-                                        <svg class="md-icon moon">
-                                            <use xlink:href="/assets/icons/icons.svg#moon"></use>
-                                        </svg>  
-                                    </span>
-                                </a>
-                            <?php } else { ?>
-                                <a class="my-color" data-csrf_name="<?= csrf_token() ?>" data-csrf="<?= csrf_hash() ?>" data-color="1">
+                <?php if ($usr_id != 0) : ?>
+                    <li class="nav">
+                          <?php if ($usr_color == 0) { ?>
+                            <a class="my-color" data-csrf_name="<?= csrf_token() ?>" data-csrf="<?= csrf_hash() ?>" data-color="1"> 
                                 <span class="my-color-m">
                                     <svg class="md-icon moon">
-                                        <use xlink:href="/assets/icons/icons.svg#sun"></use>
-                                    </svg>   
+                                        <use xlink:href="/assets/icons/icons.svg#moon"></use>
+                                    </svg>  
                                 </span>
-                                </a>
-                            <?php } ?>
-                        </li>
-                    <?php } ?>
+                            </a>
+                        <?php } else { ?>
+                            <a class="my-color" data-csrf_name="<?= csrf_token() ?>" data-csrf="<?= csrf_hash() ?>" data-color="0">
+                            <span class="my-color-m">
+                                <svg class="md-icon moon">
+                                    <use xlink:href="/assets/icons/icons.svg#sun"></use>
+                                </svg>   
+                            </span>
+                            </a>
+                        <?php } ?>
+                    </li>
                     
                     <li class="nav<?= ($uri == 'profile' ? ' active' : null) ?>">
                         <a href="/profile">Профиль</a>
@@ -54,8 +52,8 @@
                     <li class="nav<?= ($uri == 'setting' ? ' active' : null) ?>">
                         <a href="/setting">Настройка</a>
                     </li>
-                    
-                    <?php if (session()->get('role') == 1) : ?>
+                   
+                    <?php if ($usr_role == 1) : ?>
                         <li class="nav<?= ($uri == 'admin' ? ' active' : null) ?>"> 
                             <a href="/admin">Admin</a>
                         </li>

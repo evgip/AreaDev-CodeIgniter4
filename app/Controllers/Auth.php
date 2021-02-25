@@ -192,7 +192,6 @@ class Auth extends BaseController
 					'name' => $this->request->getVar('name'),
 					'email' => $this->request->getVar('email'),
 					'role'	=> $this->Session->get('role'),
-                    'color'	=> $this->Session->get('color'),
 				];
 
 				// IF PASSWORD IS LEFT EMPTY DO NOT CHANGE IT
