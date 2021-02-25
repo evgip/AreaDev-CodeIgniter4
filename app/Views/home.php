@@ -19,3 +19,7 @@ class Home extends BaseController
 <b>3.</b> Миграцию в этой системе.<br>
 
 <br>
+
+<b>CodeIgniter</b> - это мощный PHP-фреймворк с очень маленьким размером, созданный для разработчиков, которым нужен простой и элегантный инструментарий для создания полнофункциональных веб-приложений.<br><br>
+
+См. <a rel="nofollow noreferrer" target="_blank" href="https://www.codeigniter.com/">CodeIgniter.com</a>

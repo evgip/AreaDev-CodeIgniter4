@@ -52,7 +52,7 @@ class BaseController extends Controller
 		parent::initController($request, $response, $logger);
 
 		//--------------------------------------------------------------------
-		// Preload any models, libraries, etc, here.
+		// Preload any models, Libraries, etc, here.
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
 	}
@@ -61,6 +61,8 @@ class BaseController extends Controller
     public function render($views, $template = 'layout')
 	{
 		 
+        $this->data['uri'] = service('uri')->getSegment(1); 
+         
         $this->data['content'] = view($views, $this->data);
 
 		return view($template, $this->data);

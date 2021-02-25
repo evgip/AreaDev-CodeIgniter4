@@ -10,8 +10,8 @@ namespace App\Controllers;
 
 use App\Models\User;
 use App\Models\AuthModel;
-use App\libraries\AuthLibrary;
-
+use App\Libraries\AuthLibrary;
+ 
 
 class Auth extends BaseController
 {
@@ -19,7 +19,7 @@ class Auth extends BaseController
 	{
 		$this->AuthModel =	new AuthModel();
 		$this->Session = session();		
-		$this->Auth = new AuthLibrary;
+		$this->Auth = new AuthLibrary(); 
 		$this->config = config('Auth');
 	}
 

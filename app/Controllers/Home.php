@@ -8,12 +8,15 @@ class Home extends BaseController
 	public function index()
 	{
         $this->data['title'] = 'Главная';
-        $this->data['do']    = 'home';
-         
-        $userModel = new User();
-        $user      =  $userModel->first($id);
-        
-        $this->data['color'] = $user['color'];
+ 
+        if (session()->get('isLoggedIn'))
+		{ 
+            $userModel = new User();
+            $user      =  $userModel->first($id);
+            $this->data['color'] = $user['color'];
+        } else {
+            $this->data['color'] = 0;
+        }
         
 		return $this->render('home');
 	}

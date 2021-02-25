@@ -16,8 +16,8 @@
             <script src="<?=base_url()?>/assets/js/common.js"></script>
         <?php endif; ?> 
     </head>
-<body class="bd<?php if ($color == 0 && $do == 'home' ) { ?> black<?php } ?>">
-<?php $uri = service('uri')->getSegment(1); ?>
+<body class="bd<?php if ($uri == '') { ?> black<?php } ?>">
+
 <header> 
 	<div class="wrap">
 		<div class="title">
