@@ -37,5 +37,6 @@ class Profile extends BaseController
 		return $this->render('user/user');
 
 	}
+    
  
 }

@@ -11,7 +11,6 @@ namespace App\Controllers;
 use App\Models\User;
 use App\Models\AuthModel;
 use App\Libraries\AuthLibrary;
- 
 
 class Auth extends BaseController
 {
@@ -162,25 +161,23 @@ class Auth extends BaseController
 	public function setting()
 	{
  
- 
- 
-		// IF ITS A POST REQUEST DO YOUR STUFF ELSE SHOW VIEW
+		// Если запрос то начинаем изменения, или показ шаблона
 		if ($this->request->getMethod() == 'post') {
          
-			// SET UP RULES
+			// Настроим правила
 			$rules = [
-				'nickname' => 'required|min_length[3]|max_length[25]',
+				//'nickname' => 'required|min_length[3]|max_length[25]',
 				'name' => 'required|min_length[3]|max_length[25]',
 				'email' => 'required|valid_email',
 			];
 
-			// SET MORE RULES IF PASSWORD IS BEING CHANGED
+			// Установим доп. правила если пароль меняется
 			if ($this->request->getPost('password') != '') {
 				$rules['password'] = 'required|min_length[8]|max_length[255]';
 				$rules['password_confirm'] = 'matches[password]';
 			}
 
-			// VALIDATE RULES
+			// Проверка правил
 			if (!$this->validate($rules)) {
 				$data['validation'] = $this->validator;
 			} else {
@@ -188,30 +185,52 @@ class Auth extends BaseController
 				// Для записи исключить ник
 				$user = [
 					'id' => $this->Session->get('id'),
-					'nickname' => $this->request->getVar('nickname'),
+					// 'nickname' => $this->request->getVar('nickname'),
 					'name' => $this->request->getVar('name'),
 					'email' => $this->request->getVar('email'),
-					'role'	=> $this->Session->get('role'),
+					'role'	=> $this->Session->get('role')
 				];
+                
+                $userModel = new User();
 
-				// IF PASSWORD IS LEFT EMPTY DO NOT CHANGE IT
+                // Записываем фото
+                $image = $this->request->getFile('image');
+                if ($image && $image->isValid() && ! $image->hasMoved())
+                {
+                    $ext = $image->getRandomName();
+                    $avatar = $user['id'].'.'.$ext;
+               
+                    $p = $image->move(FCPATH.'upload/users/', $avatar);
+                    
+                    // Формируем превью
+                    $userModel->image_avatar($avatar);
+               
+                    $data = [
+                        'avatar' => $avatar
+                    ];
+         
+                    // Добавляем в базу
+                    $userModel->update($user['id'], $data);
+                    
+                } 
+
+				// Если пароль остается пустым не меняем его
 				if ($this->request->getPost('password') != '') {
 					$user['password'] = $this->request->getVar('password');
 				}
 
-				// PASS TO LIBRARY
+				// Зайдем в библиотеку
 				$this->Auth->editProfile($user);
 
 				return redirect()->to('setting');
 			}
-		}		
-
+		}
+		
         $this->data['title'] = 'Настройки';
         
 		return $this->render('user/setting');
 
 	}
-
 
     // Поменяем цвет страницы
     public function color($color)
@@ -230,10 +249,9 @@ class Auth extends BaseController
         $data = [
             'color' => $color
         ];
-        
+         
         $userModel->update($id, $data);
-        
-        return redirect()->to('/');
+     
     }
     
     // forgot

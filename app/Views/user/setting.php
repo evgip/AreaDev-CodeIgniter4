@@ -2,6 +2,8 @@
 
 <h3><?php echo session()->get('nickname') . ' ' . session()->get('name') ?></h3>
 
+<img alt="" src="/upload/users/small/<?php print_r($usr_avatar) ?>" border="0">
+
 <?php $validation = \Config\Services::validation(); ?>
 <?php if (session()->get('success')) : ?>
     <div class="alert alert-success alert-dismissible" role="alert">
@@ -9,7 +11,7 @@
     </div>
 <?php endif; ?>   
 
-<form action="/setting" method="post">
+<form action="/setting" method="post" enctype="multipart/form-data">
      
     <div class="form-group">
         <label for="nickname">Ник</label>
@@ -56,10 +58,13 @@
             </div>
         <?php } ?>
     </div>
-
+    <div class="form-group">
+        <input id="fileInput" name="image" accept="image/*" type="file" />
+    </div>
     <div class="form-group">
         <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" /> 
         <button type="submit" class="btn btn-primary">Изменить</button>
     </div>
 </form>
 
+  

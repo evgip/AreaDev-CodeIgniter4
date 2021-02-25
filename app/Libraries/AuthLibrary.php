@@ -504,21 +504,12 @@ class AuthLibrary
     }
 
 
-    /**
-     *--------------------------------------------------------------------------
-     * SET USER SESSION
-     *--------------------------------------------------------------------------
-     *
-     * Saves user details to session
-     * 
-     * @param  array $user
-     * @return void
-     */
+    // Никнейм нам не нужен
     public function setUserSession($user)
     {   
         $data = [
             'id' => $user['id'],
-            'nickname' => $user['nickname'],
+            // 'nickname' => $user['nickname'],
             'name' => $user['name'],
             'email' => $user['email'],
             'role' => $user['role'],

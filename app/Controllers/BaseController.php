@@ -67,12 +67,14 @@ class BaseController extends Controller
             $this->data['usr_id']    = $data['id'];
             $this->data['usr_color'] = $data['color'];
             $this->data['usr_role']  = $data['role'];
+            $this->data['usr_avatar']= $data['avatar'];
             
         } else {
            
-            $this->data['usr_id']    = 0;       
-            $this->data['usr_color'] = 0;
-            $this->data['usr_role'] = 0;             
+            $this->data['usr_id']     = 0;       
+            $this->data['usr_color']  = 0;
+            $this->data['usr_role']   = 0; 
+            $this->data['usr_avatar'] = 0;             
         }
         
         $this->data['uri']     = service('uri')->getSegment(1); 

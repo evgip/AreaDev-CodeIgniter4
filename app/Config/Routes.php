@@ -26,8 +26,12 @@ $routes->setAutoRoute(true);
 
 
 // Route Definitions
-$routes->get('/info', 'Info::index');
 $routes->get('/', 'Home::index');
+
+// Documentation pages
+$routes->get('/info', 'Info::index');
+$routes->get('/info/stats', 'Info::stats');
+$routes->get('/info/rules', 'Info::rules');
 
 // Auth Routes
 $routes->match(['get', 'post'], 'login', 'Auth::login'); 
