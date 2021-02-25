@@ -10,8 +10,8 @@
             type: 'POST',
             data: {color: color,[csrf_name]: csrf },
         }).done(function(result) {
-            location.reload();
-        });
+             location.reload(csrf_name);
+         });
     });
 
  
