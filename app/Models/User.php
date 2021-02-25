@@ -11,23 +11,19 @@ class User extends Model {
     protected $returnType = 'array';
     protected $allowedFields = ['id', 'color', 'avatar'];
     
-    
-    
     public function image_avatar($avatar)
     {
         \Config\Services::image()
-                    ->withFile(FCPATH. 'upload/users/' . $newName)
-                    ->resize(60, 60, false, 'height')
-                    ->save(FCPATH. 'upload/users/small/' . $newName);
-                    
-                    
-                    \Config\Services::image()
-                    ->withFile(FCPATH. 'upload/users/' . $newName)
-                    ->resize(160, 160, false, 'height')
-                    ->save(FCPATH. 'upload/users/' . $newName);
+            ->withFile(FCPATH. 'upload/users/' . $avatar)
+            ->resize(60, 60, false, 'height')
+            ->save(FCPATH. 'upload/users/small/' . $avatar);
+            
+            
+            \Config\Services::image()
+            ->withFile(FCPATH. 'upload/users/' . $avatar)
+            ->resize(160, 160, false, 'height')
+            ->save(FCPATH. 'upload/users/' . $avatar);
     }
 
-} 
-
-    
+}     
    
