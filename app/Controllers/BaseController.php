@@ -60,7 +60,16 @@ class BaseController extends Controller
     // Расширяем, для работы с шаблоном
     public function render($views, $template = 'layout')
 	{ 
-    
+
+        if(!session()->get('avatar')) {
+            $usr_avatar = 'noavatar.png';
+        } else {
+            $usr_avatar = session()->get('avatar');
+        }
+
+        $this->data['usr_avatar']  = $usr_avatar;
+        $this->data['usr_nickname']  = session()->get('nickname');
+        $this->data['usr_id']  = session()->get('id');
         $this->data['uri']     = service('uri')->getSegment(1); 
         $this->data['auth']    = session()->get('isLoggedIn');
         $this->data['content'] = view($views, $this->data);

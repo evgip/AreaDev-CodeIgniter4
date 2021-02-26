@@ -25,10 +25,10 @@ class CreateAuthTables extends Migration
             'updated_at'    => ['type' => 'datetime', 'null' => 0],
             'deleted_at'    => ['type' => 'datetime'],
             'avatar'        => ['type' => 'varchar', 'constraint' => 255, 'null' => true],
+            'about'        => ['type' => 'varchar', 'constraint' => 255, 'null' => true],
             'rating'        => ['type' => 'int', 'constraint' => 11, 'null' => true],
             'status'        => ['type' => 'tinyint', 'constraint' => 1, 'null' => true],
             'my_blog'       => ['type' => 'int', 'constraint' => 11, 'null' => true],
-            'color'         => ['type' => 'int', 'constraint' => 11, 'null' => true, 'default' => 0],
             'post_profile'  => ['type' => 'int', 'constraint' => 11, 'null' => true, 'default' => 0],
         ]);
   

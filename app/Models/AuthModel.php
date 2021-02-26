@@ -8,7 +8,7 @@ class AuthModel extends Model{
 
     
     protected $table = 'users';
-    protected $allowedFields = ['nickname', 'name', 'email', 'password', 'reset_token', 'reset_expire', 'activated', 'activate_token', 'activate_expire', 'role', 'updated_at', 'deleted_at'];
+    protected $allowedFields = ['nickname', 'name', 'email', 'password', 'reset_token', 'reset_expire', 'activated', 'activate_token', 'activate_expire', 'role', 'about', 'updated_at', 'deleted_at'];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpdate = ['beforeUpdate'];  
 

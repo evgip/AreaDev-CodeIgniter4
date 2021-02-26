@@ -43,29 +43,23 @@ $routes->match(['get', 'post'], 'updatepassword/(:num)', 'AuthController::update
 $routes->match(['get', 'post'], 'lockscreen', 'AuthController::lockscreen'); 
 $routes->get('logout', 'AuthController::logout'); 
 
-
 $routes->add('users', 'UsersController::index');
 $routes->get('users/(:any)', 'UsersController::usersProfile'); 
-
-
-//, ['as' => 'users']
+ 
+$routes->post('users/color/(:num)', 'UsersController::color/$1'); 
+ 
 // admin - Role 1
 $routes->group('admin', ['filter' => 'auth:Role,1'], function ($routes) {
- 
 	$routes->match(['get', 'post'], 'setting', 'AuthController::setting');
-    $routes->get('admin', 'AdminController::index'); // ADMIN
- 
+    $routes->get('admin', 'AdminController::index');
 });
 
 //  Role 2
 $routes->group('', ['filter' => 'auth:Role,2'], function ($routes){
-    
 	$routes->match(['get', 'post'], 'setting', 'AuthController::setting');
-    $routes->post('setting/color/(:num)', 'AuthController::color/$1');
-    
 });
 
-
+ 
 /*
  * --------------------------------------------------------------------
  * Additional Routing

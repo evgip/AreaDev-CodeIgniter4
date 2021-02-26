@@ -10,31 +10,11 @@ class UsersController extends BaseController
     // Список участников
 	public function index()
 	{
-
-        $this->data['title'] = 'Профиль';
-        
         $userModel = new Users();
-        $id = session()->get('id');
-        $user = $userModel->getUsersId($id); 
-          
-        if($user)  {   
+        $this->data['all_users'] = $userModel->getUsersAll();
         
-            if(!$user['avatar']) {
-                $user['avatar'] = 'noavatar.png';
-            }
-            
-            $this->data = [
-                'usr_id'        => $user['id'],
-                'usr_avatar'    => $user['avatar'],
-                'usr_nickname'  => $user['nickname'],
-                'usr_color'     => $user['color'],
-            ];
-        }
+        $this->data['title'] = 'Список участников';
         
-        $users = $userModel->getUsersAll();
-        
-        $this->data['all_users'] = $users;
-       
 		return $this->render('users/all');
 
 	}
@@ -42,7 +22,6 @@ class UsersController extends BaseController
     // Детальная страница пользователя
     public function usersProfile()
 	{
-        $this->data['title'] = 'Профиль пользователя';
         
         $slug = service('uri')->getSegment(2);
         $userModel = new Users();
@@ -53,20 +32,22 @@ class UsersController extends BaseController
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
         
-        if(!$user['avatar']) {
-            $user['avatar'] = 'noavatar.png';
-        }
-        
-        $this->data = [
-            'usr_id'        => $user['id'],
-            'usr_avatar'    => $user['avatar'],
-            'usr_nickname'  => $user['nickname'],
-            'usr_color'     => $user['color'],
-        ];
+        $this->data['title'] = 'Профиль пользователя';
         
 		return $this->render('users/profile');
 
 	}
     
- 
+    // Поменяем цвет страницы
+    public function color($color)
+	{
+        if($color == 1) {
+          delete_cookie('color', 0);
+          set_cookie('color', 1);
+        } else {
+          delete_cookie('color', 1);
+          set_cookie('color', 0);
+        }
+        return true;
+    }
 }

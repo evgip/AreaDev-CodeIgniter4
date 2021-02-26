@@ -171,8 +171,9 @@ class AuthController extends BaseController
 			// Настроим правила
 			$rules = [
 				'nickname' => 'required|alpha_numeric_space|min_length[3]|max_length[25]',
-				'name' => 'required|min_length[3]|max_length[25]',
-				'email' => 'required|valid_email',
+				'name'     => 'required|min_length[3]|max_length[25]',
+				'email'    => 'required|valid_email',
+                'about'    => 'required|min_length[3]|max_length[255]',
 			];
 
 			// Установим доп. правила если пароль меняется
@@ -186,16 +187,6 @@ class AuthController extends BaseController
 				$data['validation'] = $this->validator;
 			} else {
 
-				// Для записи исключить ник
-				$user = [
-					'id' => $this->Session->get('id'),
-					'nickname' => $this->request->getVar('nickname'),
-					'name' => $this->request->getVar('name'),
-					'email' => $this->request->getVar('email'),
-					'role'	=> $this->Session->get('role')
-				];
-                
-
                 // Записываем фото
                 $image = $this->request->getFile('image');
                 if ($image && $image->isValid() && ! $image->hasMoved())
@@ -207,15 +198,23 @@ class AuthController extends BaseController
                
                     $p = $image->move(FCPATH.'upload/users/', $avatar);
                     
-              
-                         // Формируем превью
-                        $userModel->image_avatar($avatar);
-                   
-               
-               
+                    // Формируем превью
+                    $userModel->image_avatar($avatar);
+
                     $data = [
                         'avatar' => $avatar
                     ];
+         
+         				// Для записи
+				    $user = [
+					'id'       => $this->Session->get('id'),
+					'nickname' => $this->request->getVar('nickname'),
+                    'avatar'   => $data['avatar'],
+					'name'     => $this->request->getVar('name'),
+                    'about'    => $this->request->getVar('about'),
+					'email'    => $this->request->getVar('email'),
+					'role'	   => $this->Session->get('role')
+				    ];
          
                     // Добавляем в базу
                     $userModel->update($user['id'], $data);
@@ -224,6 +223,7 @@ class AuthController extends BaseController
 
 				// Если пароль остается пустым не меняем его
 				if ($this->request->getPost('password') != '') {
+                    $user['about']    = $this->request->getVar('about');
 					$user['password'] = $this->request->getVar('password');
 				}
 
@@ -238,45 +238,13 @@ class AuthController extends BaseController
             $user['avatar'] = 'noavatar.png';
         }  
         
-        if(!$user['color']) {
-            $this->data['usr_color'] = 0;
-        }
-        
-        $this->data = [
-            'usr_avatar'    => $user['avatar'],
-            'usr_nickname'  => $user['nickname'],
-            'usr_color'     => $user['color'],
-        ];
-
         $this->data['title'] = 'Настройки';
         
 		return $this->render('users/setting');
 
 	}
 
-    // Поменяем цвет страницы
-    public function color($color)
-    {
-        // Если мы не вошли в систему. Насколько спасает маршрут и права там?
-        if (!session()->get('isLoggedIn'))
-		{
-			return true;
-		}
-        
-          
-        $userModel = new Users();
-        //$color = $this->request->getPost('color');
- 
-        $id = session()->get('id'); 
-     
-        $data = [
-            'color' => $color
-        ];
-          
-        $userModel->update($id, $data);
-     
-    }
-    
+   
     // forgot
 	public function forgotPassword()
 	{

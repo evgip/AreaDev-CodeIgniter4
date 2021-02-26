@@ -12,7 +12,6 @@
 <?php endif; ?>   
 
 <form action="/setting" method="post" enctype="multipart/form-data">
-     
     <div class="form-group">
         <label for="nickname">Ник</label>
         <input type="text" class="form-control" name="nickname" id="nickname" value="<?= set_value('nickname', session()->get('nickname')) ?>">
@@ -55,6 +54,15 @@
         <?php if ($validation->getError('password_confirm')) { ?>
             <div class='alert alert-danger mt-2'>
                 <?= $error = $validation->getError('password_confirm'); ?>
+            </div>
+        <?php } ?>
+    </div>
+    <div class="form-group">
+        <label for="about">О себе</label>
+        <input type="text" class="form-control" name="about" id="about" value="<?= set_value('about', session()->get('about')) ?>">
+        <?php if ($validation->getError('about')) { ?>
+            <div class='alert alert-danger mt-2'>
+                <?= $error = $validation->getError('about'); ?>
             </div>
         <?php } ?>
     </div>

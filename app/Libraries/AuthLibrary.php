@@ -82,12 +82,13 @@ class AuthLibrary
         // SET THE EXPIRY TIME FOR THE RESET TOKEN
         $TokenExpireTime = new Time('+' . $expireTime . 'hours');
 
-        // DEFINE AN ARRAY WITH VARIABLES WE NEED TO PASS
+        // Определим массив с переменными для передачи
         $user = [
             'id' => $user['id'],
             'email' => $user['email'],
             'nickname' => $user['nickname'],
             'name' => $user['name'],
+            'about' => $user['about'],
             $tokentype => $authtoken,
             $tokenexpire => $TokenExpireTime,
         ];
@@ -124,7 +125,7 @@ class AuthLibrary
 
             // ACCOUNT NOT ACTIVATED SO SET LINK TO RESEND ACTIVATION EMAIL
             $this->Session->setFlashData('danger', lang('Auth.notActivated'));
-            $this->Session->setFlashData('resetlink', '<a href="/auth/resendactivation/' . $user['id'] . '">Resend Activation Email</a>');
+            $this->Session->setFlashData('resetlink', '<a href="/auth/resendactivation/' . $user['id'] . '">Отправить e-mail для активации</a>');
             return false;
         }
 
@@ -507,11 +508,13 @@ class AuthLibrary
     public function setUserSession($user)
     {   
         $data = [
-            'id' => $user['id'],
-            'nickname' => $user['nickname'],
-            'name' => $user['name'],
-            'email' => $user['email'],
-            'role' => $user['role'],
+            'id'         => $user['id'],
+            'nickname'   => $user['nickname'],
+            'name'       => $user['name'],
+            'email'      => $user['email'],
+            'role'       => $user['role'],
+            'about'      => $user['about'],
+            'avatar'     => $user['avatar'],
             'isLoggedIn' => true,
             'ipaddress' => $this->request->getIPAddress(),
         ];
@@ -676,8 +679,6 @@ class AuthLibrary
     public function checkCookie()
     {
         if ($this->Session->get('lockscreen') == true){
-           
-           
             return;
         }
         // IS THERE A COOKIE SET?

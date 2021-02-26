@@ -79,10 +79,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` datetime DEFAULT NULL,
   `avatar` varchar(250) NOT NULL,
+  `about` varchar(250) DEFAULT NULL,
   `rating` int(11) NOT NULL DEFAULT 0,
   `status` varchar(250) NOT NULL,
   `my_blog` int(11) NOT NULL,
-  `color` int(11) NOT NULL,
   `post_profile` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
