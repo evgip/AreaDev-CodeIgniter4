@@ -1,6 +1,6 @@
 <?php
 
-define('ENVIRONMENT', 'development');
+// define('ENVIRONMENT', 'development');
 
 // Valid PHP Version?
 $minPHPVersion = '7.2';
