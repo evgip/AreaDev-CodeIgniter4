@@ -12,11 +12,11 @@
         
         <link rel="icon" href="<?=base_url()?>/favicon.ico">
         
-        <?php if ($usr_id != 0) : ?>        
+        <?php if ($auth) { ?>        
             <script src="<?=base_url()?>/assets/js/common.js"></script>
-        <?php endif; ?> 
+        <?php } ?>
     </head>
-<body class="bd<?php if ($usr_color == 1) { ?> black<?php } ?>">
+<body class="bd<?php if ($auth) { ?><?php if ($usr_color == 1) { ?> black<?php } ?><?php } ?>">
 
 <header> 
 	<div class="wrap">
@@ -25,7 +25,7 @@
 		</div>
 		<div class="menu">
 			<ul>  
-                <?php if ($usr_id != 0) : ?>
+                <?php if ($auth) : ?>
                     <li class="nav">
                           <?php if ($usr_color == 0) { ?>
                             <a class="my-color" data-csrf_name="<?= csrf_token() ?>" data-csrf="<?= csrf_hash() ?>" data-color="1"> 
@@ -46,31 +46,32 @@
                         <?php } ?>
                     </li>
                     
-                    <li class="nav<?= ($uri == 'profile' ? ' active' : null) ?>">
-                        <a href="/profile">Профиль</a>
-                    </li>
                     <li class="nav<?= ($uri == 'setting' ? ' active' : null) ?>">
                         <a href="/setting">Настройка</a>
                     </li>
-                   
-                    <?php if ($usr_role == 1) : ?>
-                        <li class="nav<?= ($uri == 'admin' ? ' active' : null) ?>"> 
-                            <a href="/admin">Admin</a>
-                        </li>
-                    <?php endif; ?>
+           
+                    <li class="nav<?= ($uri == 'profile' ? ' active' : null) ?>">
+                        
+                       <a class="avatar" href="/users/<?= $usr_nickname ?>">
+                            <span><?php echo $usr_nickname ?></span>
+                            <div class="ava"><img src="/upload/users/small/<?php echo $usr_avatar ?>"></div>
+                       </a>
+                    </li>
                     
+                   
+                   
                     <li class="nav">
-                        <a href="/logout">Выйти</a>
+                        <a class="mlogout" href="/logout">Выйти</a>
                     </li>
                     
                     
                 <?php else : ?>
                 
                     <li class="nav<?= ($uri == 'login' ? ' active' : null) ?>">
-                        <a href="/login">Войти</a>
+                        <a class="logout" href="/login">Войти</a>
                     </li>
                     <li class="nav<?= ($uri == 'register' ? ' active' : null) ?>">
-                        <a href="/register">Регистрация</a>
+                        <a class="register" href="/register">Регистрация</a>
                     </li>
                     
                 <?php endif; ?>

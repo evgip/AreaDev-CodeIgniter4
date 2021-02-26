@@ -1,35 +1,20 @@
 <?php
 
-/**
- * --------------------------------------------------------------------
- * CODEIGNITER 4 - SimpleAuth
- * --------------------------------------------------------------------
- *
- * This content is released under the MIT License (MIT)
- *
- * @package    SimpleAuth
- * @author     GeekLabs - Lee Skelding 
- * @license    https://opensource.org/licenses/MIT	MIT License
- * @link       https://github.com/GeekLabsUK/SimpleAuth
- * @since      Version 1.0
- * 
- */
-
 return [
 
-    'resetSuccess'              => 'Password Reset Successfully. Please Login',
-    'activateSuccess'           => 'Account activated successfully. Please Login', 
-    'resetSent'                 => 'Please check your email for the link to reset your password',
-    'errorOccured'              => 'An error occured',
-    'linkExpired'               => 'Reset link has expired',
-    'noAuth'                    => 'Could not authorise please try again',
-    'notActivated'              => 'Account not activated.',
-    'accountCreated'            => 'account created. please check your email to activate your account',
-    'accountCreatedNoAuth'      => 'account created. please Login',
-    'acitvationEmailReSent'     => 'Activation email re-sent. please check your email to activate your account',
-    'noUser'                    => 'No user found with this Email address',
-    'successUpdate'             => 'Profile succesfully updated',
-    'passwordAuthorised'          => 'Password reset authorised.'
+    'resetSuccess'              => 'Пароль сброшен, войдите в систему',
+    'activateSuccess'           => 'Аккаунт активирован. Теперь можно войти в систему', 
+    'resetSent'                 => 'Проверте свой e-mail ящик для сброса пароля',
+    'errorOccured'              => 'Произошла ошибка',
+    'linkExpired'               => 'Ссылка для восстановления истекла',
+    'noAuth'                    => 'Не удалось разрешить пожалуйста попробуйте еще раз',
+    'notActivated'              => 'Учетная запись не активирована.',
+    'accountCreated'            => 'учетная запись создана. пожалуйста, проверьте свою e-mail почту, чтобы активировать свой аккаунт',
+    'accountCreatedNoAuth'      => 'учетная запись создана. пожалуйста, Войдите в систему',
+    'acitvationEmailReSent'     => 'Активационное письмо отправлено повторно. пожалуйста, проверьте свою e-mail почту, чтобы активировать свой аккаунт',
+    'noUser'                    => 'Участник с таким E-mail не найден',
+    'successUpdate'             => 'Профиль успешно обновлен',
+    'passwordAuthorised'        => 'Сбросить пароль авторизация.'
     
     
 

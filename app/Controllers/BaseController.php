@@ -8,7 +8,7 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
-use App\Models\User;
+use App\Models\Users;
 /**
  * Class BaseController
  *
@@ -60,39 +60,13 @@ class BaseController extends Controller
     // Расширяем, для работы с шаблоном
     public function render($views, $template = 'layout')
 	{ 
-        // временно, 3 переменные которые нужны нам
-        if (session()->get('isLoggedIn')) {
-            
-            $data = $this->inUser();
-            $this->data['usr_id']    = $data['id'];
-            $this->data['usr_color'] = $data['color'];
-            $this->data['usr_role']  = $data['role'];
-            $this->data['usr_avatar']= $data['avatar'];
-            
-        } else {
-           
-            $this->data['usr_id']     = 0;       
-            $this->data['usr_color']  = 0;
-            $this->data['usr_role']   = 0; 
-            $this->data['usr_avatar'] = 0;             
-        }
-        
+    
         $this->data['uri']     = service('uri')->getSegment(1); 
+        $this->data['auth']    = session()->get('isLoggedIn');
         $this->data['content'] = view($views, $this->data);
 
 		return view($template, $this->data);
 
 	}    
-    
-    // Возратим данный участника
-    public function inUser()
-	{
-        $userModel = new User();
-        $user_id   = session()->get('id');
-        $data      = $userModel->find($user_id);
 
-        if (!$data) { return true; }
-
-        return $data;
-    }
 }

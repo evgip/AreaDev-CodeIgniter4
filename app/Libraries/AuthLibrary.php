@@ -28,7 +28,6 @@ use Config\App;
 use \Config\Services;
     
 
-
 /**
  * AuthLibrary
  */
@@ -504,12 +503,12 @@ class AuthLibrary
     }
 
 
-    // Никнейм нам не нужен
+ 
     public function setUserSession($user)
     {   
         $data = [
             'id' => $user['id'],
-            // 'nickname' => $user['nickname'],
+            'nickname' => $user['nickname'],
             'name' => $user['name'],
             'email' => $user['email'],
             'role' => $user['role'],

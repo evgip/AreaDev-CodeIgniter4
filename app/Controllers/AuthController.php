@@ -8,11 +8,11 @@
 
 namespace App\Controllers;
 
-use App\Models\User;
+use App\Models\Users;
 use App\Models\AuthModel;
 use App\Libraries\AuthLibrary;
 
-class Auth extends BaseController
+class AuthController extends BaseController
 {
 	public function __construct()
 	{
@@ -34,7 +34,7 @@ class Auth extends BaseController
 		
         if (session()->get('isLoggedIn'))
 		{
-			return redirect()->to('profile');
+			return redirect()->to('/');
 		}
         
  
@@ -71,7 +71,7 @@ class Auth extends BaseController
 
 				// PASS TO LIBRARY
 				$this->Auth->Loginuser($email, $rememberMe);
-
+             
 				return redirect()->to($this->Auth->autoRedirect());
 				
 			}
@@ -81,7 +81,7 @@ class Auth extends BaseController
         
         $this->data['title'] = 'Вход';
         
-		return $this->render('user/login');
+		return $this->render('users/login');
 	}
 
     // Регистрация
@@ -98,7 +98,7 @@ class Auth extends BaseController
   
 			// SET RULES
 			$rules = [
-				'nickname' => 'required|min_length[3]|max_length[25]',
+				'nickname' => 'required|alpha_numeric_space|min_length[3]|max_length[25]',
 				'name' => 'required|min_length[3]|max_length[25]',
 				'email' => 'required|valid_email|is_unique[users.email]',
 				'password' => 'required|min_length[8]|max_length[255]',
@@ -133,7 +133,7 @@ class Auth extends BaseController
         
         $this->data['title'] = 'Регистрация';
         
-		return $this->render('user/register');
+		return $this->render('users/register');
 
 	}
 
@@ -160,13 +160,17 @@ class Auth extends BaseController
 	// Настройки профиля
 	public function setting()
 	{
- 
+        $userModel = new Users();
+        $id = session()->get('id');
+        $user = $userModel->getUsersId($id);
+        
+        
 		// Если запрос то начинаем изменения, или показ шаблона
 		if ($this->request->getMethod() == 'post') {
          
 			// Настроим правила
 			$rules = [
-				//'nickname' => 'required|min_length[3]|max_length[25]',
+				'nickname' => 'required|alpha_numeric_space|min_length[3]|max_length[25]',
 				'name' => 'required|min_length[3]|max_length[25]',
 				'email' => 'required|valid_email',
 			];
@@ -185,25 +189,29 @@ class Auth extends BaseController
 				// Для записи исключить ник
 				$user = [
 					'id' => $this->Session->get('id'),
-					// 'nickname' => $this->request->getVar('nickname'),
+					'nickname' => $this->request->getVar('nickname'),
 					'name' => $this->request->getVar('name'),
 					'email' => $this->request->getVar('email'),
 					'role'	=> $this->Session->get('role')
 				];
                 
-                $userModel = new User();
 
                 // Записываем фото
                 $image = $this->request->getFile('image');
                 if ($image && $image->isValid() && ! $image->hasMoved())
                 {
+               
+            
                     $ext = $image->getRandomName();
                     $avatar = $user['id'].'.'.$ext;
                
                     $p = $image->move(FCPATH.'upload/users/', $avatar);
                     
-                    // Формируем превью
-                    $userModel->image_avatar($avatar);
+              
+                         // Формируем превью
+                        $userModel->image_avatar($avatar);
+                   
+               
                
                     $data = [
                         'avatar' => $avatar
@@ -212,7 +220,7 @@ class Auth extends BaseController
                     // Добавляем в базу
                     $userModel->update($user['id'], $data);
                     
-                } 
+                }  
 
 				// Если пароль остается пустым не меняем его
 				if ($this->request->getPost('password') != '') {
@@ -225,10 +233,24 @@ class Auth extends BaseController
 				return redirect()->to('setting');
 			}
 		}
-		
+        
+        if(!$user['avatar']) {
+            $user['avatar'] = 'noavatar.png';
+        }  
+        
+        if(!$user['color']) {
+            $this->data['usr_color'] = 0;
+        }
+        
+        
+        $this->data['usr_avatar']   = $user['avatar']; // $userModel->user_avatar($user['id']);
+        $this->data['usr_color']    = $user['color'];
+		$this->data['usr_nickname'] = $user['nickname'];
+        
+        
         $this->data['title'] = 'Настройки';
         
-		return $this->render('user/setting');
+		return $this->render('users/setting');
 
 	}
 
@@ -241,15 +263,16 @@ class Auth extends BaseController
 			return true;
 		}
         
-        $userModel = new User();
-        $color = $this->request->getPost('color');
-
+          
+        $userModel = new Users();
+        //$color = $this->request->getPost('color');
+ 
         $id = session()->get('id'); 
-      
+     
         $data = [
             'color' => $color
         ];
-         
+          
         $userModel->update($id, $data);
      
     }
@@ -288,7 +311,7 @@ class Auth extends BaseController
 
         $this->data['title'] = 'Восстановление';
         
-		return $this->render('user/forgotpassword');
+		return $this->render('users/forgotpassword');
 
 	}
 
@@ -339,9 +362,9 @@ class Auth extends BaseController
 			'id' => $id,
 		];
 		
-		echo view('header');
-		echo view('user/resetpassword', $data);
-		echo view('footer');
+	 
+		echo view('users/resetpassword', $data);
+	 
 	}
 
 	public function lockscreen()
@@ -382,7 +405,7 @@ class Auth extends BaseController
 
         $this->data['title'] = 'lockscreen';
         
-		return $this->render('user/lockscreen');
+		return $this->render('users/lockscreen');
 
 		}
 		else {

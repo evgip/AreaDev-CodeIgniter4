@@ -2,7 +2,7 @@
 
 <h3><?php echo session()->get('nickname') . ' ' . session()->get('name') ?></h3>
 
-<img alt="" src="/upload/users/small/<?php print_r($usr_avatar) ?>" border="0">
+<img alt="Профиль" src="/upload/users/<?php echo $usr_avatar ?>">
 
 <?php $validation = \Config\Services::validation(); ?>
 <?php if (session()->get('success')) : ?>
@@ -15,7 +15,7 @@
      
     <div class="form-group">
         <label for="nickname">Ник</label>
-        <input disabled type="text" class="form-control" name="nickname" id="nickname" value="<?= set_value('nickname', session()->get('nickname')) ?>">
+        <input type="text" class="form-control" name="nickname" id="nickname" value="<?= set_value('nickname', session()->get('nickname')) ?>">
         <?php if ($validation->getError('nickname')) { ?>
             <div class='alert alert-danger mt-2'>
                 <?= $error = $validation->getError('nickname'); ?>

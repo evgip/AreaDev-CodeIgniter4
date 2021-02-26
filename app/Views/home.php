@@ -1,5 +1,12 @@
 <h1>Главная страница</h1>
 
+<a title="Участники" class="avatar-user right" href="/users/">
+    <svg class="md-icon moon">
+        <use xlink:href="/assets/icons/icons.svg#user"></use>
+    </svg>
+</a>
+
+
 <p>Контроллер.</p>
 
 <pre><code>namespace App\Controllers;

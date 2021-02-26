@@ -12,8 +12,10 @@ html, body {
     box-sizing: inherit;
 } 
 
-a{color:#333;text-decoration:none;}
+a{color:#333;text-decoration: none;}
 a:hover,a:focus{color:#666;}
+
+.right {float:right;}
 
 pre code {
     background: #272822;
@@ -23,8 +25,8 @@ pre code {
     display: inline-block;
 }
 
-section {
-	 
+section a {
+	 text-decoration: underline;
 }
 
 header {
@@ -90,6 +92,22 @@ header .wrap {
 }
 .nav.active > a {
     color: #f56400;
+}
+
+.nav .avatar {
+    display: flex;
+}
+.nav .ava img {
+    width: 21px;
+    height: 21px;
+    margin-left: 8px;
+}
+.nav a span{
+    display: inline-block;
+    margin-top: -3px;
+}
+.mlogout {
+    color: #919191;
 }
 /* Buttons */
 .button,
@@ -251,4 +269,28 @@ input:disabled {background: #f1f1f1;}
 }
 .black a {
    color: #fff; 
+}
+
+.avatar-user .md-icon {
+    width: 114px;
+    height: 114px;
+    fill: none;
+    stroke: #f56400;
+    vertical-align: middle;
+    margin-top: 4px;
+}
+
+.gravatar {
+    border: 2px solid #fff;
+    border-radius: 100% 100%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+    float: right;
+    height: 100px;
+    width: 100px;
+}
+
+.gravatar img {
+    border-radius: 50px;
+    height: 100px;
+    width: 100px;
 }

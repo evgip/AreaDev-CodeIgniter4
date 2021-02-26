@@ -29,38 +29,39 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 
 // Documentation pages
-$routes->get('/info', 'Info::index');
-$routes->get('/info/stats', 'Info::stats');
-$routes->get('/info/rules', 'Info::rules');
+$routes->get('/info', 'InfoController::index');
+$routes->get('/info/stats', 'InfoController::stats');
+$routes->get('/info/rules', 'InfoController::rules');
 
 // Auth Routes
-$routes->match(['get', 'post'], 'login', 'Auth::login'); 
-$routes->match(['get', 'post'], 'register', 'Auth::register');
-$routes->match(['get', 'post'], 'forgotpassword', 'Auth::forgotPassword'); 
-$routes->match(['get', 'post'], 'activate/(:num)/(:any)', 'Auth::activateUser/$1/$2'); 
-$routes->match(['get', 'post'], 'resetpassword/(:num)/(:any)', 'Auth::resetPassword/$1/$2'); 
-$routes->match(['get', 'post'], 'updatepassword/(:num)', 'Auth::updatepassword/$1'); 
-$routes->match(['get', 'post'], 'lockscreen', 'Auth::lockscreen'); 
-$routes->get('logout', 'Auth::logout'); 
+$routes->match(['get', 'post'], 'login', 'AuthController::login'); 
+$routes->match(['get', 'post'], 'register', 'AuthController::register');
+$routes->match(['get', 'post'], 'forgotpassword', 'AuthController::forgotPassword'); 
+$routes->match(['get', 'post'], 'activate/(:num)/(:any)', 'AuthController::activateUser/$1/$2'); 
+$routes->match(['get', 'post'], 'resetpassword/(:num)/(:any)', 'AuthController::resetPassword/$1/$2'); 
+$routes->match(['get', 'post'], 'updatepassword/(:num)', 'AuthController::updatepassword/$1'); 
+$routes->match(['get', 'post'], 'lockscreen', 'AuthController::lockscreen'); 
+$routes->get('logout', 'AuthController::logout'); 
 
-$routes->add('users/(:alphanum)', 'Profile::user'); 
+
+$routes->add('users', 'UsersController::index');
+$routes->get('users/(:any)', 'UsersController::usersProfile'); 
+
+
 //, ['as' => 'users']
 // admin - Role 1
 $routes->group('admin', ['filter' => 'auth:Role,1'], function ($routes) {
  
-	$routes->get('profile', 'Profile::index'); 
-	$routes->match(['get', 'post'], 'setting', 'Auth::setting');
-    $routes->get('admin', 'Admin::index'); // ADMIN
+	$routes->match(['get', 'post'], 'setting', 'AuthController::setting');
+    $routes->get('admin', 'AdminController::index'); // ADMIN
  
 });
 
 //  Role 2
 $routes->group('', ['filter' => 'auth:Role,2'], function ($routes){
     
-	$routes->get('profile', 'Profile::index'); 
-	$routes->match(['get', 'post'], 'setting', 'Auth::setting');
-    
-    $routes->post('setting/color/(:num)', 'Auth::color/$1');
+	$routes->match(['get', 'post'], 'setting', 'AuthController::setting');
+    $routes->post('setting/color/(:num)', 'AuthController::color/$1');
     
 });
 
