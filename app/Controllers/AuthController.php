@@ -242,12 +242,12 @@ class AuthController extends BaseController
             $this->data['usr_color'] = 0;
         }
         
-        
-        $this->data['usr_avatar']   = $user['avatar']; // $userModel->user_avatar($user['id']);
-        $this->data['usr_color']    = $user['color'];
-		$this->data['usr_nickname'] = $user['nickname'];
-        
-        
+        $this->data = [
+            'usr_avatar'    => $user['avatar'],
+            'usr_nickname'  => $user['nickname'],
+            'usr_color'     => $user['color'],
+        ];
+
         $this->data['title'] = 'Настройки';
         
 		return $this->render('users/setting');

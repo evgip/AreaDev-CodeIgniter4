@@ -14,18 +14,23 @@ class InfoController extends BaseController
         $id = session()->get('id');
         $user = $userModel->getUsersId($id);
           
-        if($user)  {         
+        if($user)  {  
+        
             if(!$user['avatar']) {
                 $user['avatar'] = 'noavatar.png';
             }
-            $this->data['usr_id']       = $user['id'];
-            $this->data['usr_avatar']   = $user['avatar'];
-            $this->data['usr_nickname'] = $user['nickname'];
-            $this->data['usr_color']    = $user['color'];
+            
+            $this->data = [
+                'usr_id'        => $user['id'],
+                'usr_avatar'    => $user['avatar'],
+                'usr_nickname'  => $user['nickname'],
+                'usr_color'     => $user['color'],
+            ];
+
         }
         
-        
         return $this->render('info/index');
+        
 	}
     
     public function stats()
@@ -36,18 +41,22 @@ class InfoController extends BaseController
         $id = session()->get('id');
         $user = $userModel->getUsersId($id);
           
-        if($user)  {         
+        if($user)  { 
+        
             if(!$user['avatar']) {
                 $user['avatar'] = 'noavatar.png';
             }
-            $this->data['usr_id']       = $user['id'];
-            $this->data['usr_avatar']   = $user['avatar'];
-            $this->data['usr_nickname'] = $user['nickname'];
-            $this->data['usr_color']    = $user['color'];
+            
+            $this->data = [
+                'usr_id'        => $user['id'],
+                'usr_avatar'    => $user['avatar'],
+                'usr_nickname'  => $user['nickname'],
+                'usr_color'     => $user['color'],
+            ];
         }
         
-        
         return $this->render('info/stats');
+        
 	}
     
 	public function rules()
@@ -58,17 +67,21 @@ class InfoController extends BaseController
         $id = session()->get('id');
         $user = $userModel->getUsersId($id);
           
-        if($user)  {         
+        if($user)  {  
+        
             if(!$user['avatar']) {
                 $user['avatar'] = 'noavatar.png';
             }
-            $this->data['usr_id']       = $user['id'];
-            $this->data['usr_avatar']   = $user['avatar'];
-            $this->data['usr_nickname'] = $user['nickname'];
-            $this->data['usr_color']    = $user['color'];
+            
+            $this->data = [
+                'usr_id'        => $user['id'],
+                'usr_avatar'    => $user['avatar'],
+                'usr_nickname'  => $user['nickname'],
+                'usr_color'     => $user['color'],
+            ];
         }
-        
-        
+
         return $this->render('info/rules');
+        
 	}
 }
