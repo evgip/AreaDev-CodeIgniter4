@@ -7,12 +7,12 @@
         
         <title><?= esc($title) ?></title>
         
-        <link rel="stylesheet" href="<?=base_url()?>/assets/css/style.css">
-        <script src="<?=base_url()?>/assets/js/jquery.min.js"></script>
+        <link rel="stylesheet" href="<?=base_url() ?>/assets/css/style.css">
+        <script src="<?= base_url()?>/assets/js/jquery.min.js"></script>
         
-        <link rel="icon" href="<?=base_url()?>/favicon.ico">
+        <link rel="icon" href="<?= base_url() ?>/favicon.ico">
         
-        <script src="<?=base_url()?>/assets/js/common.js"></script>
+        <script src="<?= base_url() ?>/assets/js/common.js"></script>
 
     </head>
 <body class="bd<?php if (get_cookie('color') == 1) { ?> black<?php } ?>">
@@ -30,7 +30,6 @@
                     </ul>    
                 </div>
             <?php }?>
-            
 		</div>
 		<div class="menu">
 			<ul>  
@@ -58,7 +57,7 @@
                     <li class="nav<?= ($uri == 'setting' ? ' active' : null) ?>">
                         <a href="/setting">Настройка</a>
                     </li>
-                    <li class="nav<?= ($uri == 'profile' ? ' active' : null) ?>">
+                    <li class="nav">
                        <a class="avatar" href="/users/<?= $usr_nickname ?>">
                             <span><?php echo $usr_nickname ?></span>
                             <div class="ava"><img src="/upload/users/small/<?php echo $usr_avatar ?>"></div>
@@ -82,16 +81,16 @@
 
 <section>
 	<div class="wrap">
-         <?= $content ?>
+        <?= $content ?>
    </div>
 <section>
 
 <footer>
     <div class="wrap">
         <div class="menu-footer right">
-            <a href="/info">Помощь</a>
-            <a href="/info/privacy">Конфиденциальность</a> 
-            <a href="/info/about">О нас</a>
+            <a title="Помощь" href="/info">Помощь</a>
+            <a title="Конфиденциальность" href="/info/privacy">Конфиденциальность</a> 
+            <a title="О нас" href="/info/about">О нас</a>
         </div>
         <div class="info">
             &copy; <?= date('Y') ?> AreaDev ({elapsed_time} сек.)

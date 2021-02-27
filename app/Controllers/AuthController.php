@@ -24,7 +24,7 @@ class AuthController extends BaseController
 
 	public function index()
 	{
-		// DIRECT TO LOGIN FORM
+		// Редирект
 		return redirect()->to('login');
 	}
 
@@ -37,19 +37,19 @@ class AuthController extends BaseController
 			return redirect()->to('/');
 		}
         
-        // CHECK IF COOKIE IS SET
+        // Установлен ли Cookie
 		$this->Auth->checkCookie();
  
-		// IF ITS A POST REQUEST DO YOUR STUFF ELSE SHOW VIEW
+		// Если пост запрос то:
 		if ($this->request->getMethod() == 'post') {
 
-			//SET RULES
+			// Установка правил
 			$rules = [
 				'email' => 'required|valid_email',
 				'password' => 'required|min_length[8]|max_length[255]|validateUser[email,password]',
 			];
 
-			//VALIDATE RULES
+			// Проверка правил
 			$errors = [
 				'password' => [
 					'validateUser' => 'Email or Password do not match',
@@ -64,11 +64,11 @@ class AuthController extends BaseController
 
 			} else {				
 
-				// GET EMAIL & REMEMBER ME FROM POST
+				// Получить e-mail и запомнить меня
 				$email = $this->request->getVar('email');
 				$rememberMe = $this->request->getVar('rememberme');			
 
-				// PASS TO LIBRARY
+				// В библиотеку
 				$this->Auth->Loginuser($email, $rememberMe);
              
 				return redirect()->to($this->Auth->autoRedirect());
@@ -92,10 +92,10 @@ class AuthController extends BaseController
 			return redirect()->to('profile');
 		}
         
-		// IF ITS A POST REQUEST DO YOUR STUFF ELSE SHOW VIEW
+		// Если это пост запрос то:
 		if ($this->request->getMethod() == 'post') {
   
-			// SET RULES
+			// Установить правила
 			$rules = [
 				'nickname' => 'required|alpha_numeric_space|min_length[3]|max_length[25]',
 				'name' => 'required|min_length[3]|max_length[25]',
@@ -104,12 +104,12 @@ class AuthController extends BaseController
 				'password_confirm' => 'matches[password]',
 			];
 
-			//VALIDATE RULES
+			// Проверка
 			if (!$this->validate($rules)) {
 				$data['validation'] = $this->validator;
 			} else {
 
-				// SET USER DATA
+				// Набор пользовательских данных
 				$userData = [
 					'nickname' => $this->request->getVar('nickname'),
 					'name' => $this->request->getVar('name'),
@@ -117,10 +117,10 @@ class AuthController extends BaseController
 					'password' => $this->request->getVar('password'),					
 				];				
 
-				// PASS TO LIBRARY
+				// В библиотеку
 				$result = $this->Auth->RegisterUser($userData);	
 				
-				// CHECK RESULT
+				// Результат проверки
 				if($result){
 
 					return redirect()->to('/login');
@@ -145,7 +145,6 @@ class AuthController extends BaseController
 		return redirect()->to('/login');		
 
 	}
-
 
 	// Активируем аккаунт
 	public function activateUser($id, $token)
@@ -198,12 +197,15 @@ class AuthController extends BaseController
                     
                     // Формируем превью
                     $userModel->image_avatar($avatar);
+                    
+                    $data = [
+                        'avatar' => $avatar
+                    ];
+                    
+                    // Добавляем в базу
+                    $userModel->update($user['id'], $data);
                 } 
                 
-                $data = [
-                    'avatar' => $avatar
-                ];
-     
                 // Для записи
                 $user = [
                     'id'       => $this->Session->get('id'),
@@ -242,34 +244,32 @@ class AuthController extends BaseController
 
 	}
 
-   
     // forgot
 	public function forgotPassword()
 	{
 		if ($this->request->getMethod() == 'post') {
 
-			// SET UP RULES
+			// Настройка правил
 			$rules = [
 				'email' => 'required|valid_email|validateExists[email]',
 			];
 
-			// SET UP ERRORS
+			// Настройка ошибок
 			$errors = [
 				'email' => [
 					'validateExists' => lang('Auth.noUser'),
 				]
 			];
 
-			// CHECK VALIDATION
+			// Проверки
 			if (!$this->validate($rules, $errors)) {
-
 				$data['validation'] = $this->validator;
 			}
 
-			// VALIDATED
+			// Валидация
 			else {			
 
-				// PASS TO LIBRARY
+				// Переход в билиотеку
 				$this->Auth->ForgotPassword($this->request->getVar('email'));
 				
 			}
@@ -294,29 +294,29 @@ class AuthController extends BaseController
     // Изменяем пароль
 	public function updatepassword($id)
 	{
-		// IF ITS A POST REQUEST DO YOUR STUFF ELSE SHOW VIEW
+		// Если это пост запрос, то:
 		if ($this->request->getMethod() == 'post') {
 
-			//SET RULES
+			// Установить правила
 			$rules = [
 				'password' => 'required|min_length[8]|max_length[255]',
 				'password_confirm' => 'matches[password]',
 			];
 
-			// VALIDATE RULES
+			// Проверка правил
 			if (!$this->validate($rules)) {
 				$data['validation'] = $this->validator;
 			} else {
 				
-				// RULES PASSED
+				// Правила пряняты
 				$user = [
 					'id' => $id,
 					'password' => $this->request->getVar('password'),
-					'reset_expire' => NULL, // RESET EXPIRY 
-					'reset_token' => NULL, // CLEAR OLD TOKEN 
+					'reset_expire' => NULL, // Сброс срока действия
+					'reset_token' => NULL, // Очистить старый токен
 				];
 
-				// PASS TO LIBRARY
+				// Переход в библиотеку
 				$this->Auth->updatepassword($user);			
 
 				return redirect()->to('/login');
@@ -328,7 +328,6 @@ class AuthController extends BaseController
 			'id' => $id,
 		];
 		
-	 
 		echo view('users/resetpassword', $data);
 	 
 	}
@@ -342,29 +341,29 @@ class AuthController extends BaseController
 
                 // Правила
                 $rules = [
-                'email' => 'required|valid_email',
-                'password' => 'required|min_length[8]|max_length[255]|validateUser[email,password]',
-            ];
+                    'email' => 'required|valid_email',
+                    'password' => 'required|min_length[8]|max_length[255]|validateUser[email,password]',
+                ];
 
                 // Проверка правил
                 $errors = [
-                'password' => [
-                    'validateUser' => 'Wrong Password',
-                ]
-            ];
+                    'password' => [
+                        'validateUser' => 'Wrong Password',
+                    ]
+                ];
 
                 if (!$this->validate($rules, $errors)) {
                     $data['validation'] = $this->validator;
                 } else {
 
-					// GET EMAIL & REMEMBER ME FROM POST
+					// Получить email и запомнить
 					$email = $this->request->getVar('email');
 					$rememberMe = $this->request->getVar('rememberme');	
 
-                    // LOG USER IN USING EMAIL
+                    // Войти в систему с помощью e-mail
                     $this->Auth->Loginuser($email, $rememberMe);
 
-					// REDIRECT 
+					// Редирект
 					return redirect()->to($this->Auth->autoRedirect());
                 }
             }
@@ -386,6 +385,5 @@ class AuthController extends BaseController
 
 		return redirect()->to('/');
 	}
-
 	
 }
