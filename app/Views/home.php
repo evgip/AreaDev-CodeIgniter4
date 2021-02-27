@@ -32,5 +32,4 @@ class Home extends BaseController
 <br><br>
 См. <a rel="nofollow noreferrer" target="_blank" href="https://www.codeigniter.com/">CodeIgniter.com</a>
 
-<br><br>
-<i>P.S.</i> Установка ночного дизайна (и др.) возможна после авторизации.<br> 
+<br> 

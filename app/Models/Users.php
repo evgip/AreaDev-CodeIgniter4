@@ -10,7 +10,7 @@ class Users extends Model {
         
     protected $primaryKey = 'id';
     protected $returnType = 'array';
-    protected $allowedFields = ['id', 'color', 'avatar'];    
+    protected $allowedFields = ['id', 'color', 'avatar', 'name'];    
         
         
     public function getUsersLogin($slug = false)

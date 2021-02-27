@@ -72,6 +72,7 @@ class BaseController extends Controller
         $this->data['usr_id']  = session()->get('id');
         $this->data['uri']     = service('uri')->getSegment(1); 
         $this->data['auth']    = session()->get('isLoggedIn');
+        
         $this->data['content'] = view($views, $this->data);
 
 		return view($template, $this->data);

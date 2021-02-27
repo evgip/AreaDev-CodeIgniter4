@@ -37,7 +37,6 @@ class AuthController extends BaseController
 			return redirect()->to('/');
 		}
         
- 
         // CHECK IF COOKIE IS SET
 		$this->Auth->checkCookie();
  
@@ -164,24 +163,24 @@ class AuthController extends BaseController
         $id = session()->get('id');
         $user = $userModel->getUsersId($id);
         
-        
 		// Если запрос то начинаем изменения, или показ шаблона
 		if ($this->request->getMethod() == 'post') {
          
 			// Настроим правила
 			$rules = [
-				'nickname' => 'required|alpha_numeric_space|min_length[3]|max_length[25]',
-				'name'     => 'required|min_length[3]|max_length[25]',
-				'email'    => 'required|valid_email',
-                'about'    => 'required|min_length[3]|max_length[255]',
+                'nickname' => 'required|alpha_numeric_space|min_length[3]|max_length[25]',
+                'name'     => 'required|min_length[3]|max_length[25]',
+                'email'    => 'required|valid_email',
 			];
-
+ 
 			// Установим доп. правила если пароль меняется
 			if ($this->request->getPost('password') != '') {
 				$rules['password'] = 'required|min_length[8]|max_length[255]';
 				$rules['password_confirm'] = 'matches[password]';
 			}
-
+            if ($this->request->getPost('about') != '') {
+                $rules['about']    = 'required|min_length[3]|max_length[255]';
+            }
 			// Проверка правил
 			if (!$this->validate($rules)) {
 				$data['validation'] = $this->validator;
@@ -191,7 +190,6 @@ class AuthController extends BaseController
                 $image = $this->request->getFile('image');
                 if ($image && $image->isValid() && ! $image->hasMoved())
                 {
-               
             
                     $ext = $image->getRandomName();
                     $avatar = $user['id'].'.'.$ext;
@@ -200,31 +198,31 @@ class AuthController extends BaseController
                     
                     // Формируем превью
                     $userModel->image_avatar($avatar);
-
-                    $data = [
-                        'avatar' => $avatar
-                    ];
-         
-         				// Для записи
-				    $user = [
-					'id'       => $this->Session->get('id'),
-					'nickname' => $this->request->getVar('nickname'),
+                } 
+                
+                $data = [
+                    'avatar' => $avatar
+                ];
+     
+                // Для записи
+                $user = [
+                    'id'       => $this->Session->get('id'),
+                    'nickname' => $this->request->getVar('nickname'),
                     'avatar'   => $data['avatar'],
-					'name'     => $this->request->getVar('name'),
+                    'name'     => $this->request->getVar('name'),
                     'about'    => $this->request->getVar('about'),
-					'email'    => $this->request->getVar('email'),
-					'role'	   => $this->Session->get('role')
-				    ];
-         
-                    // Добавляем в базу
-                    $userModel->update($user['id'], $data);
-                    
-                }  
-
+                    'email'    => $this->request->getVar('email'),
+                    'role'	   => $this->Session->get('role')
+                ];
+            
 				// Если пароль остается пустым не меняем его
 				if ($this->request->getPost('password') != '') {
-                    $user['about']    = $this->request->getVar('about');
 					$user['password'] = $this->request->getVar('password');
+				}
+                
+                // Если пароль остается пустым не меняем его
+				if ($this->request->getPost('about') != '') {
+					$user['about']    = $this->request->getVar('about');
 				}
 
 				// Зайдем в библиотеку
@@ -325,7 +323,7 @@ class AuthController extends BaseController
 			}
 		}
 
-		// SET USER ID TO PASS TO VIEW AS THERE IS NO SESSION DATA TO ACCESS
+		// Установить id пользователя для просмотра, т.к. нет данных для доступа
 		$data = [
 			'id' => $id,
 		];
@@ -342,13 +340,13 @@ class AuthController extends BaseController
         if ($result) {
             if ($this->request->getMethod() == 'post') {
 
-            //SET RULES
+                // Правила
                 $rules = [
                 'email' => 'required|valid_email',
                 'password' => 'required|min_length[8]|max_length[255]|validateUser[email,password]',
             ];
 
-                //VALIDATE RULES
+                // Проверка правил
                 $errors = [
                 'password' => [
                     'validateUser' => 'Wrong Password',

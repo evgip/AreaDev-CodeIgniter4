@@ -20,7 +20,17 @@
 <header> 
 	<div class="wrap">
 		<div class="title">
-			<a class="logo" href="/">DEV</a>
+            <a title="На главную" class="logo" href="/">My</a> 
+            <?php if ($uri != '') { ?>
+                <div class="menu-left">
+                    <ul> 
+                        <li class="nav">
+                            <a title="На главную" class="home" href="/">Главная</a>
+                        </li>
+                    </ul>    
+                </div>
+            <?php }?>
+            
 		</div>
 		<div class="menu">
 			<ul>  
@@ -78,13 +88,13 @@
 
 <footer>
     <div class="wrap">
-        <div class="menu-footer"><a href="/info">Помощь</a></div>
-        <div class="copyrights">
-
-            Страница построена за {elapsed_time} секунд.  <br>
-
-            &copy; <?= date('Y') ?> Dev project released under the MIT open source licence.
-
+        <div class="menu-footer right">
+            <a href="/info">Помощь</a>
+            <a href="/info/privacy">Конфиденциальность</a> 
+            <a href="/info/about">О нас</a>
+        </div>
+        <div class="info">
+            &copy; <?= date('Y') ?> AreaDev ({elapsed_time} сек.)
         </div>
     </div>
 </footer>

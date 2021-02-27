@@ -1,6 +1,6 @@
 <?php $this->config = config('Auth'); $redirect = $this->config->assignRedirect;?>
 
-<h3><?php echo session()->get('nickname') . ' ' . session()->get('name') ?></h3>
+<h1>Настройка профиля <?= esc(session()->get('nickname')); ?></h3>
 
 <img alt="Профиль" src="/upload/users/<?php echo $usr_avatar ?>">
 
@@ -12,15 +12,6 @@
 <?php endif; ?>   
 
 <form action="/setting" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="nickname">Ник</label>
-        <input type="text" class="form-control" name="nickname" id="nickname" value="<?= set_value('nickname', session()->get('nickname')) ?>">
-        <?php if ($validation->getError('nickname')) { ?>
-            <div class='alert alert-danger mt-2'>
-                <?= $error = $validation->getError('nickname'); ?>
-            </div>
-        <?php } ?>
-    </div>
     <div class="form-group">
         <label for="name">Имя</label>
         <input type="text" class="form-control" name="name" id="name" value="<?= set_value('name', session()->get('name')) ?>">
@@ -59,7 +50,7 @@
     </div>
     <div class="form-group">
         <label for="about">О себе</label>
-        <input type="text" class="form-control" name="about" id="about" value="<?= set_value('about', session()->get('about')) ?>">
+        <input type="text" class="form-about" name="about" id="about" value="<?= set_value('about', session()->get('about')) ?>">
         <?php if ($validation->getError('about')) { ?>
             <div class='alert alert-danger mt-2'>
                 <?= $error = $validation->getError('about'); ?>
@@ -69,10 +60,13 @@
     <div class="form-group">
         <input id="fileInput" name="image" accept="image/*" type="file" />
     </div>
+    
     <div class="form-group">
+        <input type="hidden" name="nickname" id="nickname" value="<?= esc(session()->get('nickname')); ?>">
         <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" /> 
         <button type="submit" class="btn btn-primary">Изменить</button>
     </div>
+    
 </form>
 
   

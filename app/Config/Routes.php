@@ -29,9 +29,11 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 
 // Documentation pages
-$routes->get('/info', 'InfoController::index');
-$routes->get('/info/stats', 'InfoController::stats');
-$routes->get('/info/rules', 'InfoController::rules');
+$routes->get('info', 'InfoController::index');
+$routes->get('info/stats', 'InfoController::stats');
+$routes->get('info/rules', 'InfoController::rules');
+$routes->get('info/about', 'InfoController::about');
+$routes->get('info/privacy', 'InfoController::privacy');
 
 // Auth Routes
 $routes->match(['get', 'post'], 'login', 'AuthController::login'); 

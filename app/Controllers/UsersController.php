@@ -32,6 +32,17 @@ class UsersController extends BaseController
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
         
+        if(!$user['avatar']) {
+                $user['avatar'] = 'noavatar.png';
+        }
+
+        $this->data['id']           = $user['id'];
+        $this->data['nickname']     = $user['nickname'];
+        $this->data['name']         = $user['name'];
+        $this->data['avatar']       = $user['avatar'];
+        $this->data['about']        = $user['about'];
+        $this->data['created_at']   = $user['created_at'];
+        
         $this->data['title'] = 'Профиль пользователя';
         
 		return $this->render('users/profile');

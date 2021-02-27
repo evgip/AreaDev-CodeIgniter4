@@ -1,6 +1,8 @@
 body {
     line-height: 1.46;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-family: Helvetica Neue, Arial, sans-serif;
+    font-size: 0.95em;
+    color: #333;
 }
 
 html, body {
@@ -12,10 +14,17 @@ html, body {
     box-sizing: inherit;
 } 
 
-a{color:#333;text-decoration: none;}
-a:hover,a:focus{color:#666;}
+a {
+	color: #2562dc;
+	cursor: pointer;
+}
+a:hover, a:focus{
+    color:#3474f4;
+}
 
-.right {float:right;}
+.right {
+    float:right;
+}
 
 pre code {
     background: #272822;
@@ -26,38 +35,56 @@ pre code {
 }
 
 section a {
-	 text-decoration: underline;
+	text-decoration: underline;
 }
 
+.logo {
+    background: #f56400;
+    float: left;
+    width: 26px;
+    height: 26px;
+    padding: 1px;
+    margin-right: 11px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    text-decoration: none;
+}
+.logo:hover, .logo:focus {
+    color: #fff;
+}
+ 
 header {
     height: 45px;
-    box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
     width: 100%;
     z-index: 10;
-    background: #fff;
     display: flex;
 }
-
 footer {
-	background: #edeeef;
 	clear: both;
-	color: #333;
+	color: #999;
 	overflow: hidden;
 	margin-top: 20px;
     padding: 10px 0;
 
 }
-.menu-footer {
-    float: right;
+.menu-footer a {
+	color: #999;
+    text-decoration: none;
+    padding-left: 0.75em;
 }
+ 
+
 .wrap {
-    max-width: 1110px;
+    max-width: 1010px;
     margin-right: auto;
     margin-left: auto;
     padding: 0 8px;
-
 }
-
 header .wrap {
 	display: flex;
 	width: calc(100% - 16px);
@@ -66,34 +93,36 @@ header .wrap {
 .title, .menu  {
     margin-top: 8px;
 }
-
-.menu {
+.menu-left  {
+    margin-top: 3px;
+}
+.menu  {
     position: relative;
     margin-left: auto;
     align-items: center;
 }
-
-.menu ul{
+.menu ul, .menu-left ul{
     text-align: center;
     margin: 0 0 0 5px;
     list-style: none;
 }
-
 .menu ul > li {
     float: left;
     margin-left: 20px;
 }
-
-.menu ul > li > a {
-	padding: 0.2143em;
+.menu .md-icon {
+    margin-top: 2px;
 }
 .menu-lf {
 	margin-left: 20px;
 }
+.nav a {
+    color: #777;
+    text-decoration: none;
+}
 .nav.active > a {
     color: #f56400;
 }
-
 .nav .avatar {
     display: flex;
 }
@@ -101,14 +130,15 @@ header .wrap {
     width: 21px;
     height: 21px;
     margin-left: 8px;
+    border-radius: 50%;
 }
 .nav a span{
     display: inline-block;
-    margin-top: -3px;
 }
 .mlogout {
-    color: #919191;
+    color: #999;
 }
+
 /* Buttons */
 .button,
 button,
@@ -229,6 +259,8 @@ label > .label-body {
   font-weight: normal; }
 
 input:disabled {background: #f1f1f1;}
+input.form-about {width: 250px;}
+
 
 .form-group {
     margin-top: 15px;
@@ -247,7 +279,6 @@ input:disabled {background: #f1f1f1;}
     fill: none;
     stroke: #666;
     vertical-align: middle;
-    margin-top: 4px;
 }
 
 /* Диалог */
@@ -257,20 +288,8 @@ input:disabled {background: #f1f1f1;}
 .alert-success {
    color: #339900; 
 }
-
-/* Изображаем смену цвета */
-.black {
-    background: #333;
-    color: #fff;
-}
-.black header, .black footer {
-    background: #111;
-    color: #fff; 
-}
-.black a {
-   color: #fff; 
-}
-
+ 
+/* Profile */
 .avatar-user .md-icon {
     width: 114px;
     height: 114px;
@@ -279,7 +298,6 @@ input:disabled {background: #f1f1f1;}
     vertical-align: middle;
     margin-top: 4px;
 }
-
 .gravatar {
     border: 2px solid #fff;
     border-radius: 100% 100%;
@@ -288,9 +306,45 @@ input:disabled {background: #f1f1f1;}
     height: 100px;
     width: 100px;
 }
-
 .gravatar img {
     border-radius: 50px;
     height: 100px;
     width: 100px;
+}
+.box.wide label {
+    width: 12em;
+}
+.box label.required {
+    font-weight: bold;
+}
+.box label {
+    width: 7em;
+    line-height: 2em;
+    vertical-align: middle;
+}
+.box label, .box span, .box select, .box br {
+    line-height: 2em;
+}
+.box label {
+    display: block;
+    float: left;
+    margin-bottom: 4px;
+}
+.box br {
+    clear: left;
+}
+
+/* Изображаем смену цвета */
+.black {
+    background: #333;
+    color: #fff;
+}
+.black header, .black header a {
+    color: #eee; 
+}
+.black footer, .black footer a  {
+    color: #999; 
+}
+.black .menu .md-icon {
+    stroke: #eee;
 }

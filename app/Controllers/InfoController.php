@@ -29,5 +29,25 @@ class InfoController extends BaseController
         
         return $this->render('info/rules');
         
+	} 
+    
+    
+	public function about()
+	{
+       
+        $this->data['title'] = 'О нас';
+        
+        return $this->render('info/about');
+        
 	}
+    
+    public function privacy()
+	{
+       
+        $this->data['title'] = 'Политика конфиденциальности';
+        
+        return $this->render('info/privacy');
+        
+	}
+    
 }

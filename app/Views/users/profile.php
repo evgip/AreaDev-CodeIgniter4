@@ -1,9 +1,22 @@
 <div class="gravatar">
-    <img src="/upload/users/<?php echo $usr_avatar ?>">
+    <img src="/upload/users/<?php echo $avatar; ?>">
 </div>
 
-<h1><?= $usr_nickname; ?></h1>
+<h1><?= esc($nickname) ?> / <?= esc($name) ?></h1>
 
-Профиль: id<?= $usr_id; ?> 
+<div class="box wide">
+    <label class="required">Профиль:</label>
+    <span class="d">id:<?= $id; ?></span>
 
+    <br>
+    
+    <label class="required">Присоединился::</label>
+    <span class="d"><?= $created_at; ?></span>
+
+    <br>
+
+    <label class="required">О себе:</label>
+    <span class="d"><?= esc($about) ?></span>
+</div>
+ 
 <p>`````</p>
