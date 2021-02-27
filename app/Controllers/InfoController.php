@@ -1,11 +1,23 @@
 <?php
 
 namespace App\Controllers;
+use App\Libraries\Parsedown;
 
 class InfoController extends BaseController
 {
+    
+ 
+    
 	public function index()
 	{
+        $Parsedown = new Parsedown(); 
+        $Parsedown->setSafeMode(true); // безопасность
+    
+        $this->data['mhtml'] = $Parsedown->text('Работает Parsedown: 
+                                                
+       ## mhtml
+ 
+       `$Parsedown = new Parsedown();` ');
         
         $this->data['title'] = 'Информация';
         

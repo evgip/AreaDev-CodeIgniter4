@@ -90,6 +90,10 @@ header .wrap {
 	width: calc(100% - 16px);
 }
 
+.telo {
+    max-width: 750px;
+}
+
 .title, .menu  {
     margin-top: 8px;
 }

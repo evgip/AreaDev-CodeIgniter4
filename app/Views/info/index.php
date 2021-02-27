@@ -9,3 +9,5 @@
 <p>Соответствующий контроллер для этой страницы можно найти по адресу:</p>
 
 <pre><code>app/Controllers/Info.php</code></pre> 
+
+<?php echo $mhtml ?>
