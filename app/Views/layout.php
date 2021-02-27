@@ -64,7 +64,11 @@
                        </a>
                     </li>
                     <li class="nav">
-                        <a class="mlogout" href="/logout">Выйти</a>
+                        <a class="mlogout" href="/logout">
+                            <svg class="md-icon">
+                                <use xlink:href="/assets/icons/icons.svg#arrow-bar-to-right"></use>
+                            </svg>
+                        </a>
                     </li>
                 <?php else : ?>
                     <li class="nav<?= ($uri == 'login' ? ' active' : null) ?>">
