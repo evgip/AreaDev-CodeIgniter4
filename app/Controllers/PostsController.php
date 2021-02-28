@@ -12,9 +12,10 @@ class PostsController extends BaseController
     public function index()
     {
         $model = new PostsModel();
-
+   
+ 
         $this->data = [
-            'posts'  => $model->getPost(),
+            'posts'  => $model->getPostHome(),
             'title' => 'Посты',
         ];
 
@@ -28,17 +29,15 @@ class PostsController extends BaseController
         $model = new PostsModel();
 
         $this->data['posts'] = $model->getPost($slug);
-
+ 
         if (empty($this->data['posts']))
         {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Не удается найти пост: '. $slug);
         }
 
-        $this->data['title'] = $this->data['posts']['post_title'];
+        $this->data['title'] = $this->data['posts']['title'];
 
-      
         return $this->render('posts/view');
-     
     } 
     
     
@@ -55,7 +54,6 @@ class PostsController extends BaseController
             ]))
         {
             
-
             $model->save([
                 'post_title' => $this->request->getPost('post_title'),
                 'post_slug'  => url_title(Translit::SeoUrl($this->request->getPost('post_title')), '-', TRUE),
@@ -71,6 +69,4 @@ class PostsController extends BaseController
             return $this->render('posts/add');
         }
     }
-    
-    
 }
