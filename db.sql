@@ -99,8 +99,79 @@ CREATE TABLE IF NOT EXISTS `user_roles` (
   `role_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-COMMIT;
+ 
+ 
+-- --------------------------------------------------------
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- Table structure for table `posts`
+-- 
+
+DROP TABLE IF EXISTS `posts`;
+CREATE TABLE `posts` (
+  `post_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `post_title` varchar(250) NOT NULL,
+  `post_slug` varchar(128) NOT NULL,
+  `post_cat_id` varchar(128) DEFAULT NULL,
+  `post_blog_id` int(11) DEFAULT NULL,
+  `post_src` enum('web','api','mobile','phone') NOT NULL DEFAULT 'web',
+  `post_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `post_user_id` int(11) unsigned NOT NULL,
+  `post_visible` enum('all','friends') NOT NULL DEFAULT 'all',
+  `post_ip_int` decimal(39,0) DEFAULT NULL,
+  `post_votes` smallint(4) NOT NULL DEFAULT '0',
+  `post_karma` smallint(6) NOT NULL DEFAULT '0',
+  `post_content` text NOT NULL,
+  `post_top` tinyint(1) NOT NULL DEFAULT 0,
+  `post_is_delete` TINYINT(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`post_id`),
+  KEY `post_date` (`post_date`),
+  KEY `post_user_id` (`post_user_id`,`post_date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `favorites`
+-- 
+
+DROP TABLE IF EXISTS `favorites`;
+CREATE TABLE `favorites` (
+  `favorite_user_id` int(10) unsigned NOT NULL,
+  `favorite_type` enum('link','post','comment') NOT NULL DEFAULT 'post',
+  `favorite_link_id` int(10) unsigned NOT NULL,
+  `favorite_link_readed` int(1) unsigned NOT NULL DEFAULT 0,
+  `favorite_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY `favorite_user_id_2` (`favorite_user_id`,`favorite_type`,`favorite_link_id`),
+  KEY `favorite_type` (`favorite_type`,`favorite_link_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+-- 
+
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE `comments` (
+  `comment_id` int(20) NOT NULL AUTO_INCREMENT,
+  `comment_type` enum('normal','admin','private') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'normal',
+  `comment_randkey` int(11) NOT NULL DEFAULT '0',
+  `comment_parent` int(20) DEFAULT '0',
+  `comment_link_id` int(20) NOT NULL DEFAULT '0',
+  `comment_user_id` int(20) NOT NULL DEFAULT '0',
+  `comment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `comment_modified` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `comment_ip_int` decimal(39,0) NOT NULL,
+  `comment_ip` varbinary(42) DEFAULT NULL,
+  `comment_order` smallint(6) NOT NULL DEFAULT '0',
+  `comment_votes` smallint(4) NOT NULL DEFAULT '0',
+  `comment_karma` smallint(6) NOT NULL DEFAULT '0',
+  `comment_content` text NOT NULL,
+  PRIMARY KEY (`comment_id`),
+  KEY `comment_link_id_2` (`comment_link_id`,`comment_date`),
+  KEY `comment_date` (`comment_date`),
+  KEY `comment_user_id` (`comment_user_id`,`comment_date`),
+  KEY `comment_link_id` (`comment_link_id`,`comment_order`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

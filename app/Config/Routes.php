@@ -18,15 +18,12 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('PostsController');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);
 
-
-// Route Definitions
-$routes->get('/', 'Home::index');
 
 // Documentation pages
 $routes->get('info', 'InfoController::index');
@@ -45,10 +42,10 @@ $routes->match(['get', 'post'], 'updatepassword/(:num)', 'AuthController::update
 $routes->match(['get', 'post'], 'lockscreen', 'AuthController::lockscreen'); 
 $routes->get('logout', 'AuthController::logout'); 
 
+$routes->post('users/color/(:num)', 'UsersController::color/$1'); 
+
 $routes->add('users', 'UsersController::index');
 $routes->get('users/(:any)', 'UsersController::usersProfile'); 
- 
-$routes->post('users/color/(:num)', 'UsersController::color/$1'); 
  
 // admin - Role 1
 $routes->group('admin', ['filter' => 'auth:Role,1'], function ($routes) {
@@ -56,10 +53,22 @@ $routes->group('admin', ['filter' => 'auth:Role,1'], function ($routes) {
     $routes->get('admin', 'AdminController::index');
 });
 
-//  Role 2
+// Role 2
 $routes->group('', ['filter' => 'auth:Role,2'], function ($routes){
+     $routes->match(['get', 'post'], 'posts/create', 'PostsController::create');
 	$routes->match(['get', 'post'], 'setting', 'AuthController::setting');
+     
 });
+  
+ 
+$routes->get('posts/(:segment)', 'PostsController::view/$1');
+
+// Главная страница
+$routes->get('posts', 'PostsController::index');
+ 
+ 
+
+ 
 
  
 /*

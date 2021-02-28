@@ -205,7 +205,7 @@ class AuthController extends BaseController
                     // Добавляем в базу
                     $userModel->update($user['id'], $data);
                 } 
-                
+               
                 // Для записи
                 $user = [
                     'id'       => $this->Session->get('id'),

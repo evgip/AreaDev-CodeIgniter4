@@ -278,12 +278,33 @@ input.form-about {width: 250px;}
    color: #339900; 
 }
  
+/* Посты */ 
+.detail {
+    
+}
+.post-telo {
+    margin-bottom: 12px;
+}
+.u-url .titl {
+    margin-bottom: 2px;
+}
+.titl {
+    
+}
+.post {
+    
+}
+.date {
+    color: #999;
+}
+ 
+ 
 /* Profile */
 .avatar-user .md-icon {
-    width: 114px;
-    height: 114px;
+    width: 104px;
+    height: 104px;
     fill: none;
-    stroke: #f56400;
+    stroke: #d3d3d3;
     vertical-align: middle;
     margin-top: 4px;
 }
