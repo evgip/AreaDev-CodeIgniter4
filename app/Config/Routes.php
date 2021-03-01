@@ -58,6 +58,7 @@ $routes->group('', ['filter' => 'auth:Role,2'], function ($routes){
      $routes->match(['get', 'post'], 'posts/create', 'PostsController::create');
 	$routes->match(['get', 'post'], 'setting', 'AuthController::setting');
      
+     $routes->match(['get', 'post'], 'comment/add', 'CommentsController::create');
 });
   
  
@@ -67,7 +68,8 @@ $routes->get('posts/(:segment)', 'PostsController::view/$1');
 $routes->get('posts', 'PostsController::index');
  
  
-
+// Страница комментарий
+$routes->get('comments', 'CommentsController::index');
  
 
  

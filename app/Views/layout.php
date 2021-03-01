@@ -20,16 +20,31 @@
 <header> 
 	<div class="wrap">
 		<div class="title">
-            <a title="На главную" class="logo" href="/">My</a> 
             <?php if ($uri != '') { ?>
+                <a title="На главную" class="logo" href="/">My</a> 
                 <div class="menu-left">
                     <ul> 
                         <li class="nav">
                             <a title="На главную" class="home" href="/">Главная</a>
                         </li>
+                        <li class="nav<?= ($uri == 'comments' ? ' active' : null) ?>">
+                            <a title="Все комментарии" class="comments" href="/comments">Комментарии</a>
+                        </li>
                     </ul>    
                 </div>
-            <?php }?>
+            <?php } else { ?>
+                <a title="На главную" class="logo" href="/">My</a> 
+                <div class="menu-left">
+                    <ul> 
+                        <li class="nav">
+                            <a title="На главную" class="home" href="/">AreaDev</a>
+                        </li>
+                        <li class="nav">
+                            <a title="Все комментарии" class="comments" href="/comments">Комментарии</a>
+                        </li>
+                    </ul>    
+                </div> 
+            <?php } ?>
 		</div>
 		<div class="menu">
 			<ul>  

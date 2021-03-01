@@ -11,7 +11,9 @@ $myTime = new Time('now', 'Europe/Moscow', 'ru_RU');
 class PostsModel extends Model
 {
     protected $table = 'posts';
-    protected $allowedFields = ['post_title', 'post_slug', 'post_content', 'post_user_id'];
+    protected $primaryKey = 'post_id';
+    protected $allowedFields = ['post_title', 'post_slug', 'post_content', 'post_user_id', 'post_comments'];
+      
     
     // Посты на главной странице сайта
     public function getPostHome()
@@ -63,6 +65,7 @@ class PostsModel extends Model
         }
         
         $data = [
+            'id'    => $post->post_id,
             'title'    => $post->post_title,
             'content'  => $Parsedown->text($post->post_content),
             'date'     => Time::parse($post->post_date, 'Europe/Moscow')->humanize(),
@@ -72,7 +75,20 @@ class PostsModel extends Model
  
         return $data;
 
-
+    }
+    
+    // Возвращаем количество комментариев +1
+    // Опишем пока подробно...
+    public function getNumComments($post_id)
+    {
+        
+        $db = \Config\Database::connect();
+        $builder = $db->table('posts');
+        $builder->where('post_id', $post_id);
+        $post = $builder->get()->getRow();
+        $post_comments = $post->post_comments;
+        return $post_comments + 1;
+        
     }
 
 }

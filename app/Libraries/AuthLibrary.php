@@ -785,7 +785,7 @@ class AuthLibrary
             ];
         }
 
-       $this->AuthModel->UpdateSelector($data, $selector);
+        $this->AuthModel->UpdateSelector($data, $selector);
 
         // SET COOKIE        
         setcookie(

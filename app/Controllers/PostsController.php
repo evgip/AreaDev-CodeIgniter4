@@ -3,8 +3,12 @@
 namespace App\Controllers;
 
 use App\Models\PostsModel;
+use App\Models\CommentsModel;
 use CodeIgniter\Controller;
 use App\Libraries\Translit;
+
+use CodeIgniter\I18n\Time;
+$myTime = new Time('now', 'Europe/Moscow', 'ru_RU');
 
 class PostsController extends BaseController
 {
@@ -13,7 +17,6 @@ class PostsController extends BaseController
     {
         $model = new PostsModel();
    
- 
         $this->data = [
             'posts'  => $model->getPostHome(),
             'title' => 'Посты',
@@ -22,14 +25,16 @@ class PostsController extends BaseController
         return $this->render('home');
     }
     
- 
- 
+    // Полный пост
     public function view($slug = NULL)
     {
-        $model = new PostsModel();
+        $post_model = new PostsModel();
+        $comm_model = new CommentsModel();
 
-        $this->data['posts'] = $model->getPost($slug);
- 
+        $this->data['posts'] = $post_model->getPost($slug);
+        
+        $this->data['comments'] = $comm_model->getCommentsPost($this->data['posts']['id']);
+        
         if (empty($this->data['posts']))
         {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Не удается найти пост: '. $slug);
@@ -38,8 +43,8 @@ class PostsController extends BaseController
         $this->data['title'] = $this->data['posts']['title'];
 
         return $this->render('posts/view');
+        
     } 
-    
     
     // Добавление поста
     public function create()
@@ -55,8 +60,8 @@ class PostsController extends BaseController
         {
             
             $model->save([
-                'post_title' => $this->request->getPost('post_title'),
-                'post_slug'  => url_title(Translit::SeoUrl($this->request->getPost('post_title')), '-', TRUE),
+                'post_title'    => $this->request->getPost('post_title'),
+                'post_slug'     => url_title(Translit::SeoUrl($this->request->getPost('post_title')), '-', TRUE),
                 'post_content'  => $this->request->getPost('post_content'),
                 'post_user_id'  => session()->get('id'),
             ]);

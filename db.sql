@@ -120,7 +120,8 @@ CREATE TABLE `posts` (
   `post_visible` enum('all','friends') NOT NULL DEFAULT 'all',
   `post_ip_int` decimal(39,0) DEFAULT NULL,
   `post_votes` smallint(4) NOT NULL DEFAULT '0',
-  `post_karma` smallint(6) NOT NULL DEFAULT '0',
+  `post_karma` smallint(6) NOT NULL DEFAULT '0', 
+  `post_comments` smallint(6) NOT NULL DEFAULT '0',
   `post_content` text NOT NULL,
   `post_top` tinyint(1) NOT NULL DEFAULT 0,
   `post_is_delete` TINYINT(1) NOT NULL DEFAULT 0,
@@ -156,22 +157,18 @@ CREATE TABLE `favorites` (
 DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
   `comment_id` int(20) NOT NULL AUTO_INCREMENT,
-  `comment_type` enum('normal','admin','private') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'normal',
-  `comment_randkey` int(11) NOT NULL DEFAULT '0',
-  `comment_parent` int(20) DEFAULT '0',
-  `comment_link_id` int(20) NOT NULL DEFAULT '0',
+  `comment_type` enum('normal','admin','private') NOT NULL DEFAULT 'normal',
+  `comment_post_id` int(20) NOT NULL DEFAULT '0',
   `comment_user_id` int(20) NOT NULL DEFAULT '0',
   `comment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `comment_modified` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `comment_ip_int` decimal(39,0) NOT NULL,
+  `comment_modified` timestamp NOT NULL DEFAULT '2021-01-01 00:00:00',
   `comment_ip` varbinary(42) DEFAULT NULL,
   `comment_order` smallint(6) NOT NULL DEFAULT '0',
   `comment_votes` smallint(4) NOT NULL DEFAULT '0',
-  `comment_karma` smallint(6) NOT NULL DEFAULT '0',
   `comment_content` text NOT NULL,
   PRIMARY KEY (`comment_id`),
-  KEY `comment_link_id_2` (`comment_link_id`,`comment_date`),
+  KEY `comment_link_id_2` (`comment_post_id`,`comment_date`),
   KEY `comment_date` (`comment_date`),
   KEY `comment_user_id` (`comment_user_id`,`comment_date`),
-  KEY `comment_link_id` (`comment_link_id`,`comment_order`)
+  KEY `comment_post_id` (`comment_post_id`,`comment_order`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

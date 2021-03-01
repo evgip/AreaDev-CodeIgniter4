@@ -17,6 +17,7 @@ html, body {
 a {
 	color: #2562dc;
 	cursor: pointer;
+    text-decoration: none;
 }
 a:hover, a:focus{
     color:#3474f4;
@@ -34,7 +35,7 @@ pre code {
     display: inline-block;
 }
 
-section a {
+.telo.detail a, .comm-telo-body a {
 	text-decoration: underline;
 }
 
@@ -81,10 +82,11 @@ footer {
 }
 .menu-footer a {
 	color: #999;
-    text-decoration: none;
     padding-left: 0.75em;
 }
- 
+.menu-footer a:hover {
+	color: #666;
+}
 
 .wrap {
     max-width: 1010px;
@@ -106,6 +108,11 @@ header .wrap {
 }
 .menu-left  {
     margin-top: 3px;
+}
+
+.menu-left ul > li {
+    float: left;
+    margin-right: 20px;
 }
 .menu  {
     position: relative;
@@ -129,7 +136,9 @@ header .wrap {
 }
 .nav a {
     color: #777;
-    text-decoration: none;
+}
+.nav a:hover {
+    color: #999;
 }
 .nav.active > a {
     color: #f56400;
@@ -311,21 +320,54 @@ input.form-about {width: 250px;}
     color: #999;
 }
 .footer a, .footer {
-    font-size: 14px;  
+    font-size: 13px;  
     color: #888;
-    text-decoration: none;
 } 
 .footer a:hover {
     color: #666;
 } 
 .footer .ava {
+    border-radius: 8px;
+    height: 16px;
+    margin-bottom: 2px;
+    margin-right: 2px;
+    vertical-align: middle;
+    width: 16px;
+}
+.footer .user {
+    
+}
+ 
+/* Comments */ 
+.comm-telo-body p {
+    margin-top: 5px;
+}
+.comm-header a, .comm-header {
+    font-size: 13px;  
+    color: #888;
+} 
+.comm-header a:hover {
+    color: #666;
+} 
+.comm-header .ava {
     width: 18px;
     height: 18px;
     border-radius: 50%;
     vertical-align: middle;
 }
-.footer .user {
+.comm-header .user {
     margin: 0 8px;
+}
+.comments .voters {
+    margin-top: 0;
+}
+.comm-telo {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+} 
+.otst {
+  margin: 0 1px; 
 }
  
 /* Profile */
@@ -411,7 +453,6 @@ input.form-about {width: 250px;}
     border-color: transparent transparent #bbb transparent;
     border-style: solid;
     border-width: 6px;
-    text-decoration: none;
     width: 0px;
     height: 0;
     margin-bottom: 0px;

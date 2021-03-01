@@ -28,6 +28,10 @@
                     <span class="date"> 
                         <?= $post->date ?>
                     </span>
+                    <?php if($post->post_comments !=0) { ?> 
+                        <span class="otst"> | </span>
+                        <?= $post->post_comments ?> комментария 
+                    <?php } ?>
                 </div>  
             </div>
         <?php endforeach; ?>
