@@ -4,6 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 use App\Libraries\Parsedown; 
+ 
+use CodeIgniter\I18n\Time;
+$myTime = new Time('now', 'Europe/Moscow', 'ru_RU');
 
 class PostsModel extends Model
 {
@@ -18,12 +21,26 @@ class PostsModel extends Model
         $builder->select('a.*, b.id, b.nickname, b.avatar');
         $builder->join("users AS b", "b.id = a.post_user_id");
         $builder->orderBy('a.post_id', 'DESC');
-        
-        if($builder->countAllResults(FALSE) > 0){
-            return $builder->get(10)->getResultArray();
-        } else {
-            return FALSE;
-        } 
+
+        $query = $builder->get();
+
+        $result = Array();
+        foreach($query->getResult()as $ind => $row){
+             
+            if(!$row->avatar ) {
+                $row->avatar  = 'noavatar.png';
+            } 
+
+            $row->avatar = $row->avatar;
+            $row->title = $row->post_title;
+            $row->slug = $row->post_slug;
+            $row->date = Time::parse($row->post_date, 'Europe/Moscow')->humanize();
+            $result[$ind] = $row;
+         
+        }
+    
+        return $result;
+           
     }
     
     // Полная версия поста  
@@ -44,11 +61,11 @@ class PostsModel extends Model
         if(!$post->avatar ) {
             $post->avatar  = 'noavatar.png';
         }
-
+        
         $data = [
             'title'    => $post->post_title,
             'content'  => $Parsedown->text($post->post_content),
-            'date'     => $post->post_date,
+            'date'     => Time::parse($post->post_date, 'Europe/Moscow')->humanize(),
             'nickname' => $post->nickname,
             'avatar'   => $post->avatar            
         ];

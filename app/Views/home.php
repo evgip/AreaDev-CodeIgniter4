@@ -9,24 +9,24 @@
 <div class="telo">
     <?php if (!empty($posts)) : ?>
   
-        <?php foreach ($posts as $post_item): ?>
+        <?php foreach ($posts as  $post ): ?>
             <div class="voters">
                 <a class="upvoter" href="/login"></a>
                 <div class="score">3</div>
             </div>
         
             <div class="post-telo">
-                <a class="u-url" href="/posts/<?= esc($post_item['post_slug'], 'url') ?>">
-                    <h3 class="titl"><?= esc($post_item['post_title']) ?></h3>
+                <a class="u-url" href="/posts/<?= $post->slug ?>">
+                    <h3 class="titl"><?= esc($post->title) ?></h3>
                 </a>
 
                 <div class="footer">
-                    <img class="ava" src="/upload/users/small/<?php echo $post_item['avatar'] ?>">
+                    <img class="ava" src="/upload/users/small/<?php echo $post->avatar ?>">
                     <span class="user"> 
-                        <a href="/users/<?= esc($post_item['nickname']) ?>"><?= esc($post_item['nickname']) ?></a> 
+                        <a href="/users/<?= esc($post->nickname) ?>"><?= esc($post->nickname) ?></a> 
                     </span>
                     <span class="date"> 
-                        <?= $post_item['post_date'] ?>
+                        <?= $post->date ?>
                     </span>
                 </div>  
             </div>
