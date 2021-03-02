@@ -13,7 +13,7 @@
         <link rel="icon" href="<?= base_url() ?>/favicon.ico">
         
         <script src="<?= base_url() ?>/assets/js/common.js"></script>
-
+ 
     </head>
 <body class="bd<?php if (get_cookie('color') == 1) { ?> black<?php } ?>">
 

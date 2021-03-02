@@ -56,9 +56,9 @@ $routes->group('admin', ['filter' => 'auth:Role,1'], function ($routes) {
 // Role 2
 $routes->group('', ['filter' => 'auth:Role,2'], function ($routes){
      $routes->match(['get', 'post'], 'posts/create', 'PostsController::create');
-	$routes->match(['get', 'post'], 'setting', 'AuthController::setting');
-     
+	 $routes->match(['get', 'post'], 'setting', 'AuthController::setting');
      $routes->match(['get', 'post'], 'comment/add', 'CommentsController::create');
+     
 });
   
  
@@ -70,7 +70,7 @@ $routes->get('posts', 'PostsController::index');
  
 // Страница комментарий
 $routes->get('comments', 'CommentsController::index');
- 
+$routes->post('comments/addform/(:num)', 'CommentsController::addform/$1'); 
 
  
 /*

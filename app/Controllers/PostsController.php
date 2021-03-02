@@ -49,6 +49,13 @@ class PostsController extends BaseController
     // Добавление поста
     public function create()
     {
+        
+        // Авторизировались или нет
+        if (!session()->get('isLoggedIn'))
+		{
+			return redirect()->to('/');
+		}  
+        
         $model = new PostsModel();
 
         $this->data['title'] = 'Добавление новости';

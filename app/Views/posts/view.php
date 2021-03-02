@@ -9,7 +9,7 @@
             <?= $posts['date'] ?>
         </span>
     </div>   
-<div class="post"><?= $posts['content'] ?></div><br>
+<div class="post"><?= $posts['content'] ?></div>
 
     <?php if ($auth) : ?>
     <form id="add_comm" class="new_comment" action="/comment/add" accept-charset="UTF-8" method="post">
@@ -17,6 +17,7 @@
         <textarea rows="5" placeholder="Напишите, что нибудь..." name="comment" id="comment"></textarea>
         <div> 
             <input type="hidden" name="post_id" id="post_id" value="<?= $posts['id'] ?>">
+            <input type="hidden" name="comm_id" id="comm_id" value="0">
             <input type="submit" name="commit" value="Комментарий" class="comment-post">
         </div> 
     </form>
@@ -27,34 +28,77 @@
         </div> 
     <?php endif; ?>
     
-    
 </div>
  
 <?php if (!empty($comments)) : ?>
     <div class="telo comments">
-        <h2>Комментарии</h2>
+        <h2>Комментариев <?= $posts['post_comm'] ?></h2>
         
         <?php foreach ($comments as  $comm ): ?>
-            <div class="voters">
-                <a class="upvoter" href="/login"></a>
-                <div class="score">1</div>
-            </div>
-            <div class="comm-telo">
-                <div class="comm-header">
-                    <img class="ava" src="/upload/users/small/<?php echo $comm->avatar ?>">
-                    <span class="user"> 
-                        <a href="/users/<?= esc($comm->nickname) ?>"><?= esc($comm->nickname) ?></a> 
-                    </span> 
-                    <span class="date">  
-                       <?= esc($comm->date) ?>
-                    </span>
+        <?php if ($comm->level > 3) { ?> 
+            <?php $indent = 3; ?>  
+        <?php } else { ?> 
+            <?php $indent = $comm->level; ?> 
+        <?php } ?> 
+  
+        <ol class="comment-telo<?php if ($comm->level == 0) { ?> one<?php } ?>">
+            <li class="comments_subtree">
+            
+                <div class="voters">
+                    <a class="upvoter" href="/login"></a>
+                    <div class="score">1</div>
                 </div>
-                <div class="comm-telo-body">
-                    <?= $comm->content ?> 
+                <div class="comm-telo">
+                    <div class="comm-header">
+                        <img class="ava" src="/upload/users/small/<?php echo $comm->avatar ?>">
+                        <span class="user"> 
+                            <a href="/users/<?= esc($comm->nickname) ?>"><?= esc($comm->nickname) ?></a> 
+                        </span> 
+                        <span class="date">  
+                           <?= esc($comm->date) ?>
+                        </span>
+                        
+                        <span class="date">  
+                          . #id<?= $comm->comment_id ?>
+                        </span>
+                    </div>
+                    <div class="comm-telo-body">
+                        <?= $comm->content ?> 
+                    </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
+                <span id="cm_add_link<?= $comm->comment_id ?>" class="cm_add_link">
+                    <a data-post_id="<?= $posts['id'] ?>" data-id="<?= $comm->comment_id ?>" data-csrf_name="<?= csrf_token() ?>" data-csrf="<?= csrf_hash() ?>" class="addcomm">Ответить</a>
+                </span>
+              level: <?= $comm->level ?>
+                <div id="cm_addentry<?= $comm->comment_id ?>" class="reply"></div> 
+            
+      
+            <?php if ($indent == 0) { ?>
+            
+            <?php if ($comm->after == 0) { ?></li></ol><?php } else { ?><?php } ?>
+            
+            <?php } ?>
         
+      
+            <!-- Чтобы понять логику, пока пишем так -->
+            <?php if ($indent == 1) { ?>  
+                <?php if ($comm->after == 0) { ?></li></ol></li></ol><?php } else { ?></li></ol><?php } ?>
+            <?php } ?> 
+             
+            <?php if ($indent == 2) { ?>  
+               <?php if ($comm->after == 0) { ?></li></ol></li></ol></li></ol><?php } else { ?></li></ol></li></ol><?php } ?>
+            <?php } ?>  
+             
+            <?php if ($indent == 3) { ?>  
+                <?php if ($comm->after == 0) { ?></li></ol></li></ol></li></ol></li></ol><?php } else { ?></li></ol></li></ol></li></ol><?php } ?>
+            <?php } ?>   
+             
+            
+        
+        
+        
+        <?php endforeach; ?>
+         
     </div>
 <?php else : ?>
     <div class="telo">

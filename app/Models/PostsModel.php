@@ -65,12 +65,13 @@ class PostsModel extends Model
         }
         
         $data = [
-            'id'    => $post->post_id,
-            'title'    => $post->post_title,
-            'content'  => $Parsedown->text($post->post_content),
-            'date'     => Time::parse($post->post_date, 'Europe/Moscow')->humanize(),
-            'nickname' => $post->nickname,
-            'avatar'   => $post->avatar            
+            'id'        => $post->post_id,
+            'title'     => $post->post_title,
+            'content'   => $Parsedown->text($post->post_content),
+            'date'      => Time::parse($post->post_date, 'Europe/Moscow')->humanize(),
+            'nickname'  => $post->nickname,
+            'avatar'    => $post->avatar,
+            'post_comm' => $post->post_comments,            
         ];
  
         return $data;

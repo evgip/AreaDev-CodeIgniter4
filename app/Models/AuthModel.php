@@ -147,7 +147,4 @@ class AuthModel extends Model{
                     ->update($data);
     }
 
-   
-
-
 }

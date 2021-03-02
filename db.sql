@@ -154,21 +154,33 @@ CREATE TABLE `favorites` (
 -- Table structure for table `comments`
 -- 
 
-DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
-  `comment_id` int(20) NOT NULL AUTO_INCREMENT,
+  `comment_id` int(20) NOT NULL,
   `comment_type` enum('normal','admin','private') NOT NULL DEFAULT 'normal',
-  `comment_post_id` int(20) NOT NULL DEFAULT '0',
-  `comment_user_id` int(20) NOT NULL DEFAULT '0',
-  `comment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `comment_modified` timestamp NOT NULL DEFAULT '2021-01-01 00:00:00',
+  `comment_post_id` int(20) NOT NULL DEFAULT 0,
+  `comment_user_id` int(20) NOT NULL DEFAULT 0,
+  `comment_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `comment_modified` timestamp NOT NULL DEFAULT '2020-12-31 18:00:00',
   `comment_ip` varbinary(42) DEFAULT NULL,
-  `comment_order` smallint(6) NOT NULL DEFAULT '0',
-  `comment_votes` smallint(4) NOT NULL DEFAULT '0',
+  `comment_order` smallint(6) NOT NULL DEFAULT 0,
+  `comment_on` smallint(6) NOT NULL DEFAULT 0,
+  `comment_after` smallint(6) NOT NULL DEFAULT 0,
+  `comment_votes` smallint(4) NOT NULL DEFAULT 0,
   `comment_content` text NOT NULL,
-  PRIMARY KEY (`comment_id`),
-  KEY `comment_link_id_2` (`comment_post_id`,`comment_date`),
-  KEY `comment_date` (`comment_date`),
-  KEY `comment_user_id` (`comment_user_id`,`comment_date`),
-  KEY `comment_post_id` (`comment_post_id`,`comment_order`)
+  `comment_del` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
+-- Индексы таблицы `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`comment_id`),
+  ADD KEY `comment_link_id_2` (`comment_post_id`,`comment_date`),
+  ADD KEY `comment_date` (`comment_date`),
+  ADD KEY `comment_user_id` (`comment_user_id`,`comment_date`),
+  ADD KEY `comment_post_id` (`comment_post_id`,`comment_order`);
+
+ALTER TABLE `comments`
+  MODIFY `comment_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+COMMIT;

@@ -318,6 +318,7 @@ input.form-about {width: 250px;}
 }
 .date {
     color: #999;
+    text-transform: lowercase;
 }
 .footer a, .footer {
     font-size: 13px;  
@@ -339,8 +340,19 @@ input.form-about {width: 250px;}
 }
  
 /* Comments */ 
+ol.comment-telo.one {
+    padding: 0;
+}
+ol.comment-telo {
+    list-style: none;
+    margin: 0 0 20px 0;
+}
+.comm-telo {
+    margin-left: 40px;
+    margin-right: 40px;
+} 
 .comm-telo-body p {
-    margin-top: 5px;
+    margin: 5px 0;
 }
 .comm-header a, .comm-header {
     font-size: 13px;  
@@ -361,13 +373,15 @@ input.form-about {width: 250px;}
 .comments .voters {
     margin-top: 0;
 }
-.comm-telo {
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-bottom: 20px;
-} 
+ 
+ 
 .otst {
   margin: 0 1px; 
+}
+.addcomm {
+    color: #888;
+    font-size: 13px;
+    margin-left: 40px;
 }
  
 /* Profile */

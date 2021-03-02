@@ -36,31 +36,46 @@ class CommentsController extends BaseController
     // create a product
     public function create()
     {
+        // Авторизировались или нет
+        if (!session()->get('isLoggedIn'))
+		{
+			return redirect()->to($_SERVER['HTTP_REFERER']);
+		}
+        
         $model = new CommentsModel();
 
-        //$data = json_decode(file_get_contents("php://input"));
+        // $data = json_decode(file_get_contents("php://input"));
         
         // Проверим на длину
         if ($this->request->getMethod() === 'post' && $this->validate([
-                'comment' => 'required|min_length[3]|max_length[255]'
+                'comment' => 'required|min_length[3]|max_length[2000]'
             ]))
         {
             
             $data = [
                 'comment_post_id' => $this->request->getPost('post_id'),
+                'comment_on'      => $this->request->getPost('comm_id'),
                 'comment_content' => $this->request->getPost('comment'),
                 'comment_user_id' => session()->get('id'),
             ];
             
+     
+            // записываем покммент
             $result = $model->insert($data);
             
             // Получаем id поста
-            $post_id = $this->request->getPost('post_id');
+            $post_id = $this->request->getPost('post_id');   
+            
+            // Есть следом или нет (для сложного поведения в шаблоне, т.к. данных на что 
+            // этот комментрий недостаточно. Важно знать есть, что-то далее, чтобы избежать js)
+            $after_data = [
+                'comment_after' => 1,
+            ];
+            $model->update($data['comment_on'], $after_data);
             
             // Пересчитываем количество комментариев для поста + 1
             $post_model = new PostsModel();
-            $num = $post_model->getNumComments($post_id);
-
+            $num = $post_model->getNumComments($post_id); // + 1
             $num_data['post_comments'] = $num;
             $post_model->update($post_id, $num_data);
 
@@ -75,8 +90,23 @@ class CommentsController extends BaseController
            return redirect()->to($_SERVER['HTTP_REFERER']); 
         }
 
- 
-              
+    }
+
+
+    // Вызовем форму ответа
+    public function addform($id)
+	{
+        
+        // Получаем id поста
+        $post_id = $this->request->getPost('post_id'); 
+        
+        $data = [
+        'comm_id' => $id,
+        'post_id' => $post_id,
+        'auth' => session()->get('isLoggedIn'),
+        ]; 
+        
+      return view('comments/addform', $data);
     }
 
     // update product

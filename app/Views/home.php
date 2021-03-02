@@ -30,7 +30,9 @@
                     </span>
                     <?php if($post->post_comments !=0) { ?> 
                         <span class="otst"> | </span>
-                        <?= $post->post_comments ?> комментария 
+                        комментариев (<?= $post->post_comments ?>) 
+                        
+                         
                     <?php } ?>
                 </div>  
             </div>
