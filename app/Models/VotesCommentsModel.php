@@ -11,7 +11,7 @@ class VotesCommentsModel extends Model
     protected $allowedFields = ['votes_comm_item_id', 'votes_comm_points', 'votes_comm_ip', 'votes_comm_user_id', 'votes_comm_date'];
     
 
-    // Для дерева
+    // Информация по комментарию по его id
      public function infoComm($comm_id) {
 
          $db      = \Config\Database::connect();

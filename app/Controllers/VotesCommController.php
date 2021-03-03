@@ -25,39 +25,58 @@ class VotesCommController extends BaseController
             return false;
         }  
         
-        // Кто голосовал
+        // id того, кто госует за комментарий
         $user_id = session()->get('id');
 
         // Информация об комментарии
         $model = new VotesCommentsModel();
-        $post_info = $model->infoComm($comm_id);
-
-        // Вы не можете голосовать за свой ответ
-        if ($user_id == $post_info->comment_user_id) {
-           // return false;
-        }
+        $comm_info = $model->infoComm($comm_id);
+        
+        // Польщователь не должен голосовать за свой комментарий
+        if ($user_id == $comm_info->comment_user_id) {
+           return false;
+        }    
+                      
+        //Проверяем, голосовал ли пользователь за комментарий
+        $up = $model->getVoteStatus($comm_info->comment_id, $user_id);   
+        
+        if($up == 1) {
+            
+            // далее удаление строки в таблице голосования за комментарии
+            // $db      = \Config\Database::connect();
+            // $builder = $db->table('votes_comm');
+            // $builder->where('votes_comm_item_id', $comm_info->comment_id);
+            // $builder->where('votes_comm_user_id', $user_id);
+            // $builder->delete();
+            // далее уменьшаем на -1 количество комментариев в самом комментарии
+            // см. код ниже. А пока:
+            
+            return false;
+            
+        } else {
          
-       $request = \Config\Services::request();
+           $request = \Config\Services::request();
 
-       $model->save([
-            'votes_comm_item_id' => $comm_id,
-            'votes_comm_points'  => 1,
-            'votes_comm_ip'      => $request->getIPAddress(),
-            'votes_comm_user_id' => $user_id,
-            'votes_comm_date'    => date("Y-m-d H:i:s"),
-        ]);
-       
-        // Получаем количество votes комментария    
-        $votes_num = $post_info->comment_votes;
+           $model->save([
+                'votes_comm_item_id' => $comm_id,
+                'votes_comm_points'  => 1,
+                'votes_comm_ip'      => $request->getIPAddress(),
+                'votes_comm_user_id' => $user_id,
+                'votes_comm_date'    => date("Y-m-d H:i:s"),
+            ]);
+           
+            // Получаем количество votes комментария    
+            $votes_num = $comm_info->comment_votes;
 
-        $votes_data = [
-                'comment_votes' => $votes_num + 1,
-        ];
-  
-        // Записываем новое значение Votes в строку комментария по id
-        $comm_model = new CommentsModel();
-        $comm_model->update($comm_id, $votes_data); 
+            $votes_data = [
+                 'comment_votes' => $votes_num + 1,
+            ];
       
-        return false;
+            // Записываем новое значение Votes в строку комментария по id
+            $comm_model = new CommentsModel();
+            $comm_model->update($comm_id, $votes_data); 
+          
+            return false;
+        } 
     }
 }
