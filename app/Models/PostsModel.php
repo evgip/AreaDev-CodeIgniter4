@@ -4,7 +4,8 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 use App\Libraries\Parsedown; 
- 
+use App\Libraries\Translit;
+
 use CodeIgniter\I18n\Time;
 $myTime = new Time('now', 'Europe/Moscow', 'ru_RU');
 
@@ -12,7 +13,7 @@ class PostsModel extends Model
 {
     protected $table = 'posts';
     protected $primaryKey = 'post_id';
-    protected $allowedFields = ['post_title', 'post_slug', 'post_content', 'post_user_id', 'post_comments'];
+    protected $allowedFields = ['post_title', 'post_slug', 'post_content', 'post_user_id', 'post_comments', 'post_ip_int'];
       
     
     // Посты на главной странице сайта
@@ -91,6 +92,25 @@ class PostsModel extends Model
         return $post_comments + 1;
         
     }
+
+
+    // Проверка на дубликаты slug
+    public function seoSlug($post_title)
+    {
+        $seo_slug = url_title(Translit::SeoUrl($post_title), '-', TRUE);
+        
+        $db = \Config\Database::connect();
+        $builder = $db->table('posts');
+        $builder->where('post_slug', $seo_slug);
+        $post = $builder->get()->getRow();
+        
+        if ($post) {
+            return $seo_slug =  $post->post_slug . "-";
+        }
+        
+        return $seo_slug;
+        
+    } 
 
 }
  

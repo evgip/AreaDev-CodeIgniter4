@@ -10,9 +10,11 @@
     <?php if (!empty($posts)) : ?>
   
         <?php foreach ($posts as  $post ): ?>
-            <div class="voters">
-                <a class="upvoter" href="/login"></a>
-                <div class="score">3</div>
+        
+            <div id="vot<?php echo $post->post_id ?>" class="voters">
+                <div data-csrf_name="<?= csrf_token() ?>" data-csrf="<?= csrf_hash() ?>" data-id="<?php echo $post->post_id ?>" class="post-up-id"></div>
+                <div class="score"><?= $post->post_votes ?></div>
+          
             </div>
         
             <div class="post-telo">

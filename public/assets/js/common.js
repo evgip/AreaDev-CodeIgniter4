@@ -13,6 +13,21 @@ $(document).on('click', 'a.my-color', function() {
 });
 
 
+// изменение с фронта цветовой схемы
+$(document).on('click', '.comm-up-id', function() {
+    var comm_id = $(this).data('id');
+    var csrf_name = $(this).data('csrf_name');
+    var csrf = $(this).data('csrf');
+    $.ajax({
+        url: '/votes/' + comm_id,
+        type: 'POST',
+        data: {comm_id: comm_id,[csrf_name]: csrf },
+    }).done(function(result) {
+        $('#vot' + comm_id + '.voters').addClass('active');
+        $('#vot' + comm_id).find('.score').html('+');
+    });
+});
+
 // https://makitweb.com/how-to-send-ajax-request-with-csrf-token-in-codeigniter-4/
 //  https://forum.codeigniter.com/thread-78411.html?highlight=Update+CSRF
 $(function(){
@@ -55,35 +70,3 @@ $(function(){
         $('.cm_add_link').show();
     });
 });
-/*
-$(document).on("click", ".reply", function(e){
-    var csrf_name = $(this).data('csrf_name');
-    var csrf = $(this).data('csrf');
-    var comm_id = $(this).data('id');
-    var post_id = $(this).data('pid');    
-
-    $('.cm_addentry').remove();
-    $('.cm_add_link').show();
-    $link_span  = $('#cm_add_link'+post_id);
-    old_html    = $link_span.html();
-
-     $.post({
-        url: '/comments/addform/' + comm_id,
-        type: 'POST',
-        headers: {'X-Requested-With': 'XMLHttpRequest'},
-        data: {comm_id: comm_id,[csrf_name]: csrf},
-    }).done(function (data) { 
-        
-            $("#cm_addentry"+comm_id).html(data).fadeIn();
-            $('#content').focus();
-            $link_span.html(old_html).hide();        
-             
-             
-        $("#commentform"+comm_id).html(data);
-        $("#commentform"+comm_id).removeAttr('disabled');
-        
-        // var welcome = document.getElementById('commentform');
-        // ....
-    });  
-    
-}); */

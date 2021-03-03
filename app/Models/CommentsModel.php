@@ -1,11 +1,9 @@
 <?php
-
-namespace App\Models;
-
 namespace App\Models;
 
 use CodeIgniter\Model;
 use App\Libraries\Parsedown;
+use App\Models\VotesCommentsModel;
 
 use CodeIgniter\I18n\Time;
 $myTime = new Time('now', 'Europe/Moscow', 'ru_RU');
@@ -15,7 +13,7 @@ class CommentsModel extends Model
 {
     protected $table = 'comments';
     protected $primaryKey = 'comment_id'; 
-    protected $allowedFields = ['comment_post_id', 'comment_on', 'comment_after', 'comment_content', 'comment_user_id'];
+    protected $allowedFields = ['comment_post_id', 'comment_on', 'comment_after', 'comment_content', 'comment_user_id', 'comment_votes', 'comment_ip'];
     
     // Все комментарии
     public function getCommentsAll()
@@ -68,9 +66,12 @@ class CommentsModel extends Model
          
         $query = $builder->get();
 
+        // для комменатрия голосовал или нет
+        $comm_vote_status = new VotesCommentsModel();
+         
         $result = Array();
         foreach($query->getResult()as $ind => $row){
-             
+            
             if(!$row->avatar ) {
                 $row->avatar  = 'noavatar.png';
             } 
@@ -81,6 +82,7 @@ class CommentsModel extends Model
             $row->date       = Time::parse($row->comment_date, 'Europe/Moscow')->humanize();
             $row->after      = $row->comment_after;
             $row->del        = $row->comment_del;
+            $row->comm_vote_status = $comm_vote_status->getVoteStatus($row->comment_id, session()->get('id'));
             $result[$ind]    = $row;
          
         }

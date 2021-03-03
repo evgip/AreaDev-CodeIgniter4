@@ -35,6 +35,7 @@
         <h2>Комментариев <?= $posts['post_comm'] ?></h2>
         
         <?php foreach ($comments as  $comm ): ?>
+        <div class="block-comments">
         <?php if ($comm->level > 3) { ?> 
             <?php $indent = 3; ?>  
         <?php } else { ?> 
@@ -43,11 +44,19 @@
   
         <ol class="comment-telo<?php if ($comm->level == 0) { ?> one<?php } ?>">
             <li class="comments_subtree">
-            
-                <div class="voters">
-                    <a class="upvoter" href="/login"></a>
-                    <div class="score">1</div>
-                </div>
+                <!--  || $usr_id == $comm->comment_user_id -->
+               <?php if ($comm->comm_vote_status) { ?>
+                    <div class="voters active">
+                        <div class="comm-up-id"></div>
+                        <div class="score"><?= $comm->comment_votes ?></div>
+                    </div>
+                <?php } else { ?>
+                    <div id="vot<?php echo $comm->comment_id ?>" class="voters">
+                        <div data-csrf_name="<?= csrf_token() ?>" data-csrf="<?= csrf_hash() ?>" data-id="<?php echo $comm->comment_id ?>" class="comm-up-id"></div>
+                        <div class="score"><?= $comm->comment_votes ?></div>
+                    </div>
+                <?php } ?>
+
                 <div class="comm-telo">
                     <div class="comm-header">
                         <img class="ava" src="/upload/users/small/<?php echo $comm->avatar ?>">
@@ -96,7 +105,7 @@
             
         
         
-        
+        </div>
         <?php endforeach; ?>
          
     </div>

@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Models\PostsModel;
 use App\Models\CommentsModel;
 use CodeIgniter\Controller;
-use App\Libraries\Translit;
 
 use CodeIgniter\I18n\Time;
 $myTime = new Time('now', 'Europe/Moscow', 'ru_RU');
@@ -66,9 +65,12 @@ class PostsController extends BaseController
             ]))
         {
             
+            $post_title = $this->request->getPost('post_title');
+            
             $model->save([
                 'post_title'    => $this->request->getPost('post_title'),
-                'post_slug'     => url_title(Translit::SeoUrl($this->request->getPost('post_title')), '-', TRUE),
+                'post_slug'     => $model->seoSlug($post_title),
+                'post_ip_int'   => $this->request->getIPAddress(), 
                 'post_content'  => $this->request->getPost('post_content'),
                 'post_user_id'  => session()->get('id'),
             ]);

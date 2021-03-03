@@ -54,6 +54,7 @@ class CommentsController extends BaseController
             
             $data = [
                 'comment_post_id' => $this->request->getPost('post_id'),
+                'comment_ip'      => $this->request->getIPAddress(),
                 'comment_on'      => $this->request->getPost('comm_id'),
                 'comment_content' => $this->request->getPost('comment'),
                 'comment_user_id' => session()->get('id'),
@@ -91,7 +92,6 @@ class CommentsController extends BaseController
         }
 
     }
-
 
     // Вызовем форму ответа
     public function addform($id)
