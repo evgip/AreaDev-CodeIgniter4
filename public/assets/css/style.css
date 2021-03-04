@@ -315,6 +315,8 @@ input.form-about {width: 250px;}
 .u-url .titl {
     margin-bottom: 2px;
     font-size: 16px;
+    display: inline;
+    margin-right: 4px;
 }
 .titl {
     margin-bottom: 0px;
@@ -344,8 +346,33 @@ input.form-about {width: 250px;}
 .footer .user {
     
 }
- 
-/* Comments */ 
+
+/* Теги */ 
+a.tag {
+	background-color: #fffcd7;
+	border: 1px solid #d5d458;
+	border-radius: 5px;
+	color: #555;
+	font-size: 8pt;
+	margin-left: 0.25em;
+	padding: 0px 0.4em 1px 0.4em;
+	text-decoration: none;
+	vertical-align: text-top;
+    text-transform: lowercase;
+}
+a.tag_2 {
+	background-color: #ddebf9;
+	border-color: #b2ccf0;
+}
+a.tag_3 {
+	background-color: #eee;
+	border-color: #c8c8c8;
+}
+.tag-des {
+    margin-left:10px;
+}
+
+/* Комментарии */ 
 .block-comments {
   margin: 0 0 20px 0;  
 }

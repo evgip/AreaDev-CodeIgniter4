@@ -4,8 +4,12 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
+use App\Libraries\Parsedown;
 use App\Models\CommentsModel;
 use App\Models\PostsModel;
+
+use CodeIgniter\I18n\Time;
+$myTime = new Time('now', 'Europe/Moscow', 'ru_RU');
 
 class CommentsController extends BaseController
 {
@@ -13,10 +17,39 @@ class CommentsController extends BaseController
     // get all product
     public function index()
     {
-
-        $model = new CommentsModel();
-        $this->data['comments'] = $model->getCommentsAll();
         
+        $Parsedown = new Parsedown(); 
+        $Parsedown->setSafeMode(true); // безопасность
+        
+        $model = new CommentsModel();
+        
+        $pager = \Config\Services::pager();
+       
+       // Добавим пагинацию
+       // https://forum.codeigniter.com/thread-78305.html?highlight=pager        
+       // $this->data['comments'] = $model->getCommentsAll(5);
+        $comm =  $model->getCommentsAll();
+ 
+        $result = Array();
+        foreach($comm  as $ind => $row){
+             
+            if(!$row->avatar ) {
+                $row->avatar  = 'noavatar.png';
+            } 
+
+            $row->avatar = $row->avatar;
+         
+            $row->content = $Parsedown->text($row->comment_content);
+            $row->date = Time::parse($row->comment_date, 'Europe/Moscow')->humanize();
+            $result[$ind] = $row;
+         
+        }
+    
+        $this->data = [
+            'comments' => $result,
+            'pager' => $pager
+        ];
+    
         // Просто тестирование функции вызова
         // set_message('Действие выполнено успешно!');
         
@@ -115,17 +148,35 @@ class CommentsController extends BaseController
 
     public function userComments()
     {
-
-        $slug = service('uri')->getSegment(2);
+        
+        $Parsedown = new Parsedown(); 
+        $Parsedown->setSafeMode(true); // безопасность
+        
+        $slug  = service('uri')->getSegment(2);
         $model = new CommentsModel();
-        $comments = $model->getUsersComments($slug); 
+        $comm  = $model->getUsersComments($slug); 
         
         // Покажем 404
-        if(!$comments) {
+        if(!$comm) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
         
-        $this->data['comments'] = $comments;
+        $result = Array();
+        foreach($comm as $ind => $row){
+             
+            if(!$row->avatar ) {
+                $row->avatar  = 'noavatar.png';
+            } 
+
+            $row->avatar = $row->avatar;
+         
+            $row->content = $Parsedown->text($row->comment_content);
+            $row->date = Time::parse($row->comment_date, 'Europe/Moscow')->humanize();
+            $result[$ind] = $row;
+         
+        }
+        
+        $this->data['comments'] = $result;
         
         $this->data['title'] = 'Комментарии участника';
         return $this->render('comments/user');

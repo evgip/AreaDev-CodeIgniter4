@@ -3,8 +3,11 @@
 namespace App\Controllers;
 
 use App\Models\PostsModel;
+use App\Models\TagsModel;
 use App\Models\CommentsModel;
+use App\Models\VotesCommentsModel;
 use CodeIgniter\Controller;
+use App\Libraries\Parsedown;
 
 use CodeIgniter\I18n\Time;
 $myTime = new Time('now', 'Europe/Moscow', 'ru_RU');
@@ -14,13 +17,13 @@ class PostsController extends BaseController
 
     public function index()
     {
-        $model = new PostsModel();
+        $model_post = new PostsModel();
    
     // пробуем файловый кешь центральной
     //    if (!$this->data = cache('foo'))
     //    {
             $this->data = [
-                'posts'  => $model->getPostHome(),
+                'posts'  => $model_post->getPostHome(),
                 'title' => 'Посты',
             ];
 
@@ -34,20 +37,49 @@ class PostsController extends BaseController
     // Полный пост
     public function view($slug = NULL)
     {
-        $post_model = new PostsModel();
-        $comm_model = new CommentsModel();
+        
+        $Parsedown = new Parsedown(); 
+        $Parsedown->setSafeMode(true); // безопасность
+        
+        $model_post = new PostsModel();
+        $model_comm = new CommentsModel();
 
         // Получим пост
-        $this->data['posts'] = $post_model->getPost($slug);
-        
-        // Получим комментарии
-        $this->data['comments'] = $comm_model->getCommentsPost($this->data['posts']['id']);
+        $this->data['posts'] = $model_post->getPost($slug);
         
         if (empty($this->data['posts']))
         {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Не удается найти пост: '. $slug);
         }
+        
+        // Получим комментарии
+        $comm = $model_comm->getCommentsPost($this->data['posts']['id']);
+        
 
+        // Для комменатрия голосовал или нет
+        // Переносим в запрос выше (избавляемся от N+1)
+        $comm_vote_status = new VotesCommentsModel();
+         
+        $result = Array();
+        foreach($comm as $ind => $row){
+            
+            if(!$row->avatar ) {
+                $row->avatar  = 'noavatar.png';
+            } 
+ 
+            $row->comment_on = $row->comment_on;
+            $row->avatar     = $row->avatar;
+            $row->content    = $Parsedown->text($row->comment_content);
+            $row->date       = Time::parse($row->comment_date, 'Europe/Moscow')->humanize();
+            $row->after      = $row->comment_after;
+            $row->del        = $row->comment_del;
+            $row->comm_vote_status = $comm_vote_status->getVoteStatus($row->comment_id, session()->get('id'));
+            $result[$ind]    = $row;
+         
+        }
+
+        $this->data['comments'] = $this->buildTree(0, 0, $result);
+        
         $this->data['title'] = $this->data['posts']['title'];
 
         return $this->render('posts/view');
@@ -64,27 +96,38 @@ class PostsController extends BaseController
 			return redirect()->to('/');
 		}  
         
-        $model = new PostsModel();
+        $model_post = new PostsModel();
 
         $this->data['title'] = 'Добавление новости';
-         $this->data['uri'] = 'Добавление новости';
+        $this->data['uri'] = 'Добавление новости';
  
         if ($this->request->getMethod() === 'post' && $this->validate([
                 'post_title' => 'required|min_length[3]|max_length[255]',
                 'post_content'  => 'required',
+                'tag'  => 'required',
             ]))
         {
-            
+            // Получаем title
             $post_title = $this->request->getPost('post_title');
             
+            // Получаем id тега
+            $tag_id = $this->request->getPost('tag');
+           
             $model->save([
                 'post_title'    => $this->request->getPost('post_title'),
-                'post_slug'     => $model->seoSlug($post_title),
+                'post_slug'     => $model_post->seoSlug($post_title),
                 'post_ip_int'   => $this->request->getIPAddress(), 
                 'post_content'  => $this->request->getPost('post_content'),
                 'post_user_id'  => session()->get('id'),
             ]);
-
+             
+            // Получаем id добавленного поста 
+            $post_id = $model_post->PostId();
+            
+            // Добавляем теги
+            $model_tag =  new TagsModel();
+            $model_tag->TagsAddPosts($tag_id, $post_id);
+        
             return $this->render('posts/success');
 
         }
@@ -93,4 +136,19 @@ class PostsController extends BaseController
             return $this->render('posts/add');
         }
     }
+    
+    
+    // Для дерева
+     private function buildTree($comment_on , $level, $comments, $tree=array()){
+        $level++;
+        foreach($comments as $comment){
+            if ($comment->comment_on ==$comment_on ){
+                $comment->level = $level-1;
+                $tree[] = $comment;
+                $tree = $this->buildTree($comment->comment_id, $level, $comments, $tree);
+            }
+        }
+		return $tree;
+    }      
+    
 }

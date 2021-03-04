@@ -188,6 +188,38 @@ CREATE TABLE `votes_comm` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
+
+--
+-- Table structure for table `tags`
+-- 
+
+ CREATE TABLE `tags` (
+  `tags_id` int(11) NOT NULL AUTO_INCREMENT,
+  `tags_name` varchar(125) NOT NULL,
+  `tags_slug` varchar(125) NOT NULL,
+  `tags_description` varchar(250) NOT NULL,
+  `tags_category_id` int(11) NOT NULL,
+  `tags_tip` int(11) NOT NULL DEFAULT 1,
+  `tags_permit_users` int(11) NOT NULL,
+  PRIMARY KEY (`tags_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;  
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `taggings`
+-- 
+
+ CREATE TABLE `taggings` (
+  `taggings_id` int(11) NOT NULL AUTO_INCREMENT,
+  `taggings_tag_id` int(11) NOT NULL,
+  `taggings_post_id` int(11) NOT NULL,
+  PRIMARY KEY (`taggings_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;  
+
+
+-- --------------------------------------------------------
 --
 -- Индексы таблиц
 --

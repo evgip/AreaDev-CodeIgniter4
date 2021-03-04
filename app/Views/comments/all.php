@@ -31,8 +31,8 @@
                 </div>
             </div>
         <?php endforeach; ?>
-
-    <?php else : ?>
+        
+     <?php else : ?>
 
         <h3>Нет комментариев</h3>
 

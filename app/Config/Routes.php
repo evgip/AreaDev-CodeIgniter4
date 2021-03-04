@@ -44,8 +44,6 @@ $routes->get('logout', 'AuthController::logout');
 
 $routes->post('users/color/(:num)', 'UsersController::color/$1'); 
 
- 
-
 $routes->add('users', 'UsersController::index');
 $routes->get('users/(:any)', 'UsersController::usersProfile'); 
  
@@ -64,7 +62,6 @@ $routes->group('', ['filter' => 'auth:Role,2'], function ($routes){
 });
 
  
- 
 $routes->get('posts/(:segment)', 'PostsController::view/$1');
 
 // Главная страница
@@ -78,7 +75,9 @@ $routes->post('comments/addform/(:num)', 'CommentsController::addform/$1');
 // Страница комментариев пользователя
 $routes->get('threads/(:any)', 'CommentsController::userComments'); 
 
- 
+// Теги
+$routes->add('tags',     'TagsController::index');
+$routes->get('t/(:segment)', 'TagsController::tagPosts'); 
 /*
  * --------------------------------------------------------------------
  * Additional Routing

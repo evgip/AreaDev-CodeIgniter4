@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use App\Models\TagsModel;
 use App\Libraries\Parsedown; 
 use App\Libraries\Translit;
 
@@ -27,13 +28,15 @@ class PostsModel extends Model
 
         $query = $builder->get();
 
+        $tags_model = new TagsModel(); 
+
         $result = Array();
         foreach($query->getResult()as $ind => $row){
              
             if(!$row->avatar ) {
                 $row->avatar  = 'noavatar.png';
             } 
-
+            $row->tags = $tags_model->getTagsPost($row->post_id);
             $row->avatar = $row->avatar;
             $row->title = $row->post_title;
             $row->slug = $row->post_slug;
@@ -111,6 +114,17 @@ class PostsModel extends Model
         return $seo_slug;
         
     } 
+
+    // Проверка на дубликаты slug
+    public function PostId()
+    {
+        
+        $db = \Config\Database::connect();
+        $builder = $db->table('posts');
+        return $db->insertID(); 
+        
+    } 
+
 
 }
  

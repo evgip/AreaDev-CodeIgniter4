@@ -19,7 +19,13 @@
                 <a class="u-url" href="/posts/<?= $post->slug ?>">
                     <h3 class="titl"><?= esc($post->title) ?></h3>
                 </a>
-
+                
+                <?php foreach ($post->tags as  $tag ): ?>                
+                    <a class="tag tag_<?= $tag->tags_tip ?>" href="/t/<?= esc($tag->tags_slug) ?>" title="<?= esc($tag->tags_name) ?>">
+                        <?= esc($tag->tags_name) ?>
+                    </a>
+                <?php endforeach; ?>
+                
                 <div class="footer">
                     <img class="ava" src="/upload/users/small/<?php echo $post->avatar ?>">
                     <span class="user"> 
