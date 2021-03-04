@@ -48,7 +48,6 @@ class Users extends Model {
             ->resize(160, 160, false, 'height')
             ->save(FCPATH. 'upload/users/' . $avatar);
     }
-    
-
+ 
 }     
    

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Users;
+use App\Models\CommentsModel;
  
 class UsersController extends BaseController
 {
@@ -42,6 +43,10 @@ class UsersController extends BaseController
         $this->data['avatar']       = $user['avatar'];
         $this->data['about']        = $user['about'];
         $this->data['created_at']   = $user['created_at'];
+        
+        // Показываем количество комментариев
+        $userCommNum = new CommentsModel();
+        $this->data['comm_num_user']     = $userCommNum->getUsersCommentsNum($user['nickname']);
         
         $this->data['title'] = 'Профиль пользователя';
         

@@ -1,9 +1,7 @@
 <a title="Участники" class="avatar-user right" href="/users/">
-    <svg class="md-icon moon">
-        <use xlink:href="/assets/icons/icons.svg#user"></use>
-    </svg>
+    Участники
 </a>
-
+ 
 <h1><?= esc($title) ?></h1>
 
 <div class="telo">

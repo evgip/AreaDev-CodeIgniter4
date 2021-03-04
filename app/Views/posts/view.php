@@ -44,8 +44,8 @@
   
         <ol class="comment-telo<?php if ($comm->level == 0) { ?> one<?php } ?>">
             <li class="comments_subtree">
-                <!--  || $usr_id == $comm->comment_user_id -->
-               <?php if ($comm->comm_vote_status) { ?>
+
+               <?php if ($comm->comm_vote_status || $usr_id == $comm->comment_user_id) { ?>
                     <div class="voters active">
                         <div class="comm-up-id"></div>
                         <div class="score"><?= $comm->comment_votes ?></div>

@@ -16,7 +16,10 @@ class CommentsController extends BaseController
 
         $model = new CommentsModel();
         $this->data['comments'] = $model->getCommentsAll();
-          
+        
+        // Просто тестирование функции вызова
+        // set_message('Действие выполнено успешно!');
+        
         $this->data['title'] = 'Комментарии';
         return $this->render('comments/all');
     }
@@ -107,6 +110,25 @@ class CommentsController extends BaseController
         ]; 
         
       return view('comments/addform', $data);
+    }
+
+
+    public function userComments()
+    {
+
+        $slug = service('uri')->getSegment(2);
+        $model = new CommentsModel();
+        $comments = $model->getUsersComments($slug); 
+        
+        // Покажем 404
+        if(!$comments) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+        
+        $this->data['comments'] = $comments;
+        
+        $this->data['title'] = 'Комментарии участника';
+        return $this->render('comments/user');
     }
 
     // update product

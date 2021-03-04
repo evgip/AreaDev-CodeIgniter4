@@ -270,11 +270,14 @@ button:disabled {
 
 input:disabled {background: #f1f1f1;}
 input.form-about {width: 250px;}
+
 .box textarea {
     margin-bottom: 4px;
     width: 300px;
 }
- 
+.box.create input.add {
+   width: 300px; 
+}
  
 .head {
     font-size: 21px;
@@ -291,6 +294,9 @@ input.form-about {width: 250px;}
     vertical-align: middle;
 }
 
+.nav.create .md-icon {
+    stroke: #f56400;
+}
 /* Диалог */
 .alert-danger {
    color: #e83e8c; 
@@ -353,6 +359,12 @@ ol.comment-telo {
     margin-left: 40px;
     margin-right: 40px;
 } 
+
+.comm-telo-body{
+    margin-left: 40px;
+    max-width: 750px;
+}
+
 .comm-telo-body p {
     margin: 5px 0;
 }
@@ -375,7 +387,9 @@ ol.comment-telo {
 .comments .voters {
     margin-top: 0;
 }
- 
+.comments .comm-telo {
+    margin: 0 0 20px 0;
+}
  
 .otst {
   margin: 0 1px; 
@@ -448,7 +462,7 @@ ol.comment-telo {
 .black header, .black header a {
     color: #eee; 
 }
-.black footer, .black footer a  {
+.black footer, .black footer a, .na {
     color: #999; 
 }
 .black .menu .md-icon {
@@ -498,4 +512,15 @@ ol.comment-telo {
     .box label {
         margin-bottom: 0;
     }
+}
+
+
+.yes-mess {
+    position: absolute;
+    right: 5;
+    top: 40;
+    background: #390;
+    padding: 0 8px;
+    font-size: 14px;
+    color: #fff;
 }

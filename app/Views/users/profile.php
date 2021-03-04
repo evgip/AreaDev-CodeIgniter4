@@ -13,10 +13,36 @@
     <label class="required">Присоединился::</label>
     <span class="d"><?= $created_at; ?></span>
 
+   
     <br>
 
+    <label class="required">Постов:</label>
+    <span class="d">
+        в разработке...
+    </span>
+    
+    <br>
+
+    <?php if($comm_num_user != 0) { ?>
+    <label class="required">Комментариев:</label>
+    <span class="d">
+        <a title="Все комментарии <?= esc($nickname) ?>" href="/threads/<?= esc($nickname) ?>">
+            <?= $comm_num_user ?>
+        </a>
+    </span>
+    <?php } ?>
+    
+        <br>
+
     <label class="required">О себе:</label>
-    <span class="d"><?= esc($about) ?></span>
+    <span class="na">
+        <?php if($about) { ?>
+            <?= esc($about) ?>
+        <?php } else { ?>
+            Загадка...
+        <?php } ?>
+    </span>
+    
 </div>
  
-<p>`````</p>
+<p> </p>

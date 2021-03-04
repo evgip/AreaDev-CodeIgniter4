@@ -76,6 +76,11 @@ class VotesCommController extends BaseController
             $comm_model = new CommentsModel();
             $comm_model->update($comm_id, $votes_data); 
           
+             $data = array();
+
+             // Read new token and assign in $data['token']
+             $data['token'] = csrf_hash();
+          
             return false;
         } 
     }

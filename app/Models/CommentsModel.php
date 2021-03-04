@@ -66,7 +66,8 @@ class CommentsModel extends Model
          
         $query = $builder->get();
 
-        // для комменатрия голосовал или нет
+        // Для комменатрия голосовал или нет
+        // Переносим в запрос выше (избавляемся от N+1)
         $comm_vote_status = new VotesCommentsModel();
          
         $result = Array();
@@ -105,4 +106,52 @@ class CommentsModel extends Model
         }
 		return $tree;
     }   
+    
+    // Комментарии участника
+    public function getUsersComments($slug)
+    {
+        $Parsedown = new Parsedown(); 
+        $Parsedown->setSafeMode(true); // безопасность
+        
+        $db = \Config\Database::connect();
+        $builder = $db->table('comments AS a');
+        $builder->select('a.*, b.id, b.nickname, b.avatar, c.post_id, c.post_title, c.post_slug');
+        $builder->join("users AS b", "b.id = a.comment_user_id");
+        $builder->join("posts AS  c", "a.comment_post_id = c.post_id");
+        $builder->where('b.nickname', $slug);
+        $builder->orderBy('a.comment_id', 'DESC');
+
+        $query = $builder->get();
+
+        $result = Array();
+        foreach($query->getResult()as $ind => $row){
+             
+            if(!$row->avatar ) {
+                $row->avatar  = 'noavatar.png';
+            } 
+
+            $row->avatar = $row->avatar;
+         
+            $row->content = $Parsedown->text($row->comment_content);
+            $row->date = Time::parse($row->comment_date, 'Europe/Moscow')->humanize();
+            $result[$ind] = $row;
+         
+        }
+    
+        return $result;
+    } 
+   
+    // Комментарии участника на странице профиля
+    public function getUsersCommentsNum($slug)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('comments AS a');
+        $builder->select('a.*, b.id, b.nickname, b.avatar');
+        $builder->join("users AS b", "b.id = a.comment_user_id");
+        $builder->where('b.nickname', $slug);
+        
+        $result = $builder->countAllResults();
+
+        return $result;
+    }        
 }

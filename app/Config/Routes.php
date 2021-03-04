@@ -44,6 +44,8 @@ $routes->get('logout', 'AuthController::logout');
 
 $routes->post('users/color/(:num)', 'UsersController::color/$1'); 
 
+ 
+
 $routes->add('users', 'UsersController::index');
 $routes->get('users/(:any)', 'UsersController::usersProfile'); 
  
@@ -72,6 +74,9 @@ $routes->get('posts', 'PostsController::index');
 // Страница комментарий
 $routes->get('comments', 'CommentsController::index');
 $routes->post('comments/addform/(:num)', 'CommentsController::addform/$1'); 
+
+// Страница комментариев пользователя
+$routes->get('threads/(:any)', 'CommentsController::userComments'); 
 
  
 /*

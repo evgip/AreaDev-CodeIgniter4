@@ -1,5 +1,5 @@
 <a title="Участники" class="avatar-user right" href="/users/">
-    Учасники
+    Участники
 </a>
 
 <h1><?= esc($title) ?></h1>
@@ -7,11 +7,13 @@
 <div class="telo comments">
     <?php if (!empty($comments)) : ?>
   
-        <?php foreach ($comments as  $comm ): ?>  
+        <?php foreach ($comments as  $comm ): ?> 
+
             <div class="voters">
                 <div class="comm-up-id"></div>
                 <div class="score"><?= $comm->comment_votes ?></div>
             </div>
+
             <div class="comm-telo">
                 <div class="comm-header">
                     <img class="ava" src="/upload/users/small/<?php echo $comm->avatar ?>">

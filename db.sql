@@ -167,7 +167,8 @@ CREATE TABLE `comments` (
   `comment_after` smallint(6) NOT NULL DEFAULT 0,
   `comment_votes` smallint(4) NOT NULL DEFAULT 0,
   `comment_content` text NOT NULL,
-  `comment_del` tinyint(1) NOT NULL DEFAULT 0
+  `comment_del` tinyint(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`comment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -191,7 +192,6 @@ CREATE TABLE `votes_comm` (
 -- Индексы таблиц
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`comment_id`),
   ADD KEY `comment_link_id_2` (`comment_post_id`,`comment_date`),
   ADD KEY `comment_date` (`comment_date`),
   ADD KEY `comment_user_id` (`comment_user_id`,`comment_date`),
@@ -201,7 +201,6 @@ ALTER TABLE `comments`
   MODIFY `comment_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
  
 ALTER TABLE `votes_comm`
-  ADD PRIMARY KEY (`votes_comm_id`),
   ADD KEY `votes_comm_item_id` (`votes_comm_item_id`,`votes_comm_user_id`),
   ADD KEY `votes_comm_ip` (`votes_comm_item_id`,`votes_comm_ip`),
   ADD KEY `votes_comm_user_id`(`votes_comm_user_id`);

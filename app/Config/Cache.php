@@ -68,7 +68,7 @@ class Cache extends BaseConfig
 	 *
 	 * @var boolean|string[]
 	 */
-	public $cacheQueryString = false;
+	public $cacheQueryString = true;
 
 	/**
 	 * --------------------------------------------------------------------------
@@ -80,7 +80,7 @@ class Cache extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $prefix = '';
+	public $prefix = 'dev_';
 
 	/**
 	 * --------------------------------------------------------------------------

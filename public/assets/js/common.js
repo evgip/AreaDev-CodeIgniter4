@@ -1,4 +1,4 @@
-// изменение с фронта цветовой схемы
+// Изменение с фронта цветовой схемы
 $(document).on('click', 'a.my-color', function() {
     var color = $(this).data('color');
     var csrf_name = $(this).data('csrf_name');
@@ -12,8 +12,7 @@ $(document).on('click', 'a.my-color', function() {
     });
 });
 
-
-// изменение с фронта цветовой схемы
+// Голосование за комментарии
 $(document).on('click', '.comm-up-id', function() {
     var comm_id = $(this).data('id');
     var csrf_name = $(this).data('csrf_name');
@@ -22,12 +21,21 @@ $(document).on('click', '.comm-up-id', function() {
         url: '/votes/' + comm_id,
         type: 'POST',
         data: {comm_id: comm_id,[csrf_name]: csrf },
-    }).done(function(result) {
+    }).done(function(data) {
         $('#vot' + comm_id + '.voters').addClass('active');
         $('#vot' + comm_id).find('.score').html('+');
+        // update_csrf_fields(data.csrf_token);
     });
 });
 
+function update_csrf_fields(value) {
+    let all_forms = $('.addcomm');
+    for(e of all_forms) {
+        e.querySelector('input[name=csrf_token]').value = value;
+    }
+}
+
+// https://forum.codeigniter.com/thread-76104.html
 // https://makitweb.com/how-to-send-ajax-request-with-csrf-token-in-codeigniter-4/
 //  https://forum.codeigniter.com/thread-78411.html?highlight=Update+CSRF
 $(function(){
@@ -50,7 +58,8 @@ $(function(){
                     $("#cm_addentry"+comm_id).html(data).fadeIn();
                     $('#content').focus();
                     $link_span.html(old_html).hide();
-                    $('#submit_cmm').click(function() {
+                    $('#submit_cmm').click(function(data) {
+                       // update_csrf_fields(data.csrf_token);
                         $('#submit_cmm').prop('disabled', true);
                         $('#cancel_cmm').hide();
                         $('.submit_cmm').append('...');

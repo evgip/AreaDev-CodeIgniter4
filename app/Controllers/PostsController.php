@@ -16,10 +16,17 @@ class PostsController extends BaseController
     {
         $model = new PostsModel();
    
-        $this->data = [
-            'posts'  => $model->getPostHome(),
-            'title' => 'Посты',
-        ];
+    // пробуем файловый кешь центральной
+    //    if (!$this->data = cache('foo'))
+    //    {
+            $this->data = [
+                'posts'  => $model->getPostHome(),
+                'title' => 'Посты',
+            ];
+
+    //     cache()->save('foo', $this->data, 300);
+    //    }
+
 
         return $this->render('home');
     }
@@ -30,8 +37,10 @@ class PostsController extends BaseController
         $post_model = new PostsModel();
         $comm_model = new CommentsModel();
 
+        // Получим пост
         $this->data['posts'] = $post_model->getPost($slug);
         
+        // Получим комментарии
         $this->data['comments'] = $comm_model->getCommentsPost($this->data['posts']['id']);
         
         if (empty($this->data['posts']))
@@ -58,6 +67,7 @@ class PostsController extends BaseController
         $model = new PostsModel();
 
         $this->data['title'] = 'Добавление новости';
+         $this->data['uri'] = 'Добавление новости';
  
         if ($this->request->getMethod() === 'post' && $this->validate([
                 'post_title' => 'required|min_length[3]|max_length[255]',

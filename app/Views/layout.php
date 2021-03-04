@@ -70,8 +70,21 @@
                 
                 <?php if ($auth) : ?>
                     <li class="nav<?= ($uri == 'setting' ? ' active' : null) ?>">
-                        <a href="/setting">Настройка</a>
+                        <a href="/setting">
+                            <svg class="md-icon">
+                                <use xlink:href="/assets/icons/icons.svg#settings"></use>
+                            </svg>
+                        </a>
                     </li>
+                   
+                   <li class="nav create">  
+                    <a class="nav" href="/posts/create">  
+                    <svg class="md-icon">
+                        <use xlink:href="/assets/icons/icons.svg#plus"></use>
+                    </svg> 
+                </a>
+                  </li>   
+                    
                     <li class="nav">
                        <a class="avatar" href="/users/<?= $usr_nickname ?>">
                             <span><?php echo $usr_nickname ?></span>
