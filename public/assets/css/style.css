@@ -40,7 +40,7 @@ pre code {
     display: inline-block;
 }
 
-.telo.detail a, .comm-telo-body a {
+.telo.detail .post a, .comm-telo-body a {
 	text-decoration: underline;
 }
 

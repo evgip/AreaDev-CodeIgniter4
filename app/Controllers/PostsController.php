@@ -54,6 +54,7 @@ class PostsController extends BaseController
         
         $model_post = new PostsModel();
         $model_comm = new CommentsModel();
+        $model_tags = new TagsModel(); 
 
         // Получим пост
         $post = $model_post->getPost($slug);
@@ -69,7 +70,8 @@ class PostsController extends BaseController
             'date'      => Time::parse($post->post_date, 'Europe/Moscow')->humanize(),
             'nickname'  => $post->nickname,
             'avatar'    => $post->avatar,
-            'post_comm' => $post->post_comments,            
+            'post_comm' => $post->post_comments,  
+            'tags'      => $model_tags->getTagsPost($post->post_id),            
         ];
         
         $this->data['posts'] = $data;
@@ -139,7 +141,7 @@ class PostsController extends BaseController
             // Получаем id тега
             $tag_id = $this->request->getPost('tag');
            
-            $model->save([
+            $model_post->save([
                 'post_title'    => $this->request->getPost('post_title'),
                 'post_slug'     => $model_post->seoSlug($post_title),
                 'post_ip_int'   => $this->request->getIPAddress(), 

@@ -8,8 +8,17 @@
         <span class="date"> 
             <?= $posts['date'] ?>
         </span>
+        <span class="date"> 
+            <?php foreach ($posts['tags'] as  $tag ): ?>                
+                <a class="tag tag_<?= $tag->tags_tip ?>" href="/t/<?= esc($tag->tags_slug) ?>" title="<?= esc($tag->tags_name) ?>">
+                <?= esc($tag->tags_name) ?>
+                </a>
+            <?php endforeach; ?>
+        </span>
     </div>   
-<div class="post"><?= $posts['content'] ?></div>
+    <div class="post">
+        <?= $posts['content'] ?> 
+    </div>                
 
     <?php if ($auth) : ?>
     <form id="add_comm" class="new_comment" action="/comment/add" accept-charset="UTF-8" method="post">
