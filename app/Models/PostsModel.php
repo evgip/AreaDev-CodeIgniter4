@@ -3,12 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
-use App\Models\TagsModel;
-use App\Libraries\Parsedown; 
 use App\Libraries\Translit;
-
-use CodeIgniter\I18n\Time;
-$myTime = new Time('now', 'Europe/Moscow', 'ru_RU');
 
 class PostsModel extends Model
 {
@@ -16,7 +11,6 @@ class PostsModel extends Model
     protected $primaryKey = 'post_id';
     protected $allowedFields = ['post_title', 'post_slug', 'post_content', 'post_user_id', 'post_comments', 'post_ip_int'];
       
-    
     // Посты на главной странице сайта
     public function getPostHome()
     {
@@ -26,25 +20,8 @@ class PostsModel extends Model
         $builder->join("users AS b", "b.id = a.post_user_id");
         $builder->orderBy('a.post_id', 'DESC');
 
-        $query = $builder->get();
-
-        $tags_model = new TagsModel(); 
-
-        $result = Array();
-        foreach($query->getResult()as $ind => $row){
-             
-            if(!$row->avatar ) {
-                $row->avatar  = 'noavatar.png';
-            } 
-            $row->tags = $tags_model->getTagsPost($row->post_id);
-            $row->avatar = $row->avatar;
-            $row->title = $row->post_title;
-            $row->slug = $row->post_slug;
-            $row->date = Time::parse($row->post_date, 'Europe/Moscow')->humanize();
-            $result[$ind] = $row;
-         
-        }
-    
+        $result = $builder->get()->getResult();
+ 
         return $result;
            
     }
@@ -52,9 +29,7 @@ class PostsModel extends Model
     // Полная версия поста  
     public function getPost($slug)
     {
-        $Parsedown = new Parsedown(); 
-        $Parsedown->setSafeMode(true); // безопасность
-        
+
         $db = \Config\Database::connect();
         $builder = $db->table('posts AS a');
         $builder->select('a.*, b.id, b.nickname, b.avatar');
@@ -62,23 +37,9 @@ class PostsModel extends Model
         $builder->where('a.post_slug', $slug);
         $builder->orderBy('a.post_id', 'DESC');
          
-        $post = $builder->get()->getRow();
+        $result = $builder->get()->getRow();
 
-        if(!$post->avatar ) {
-            $post->avatar  = 'noavatar.png';
-        }
-        
-        $data = [
-            'id'        => $post->post_id,
-            'title'     => $post->post_title,
-            'content'   => $Parsedown->text($post->post_content),
-            'date'      => Time::parse($post->post_date, 'Europe/Moscow')->humanize(),
-            'nickname'  => $post->nickname,
-            'avatar'    => $post->avatar,
-            'post_comm' => $post->post_comments,            
-        ];
- 
-        return $data;
+        return $result;
 
     }
     

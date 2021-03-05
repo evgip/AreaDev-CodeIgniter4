@@ -26,7 +26,7 @@
                 <div class="footer">
                     <img class="ava" src="/upload/users/small/<?= $post->avatar ?>">
                     <span class="user"> 
-                        <a href="/users/<?= $post->nickname ?>"><?= $post->nickname ?></a> 
+                        <a href="/u/<?= $post->nickname ?>"><?= $post->nickname ?></a> 
                     </span>
                     <span class="date"> 
                         <?= $post->date ?>

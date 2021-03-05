@@ -3,7 +3,7 @@
     <div class="footer">
         <img class="ava" src="/upload/users/small/<?php echo $posts['avatar'] ?>">
         <span class="user"> 
-            <a href="/users/<?= esc($posts['nickname']) ?>"><?= esc($posts['nickname']) ?></a> 
+            <a href="/u/<?= esc($posts['nickname']) ?>"><?= esc($posts['nickname']) ?></a> 
         </span>
         <span class="date"> 
             <?= $posts['date'] ?>
@@ -61,7 +61,7 @@
                     <div class="comm-header">
                         <img class="ava" src="/upload/users/small/<?php echo $comm->avatar ?>">
                         <span class="user"> 
-                            <a href="/users/<?= esc($comm->nickname) ?>"><?= esc($comm->nickname) ?></a> 
+                            <a href="/u/<?= esc($comm->nickname) ?>"><?= esc($comm->nickname) ?></a> 
                         </span> 
                         <span class="date">  
                            <?= esc($comm->date) ?>

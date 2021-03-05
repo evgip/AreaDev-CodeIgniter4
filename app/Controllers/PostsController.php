@@ -17,27 +17,38 @@ class PostsController extends BaseController
 
     public function index()
     {
+        
+        $model_tags = new TagsModel(); 
         $model_post = new PostsModel();
-   
-    // пробуем файловый кешь центральной
-    //    if (!$this->data = cache('foo'))
-    //    {
-            $this->data = [
-                'posts'  => $model_post->getPostHome(),
-                'title' => 'Посты',
-            ];
-
-    //     cache()->save('foo', $this->data, 300);
-    //    }
-
-
+        
+        $posts = $model_post->getPostHome();
+ 
+        $result = Array();
+        foreach($posts as $ind => $row){
+             
+            if(!$row->avatar ) {
+                $row->avatar  = 'noavatar.png';
+            } 
+ 
+            $row->tags    = $model_tags->getTagsPost($row->post_id);
+            $row->avatar  = $row->avatar;
+            $row->title   = $row->post_title;
+            $row->slug    = $row->post_slug;
+            $row->date    = Time::parse($row->post_date, 'Europe/Moscow')->humanize();
+            $result[$ind] = $row;
+         
+        }
+        
+        $this->data['posts'] = $result;
+        $this->data['title'] = 'Посты';
+        
         return $this->render('home');
     }
     
     // Полный пост
     public function view($slug = NULL)
     {
-        
+
         $Parsedown = new Parsedown(); 
         $Parsedown->setSafeMode(true); // безопасность
         
@@ -45,7 +56,23 @@ class PostsController extends BaseController
         $model_comm = new CommentsModel();
 
         // Получим пост
-        $this->data['posts'] = $model_post->getPost($slug);
+        $post = $model_post->getPost($slug);
+        
+        if(!$post->avatar ) {
+            $post->avatar  = 'noavatar.png';
+        }
+        
+        $data = [
+            'id'        => $post->post_id,
+            'title'     => $post->post_title,
+            'content'   => $Parsedown->text($post->post_content),
+            'date'      => Time::parse($post->post_date, 'Europe/Moscow')->humanize(),
+            'nickname'  => $post->nickname,
+            'avatar'    => $post->avatar,
+            'post_comm' => $post->post_comments,            
+        ];
+        
+        $this->data['posts'] = $data;
         
         if (empty($this->data['posts']))
         {
@@ -55,7 +82,6 @@ class PostsController extends BaseController
         // Получим комментарии
         $comm = $model_comm->getCommentsPost($this->data['posts']['id']);
         
-
         // Для комменатрия голосовал или нет
         // Переносим в запрос выше (избавляемся от N+1)
         $comm_vote_status = new VotesCommentsModel();

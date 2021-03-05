@@ -11,7 +11,7 @@ class TagsController extends BaseController
     public function index()
     {
         $model = new TagsModel();
-   
+
             $this->data = [
                 'tags'  => $model->getTagsHome(),
                 'title' => 'Теги сайта',
@@ -19,35 +19,33 @@ class TagsController extends BaseController
 
         return $this->render('tags/all');
     }
-    
+
     // Посты по тегу
     public function tagPosts()
     {
         $model = new TagsModel();
         $slug = service('uri')->getSegment(2);
-        
-        $posts = $model->getTagsPosts($slug); 
- 
+
+        $posts = $model->getTagsPosts($slug);
+
         // Покажем 404
         if(!$posts) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
-        
 
         $this->data = [
             'posts'  => $posts,
             'title'  => 'Посты по тегу',
         ];
 
-        return $this->render('tags/tagposts');  
+        return $this->render('tags/tagposts');
     }
-    
-    
+
     // Все теги сайта
     public function tagForma()
     {
         $model = new TagsModel();
-   
+
         $data = [
             'tags'  => $model->getTagsHome(),
         ];

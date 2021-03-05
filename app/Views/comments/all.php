@@ -16,7 +16,7 @@
                 <div class="comm-header">
                     <img class="ava" src="/upload/users/small/<?php echo $comm->avatar ?>">
                     <span class="user"> 
-                        <a href="/users/<?= esc($comm->nickname) ?>"><?= esc($comm->nickname) ?></a> 
+                        <a href="/u/<?= esc($comm->nickname) ?>"><?= esc($comm->nickname) ?></a> 
                         
                         <?= esc($comm->date) ?>
                     </span> 

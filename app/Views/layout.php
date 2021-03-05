@@ -86,7 +86,7 @@
                   </li>   
                     
                     <li class="nav">
-                       <a class="avatar" href="/users/<?= $usr_nickname ?>">
+                       <a class="avatar" href="/u/<?= $usr_nickname ?>">
                             <span><?php echo $usr_nickname ?></span>
                             <div class="ava"><img src="/upload/users/small/<?php echo $usr_avatar ?>"></div>
                        </a>

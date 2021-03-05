@@ -45,7 +45,7 @@ $routes->get('logout', 'AuthController::logout');
 $routes->post('users/color/(:num)', 'UsersController::color/$1'); 
 
 $routes->add('users', 'UsersController::index');
-$routes->get('users/(:any)', 'UsersController::usersProfile'); 
+$routes->get('u/(:any)', 'UsersController::usersProfile'); 
  
 // admin - Role 1
 $routes->group('admin', ['filter' => 'auth:Role,1'], function ($routes) {

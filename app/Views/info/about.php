@@ -1,17 +1,5 @@
 <h1>О нас</h1>
 <div class="telo">
-    <p>Контроллер.</p>
-
-<pre><code>namespace App\Controllers;
-class Home extends BaseController
-{
-	public function index()
-	{
-		return view('home');
-	}
-}</code></pre>
-
- 
     <b>Задача 1</b> — изучить <a rel="nofollow noreferrer" target="_blank" href="https://www.codeigniter.com/"><i>CodeIgniter</i></a>: routes, get / post, ajax, csrf (глобально), миграцию и т.д.
      
     <br><br>
@@ -29,11 +17,11 @@ class Home extends BaseController
     <h3>Правила</h3>
 
     <p>Пожалуйста, относитесь к этому сайту с таким же уважением, как относитесь к собственному дому. </p>
-    <p>
-        Нет нарушений законодательства РФ. <br>
-        Нет нападкам.<br>
-        Нет спаму.
-    </p>
+    <ul>
+        <li>Нет нарушений законодательства РФ.</li>
+        <li>Нет нападкам.</li>
+        <li>Нет спаму.</li>
+    </ul>
 </div>
 
  

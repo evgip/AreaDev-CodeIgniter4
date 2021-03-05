@@ -29,7 +29,7 @@
                 <div class="footer">
                     <img class="ava" src="/upload/users/small/<?php echo $post->avatar ?>">
                     <span class="user"> 
-                        <a href="/users/<?= esc($post->nickname) ?>"><?= esc($post->nickname) ?></a> 
+                        <a href="/u/<?= esc($post->nickname) ?>"><?= esc($post->nickname) ?></a> 
                     </span>
                     <span class="date"> 
                         <?= $post->date ?>

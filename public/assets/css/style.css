@@ -1,8 +1,13 @@
+html {
+    height: 100%;
+    overflow-y:scroll;
+}
 body {
     line-height: 1.46;
     font-family: Helvetica Neue, Arial, sans-serif;
     font-size: 0.95em;
     color: #333;
+    min-height: 100%;
 }
 
 html, body {
@@ -386,12 +391,13 @@ ol.comment-telo {
     margin-left: 40px;
     margin-right: 40px;
 } 
-
 .comm-telo-body{
     margin-left: 40px;
     max-width: 750px;
 }
-
+.telo.comments .cm_add_link {
+    margin-left: 40px;
+}
 .comm-telo-body p {
     margin: 5px 0;
 }
