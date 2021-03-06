@@ -43,6 +43,23 @@ class PostsModel extends Model
 
     }
     
+    // Получаем по id (объединить потом) 
+    public function getPostId($id)
+    {
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('posts AS a');
+        $builder->select('a.*, b.id, b.nickname, b.avatar');
+        $builder->join("users AS b", "b.id = a.post_user_id");
+        $builder->where('a.post_id', $id);
+        $builder->orderBy('a.post_id', 'DESC');
+         
+        $result = $builder->get()->getRow();
+
+        return $result;
+
+    }
+    
     // Возвращаем количество комментариев +1
     // Опишем пока подробно...
     public function getNumComments($post_id)

@@ -10,21 +10,17 @@ class CommentsModel extends Model
     protected $allowedFields = ['comment_post_id', 'comment_on', 'comment_after', 'comment_content', 'comment_user_id', 'comment_votes', 'comment_ip'];
     
     // Все комментарии
-    public function getCommentsAll()
+    public function getCommentsAll($num)
     {
        
-        $db = \Config\Database::connect();
-        $builder = $db->table('comments AS a');
-        $builder->select('a.*, b.id, b.nickname, b.avatar, c.post_id, c.post_title, c.post_slug');
-        $builder->join("users AS b", "b.id = a.comment_user_id");
-        $builder->join("posts AS  c", "a.comment_post_id = c.post_id");
-        $builder->orderBy('a.comment_id', 'DESC');
-        //$builder->limit(5, $page);  
-  
-        $result = $builder->get()->getResult();  
-
-        return $result;
-           
+        return $this
+                ->table('comments')
+                ->select('comments.*, b.id, b.nickname, b.avatar, c.post_id, c.post_title, c.post_slug')
+                ->join('users AS b', 'b.id = comments.comment_user_id')
+                ->join('posts AS  c', 'comments.comment_post_id = c.post_id')
+                ->orderBy('comments.comment_id', 'DESC')
+                ->paginate($num);
+ 
     }
     
     // Получаем комментарии в посте

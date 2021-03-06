@@ -39,7 +39,11 @@ pre code {
     border-radius: 3px;
     display: inline-block;
 }
-
+code {
+    color: #b63e56;
+    background: #f5f2f0;
+    padding: 1px 4px;
+}
 .telo.detail .post a, .comm-telo-body a {
 	text-decoration: underline;
 }
@@ -164,7 +168,34 @@ header .wrap {
     color: #999;
 }
 
-/* default form styling */
+/* Пагинация */
+.pagination {
+   margin-bottom: 20px;
+   overflow: hidden;
+}
+ul.pagination {
+    text-align: center;
+    margin: 0;
+    list-style: none;
+    padding-left: 12px;
+}
+ul.pagination > li {
+    float: left;
+    margin-right: 20px;
+}
+
+.pagination li.active {
+    margin-right: 15px;
+}
+.pagination li.active a {
+    margin: 2px;
+    padding: 2px 8px;
+    background-color: #fe7a15;
+    color: #FFF;
+    border-radius: 3px;
+}
+
+/* Формы */
 input,
 button,
 select,
@@ -309,6 +340,9 @@ input.form-about {width: 250px;}
 .alert-success {
    color: #339900; 
 }
+.errors > ul > li {
+    color: #e83e8c; 
+} 
  
 /* Посты */ 
 .detail {

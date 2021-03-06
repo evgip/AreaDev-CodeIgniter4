@@ -25,29 +25,27 @@ class CommentsController extends BaseController
         
         $pager = \Config\Services::pager();
        
-       // Добавим пагинацию
-       // https://forum.codeigniter.com/thread-78305.html?highlight=pager        
-       // $this->data['comments'] = $model->getCommentsAll(5);
-        $comm =  $model->getCommentsAll();
+        // Добавим пагинацию
+        $comm =  $model->getCommentsAll(20);
  
         $result = Array();
         foreach($comm  as $ind => $row){
              
-            if(!$row->avatar ) {
-                $row->avatar  = 'noavatar.png';
+            if(!$row['avatar']) {
+                $row['avatar'] = 'noavatar.png';
             } 
 
-            $row->avatar = $row->avatar;
+            $row['avatar'] = $row['avatar'];
          
-            $row->content = $Parsedown->text($row->comment_content);
-            $row->date = Time::parse($row->comment_date, 'Europe/Moscow')->humanize();
+            $row['content'] = $Parsedown->text($row['comment_content']);
+            $row['date'] = Time::parse($row['comment_date'], 'Europe/Moscow')->humanize();
             $result[$ind] = $row;
          
         }
     
         $this->data = [
             'comments' => $result,
-            'pager' => $pager
+            'pager' => $model->pager
         ];
     
         // Просто тестирование функции вызова

@@ -38,7 +38,9 @@ class PostsController extends BaseController
             $result[$ind] = $row;
          
         }
-        
+        // Показываем количество комментариев
+        $userCommNum = new CommentsModel();
+   
         $this->data['posts'] = $result;
         $this->data['title'] = 'Посты';
         
@@ -59,6 +61,11 @@ class PostsController extends BaseController
         // Получим пост
         $post = $model_post->getPost($slug);
         
+        if (empty($post))
+        {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Не удается найти пост: '. $slug);
+        }
+        
         if(!$post->avatar ) {
             $post->avatar  = 'noavatar.png';
         }
@@ -75,11 +82,6 @@ class PostsController extends BaseController
         ];
         
         $this->data['posts'] = $data;
-        
-        if (empty($this->data['posts']))
-        {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Не удается найти пост: '. $slug);
-        }
         
         // Получим комментарии
         $comm = $model_comm->getCommentsPost($this->data['posts']['id']);
@@ -126,8 +128,7 @@ class PostsController extends BaseController
         
         $model_post = new PostsModel();
 
-        $this->data['title'] = 'Добавление новости';
-        $this->data['uri'] = 'Добавление новости';
+        $this->data['title'] = 'Добавление поста';
  
         if ($this->request->getMethod() === 'post' && $this->validate([
                 'post_title' => 'required|min_length[3]|max_length[255]',
@@ -156,7 +157,7 @@ class PostsController extends BaseController
             $model_tag =  new TagsModel();
             $model_tag->TagsAddPosts($tag_id, $post_id);
         
-            return $this->render('posts/success');
+            return redirect()->to('/');
 
         }
         else
@@ -165,7 +166,85 @@ class PostsController extends BaseController
         }
     }
     
-    
+    // Изменить поста
+    public function edit()
+    {
+
+        // Авторизировались или нет
+        if (!session()->get('isLoggedIn'))
+		{
+			return redirect()->to('/');
+		}  
+        
+        $model_post = new PostsModel();
+
+        $this->data['title'] = 'Изменение поста';
+ 
+        if ($this->request->getMethod() === 'post' && $this->validate([
+                'post_title' => 'required|min_length[3]|max_length[255]',
+                'post_content'  => 'required',
+                'tag'  => 'required',
+            ]))
+        {
+            
+            // Получаем id добавленного поста 
+            $post_id = service('uri')->getSegment(3);
+            
+            // Получим пост
+            $post = $model_post->getPostId($post_id);
+            
+            // Редактировать может только автор
+            if ($post->post_user_id != session()->get('id')) {
+                return redirect()->to('/');
+            }
+
+            // Получаем id тега
+            $tag_id = $this->request->getPost('tag');
+           
+            $edit_data = [
+                'post_title'    => $this->request->getPost('post_title'),
+                'post_slug'     => $post->post_slug,
+                'post_content'  => $this->request->getPost('post_content'),
+                'post_date'     => $post->post_date,
+                'edit_date'     =>  date( 'Y-m-d H:i:s'),
+            ];
+             
+            $model_post->update($post_id, $edit_data);
+            
+            // Добавляем теги
+            // $model_tag =  new TagsModel();
+            //  $model_tag->TagsAddPosts($tag_id, $post_id);
+        
+            return redirect()->to('/');
+
+        }
+        else
+        {
+            
+            // получаем id поста    
+            $post_id = service('uri')->getSegment(3);   
+                
+            // Получим пост
+            $post = $model_post->getPostId($post_id);
+     
+            // Редактировать может только автор
+            if ($post->post_user_id != session()->get('id')) {
+                 return redirect()->to('/');
+            }
+     
+            $data = [
+                'id'        => $post->post_id,
+                'title'     => $post->post_title,
+                'content'   => $post->post_content,
+            ];
+            
+            $this->data['post'] = $data;   
+            
+            return $this->render('posts/edit');
+            
+        }
+        
+    }  
     // Для дерева
      private function buildTree($comment_on , $level, $comments, $tree=array()){
         $level++;

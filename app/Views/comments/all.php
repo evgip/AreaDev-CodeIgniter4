@@ -10,27 +10,31 @@
         <?php foreach ($comments as  $comm ): ?>  
             <div class="voters">
                 <div class="comm-up-id"></div>
-                <div class="score"><?= $comm->comment_votes ?></div>
+                <div class="score"><?= $comm['comment_votes'] ?></div>
             </div>
             <div class="comm-telo">
                 <div class="comm-header">
-                    <img class="ava" src="/upload/users/small/<?php echo $comm->avatar ?>">
+                    <img class="ava" src="/upload/users/small/<?php echo $comm['avatar'] ?>">
                     <span class="user"> 
-                        <a href="/u/<?= esc($comm->nickname) ?>"><?= esc($comm->nickname) ?></a> 
+                        <a href="/u/<?= esc($comm['nickname']) ?>"><?= esc($comm['nickname']) ?></a> 
                         
-                        <?= esc($comm->date) ?>
+                        <?= esc($comm['date']) ?>
                     </span> 
  
                     <span class="otst"> | </span>
                     <span class="date">  
-                       <a href="/posts/<?= $comm->post_slug ?>"><?= esc($comm->post_title) ?></a>
+                       <a href="/posts/<?= $comm['post_slug'] ?>"><?= esc($comm['post_title']) ?></a>
                     </span>
                 </div>
                 <div class="comm-telo-body">
-                    <?= $comm->content ?> 
+                    <?= $comm['content'] ?> 
                 </div>
             </div>
         <?php endforeach; ?>
+        
+        <div class="pagination">
+            <?= $pager->links() ?>
+        </div>
         
      <?php else : ?>
 

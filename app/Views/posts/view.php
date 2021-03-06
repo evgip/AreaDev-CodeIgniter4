@@ -15,10 +15,22 @@
                 </a>
             <?php endforeach; ?>
         </span>
+        <?php if(session()->get('nickname') == $posts['nickname']) {  ?>
+            <span class="date">
+               &nbsp; <a href="/posts/edit/<?= $posts['id'] ?>">
+                    <svg class="md-icon moon">
+                        <use xlink:href="/assets/icons/icons.svg#edit"></use>
+                    </svg>
+                </a>
+            </span>
+        <?php } ?> 
     </div>   
     <div class="post">
         <?= $posts['content'] ?> 
-    </div>                
+    </div> 
+    
+     
+
 
     <?php if ($auth) : ?>
     <form id="add_comm" class="new_comment" action="/comment/add" accept-charset="UTF-8" method="post">

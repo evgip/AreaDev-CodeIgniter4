@@ -59,12 +59,12 @@ $routes->group('', ['filter' => 'auth:Role,2'], function ($routes){
 	 $routes->match(['get', 'post'], 'setting', 'AuthController::setting');
      $routes->match(['get', 'post'], 'comment/add', 'CommentsController::create');
      $routes->post('votes/(:num)', 'VotesCommController::votes/$1'); 
+     
+     $routes->match(['get', 'post'], 'posts/edit/(:num)', 'PostsController::edit/$1');
 });
 
  
 $routes->get('posts/(:segment)', 'PostsController::view/$1');
-
-// Главная страница
 $routes->get('posts', 'PostsController::index');
  
  
