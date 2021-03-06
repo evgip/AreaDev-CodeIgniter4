@@ -4,6 +4,9 @@
 <?php if (!$auth) : ?>
    <h1 class="top"><?= esc($title) ?></h1> 
 <?php endif; ?>
+<script {csp-script-nonce}>
+    console.log("Script won't run as it doesn't contain a nonce attribute");
+</script>
 
 <div class="telo">
     <?php if (!empty($posts)) : ?>

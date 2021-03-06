@@ -1,4 +1,12 @@
-<h1 class="head"> Админка </h1>
+<h1 class="head"> Админка: <?= session()->get('nickname') ?> / <?= session()->get('name') ?> </h1>
 
-Привет: <?= session()->get('nickname') ?> / <?= session()->get('name') ?> 
+ 
   
+  
+<?php foreach($all_users as $user){ ?> 
+    <div>
+        id:<?php echo $user['id']; ?> 
+        <a href="/u/<?php echo $user['nickname']; ?>"><?php echo $user['nickname']; ?></a>
+         (<?php echo $user['name']; ?>)
+    </div>
+<?php } ?>  

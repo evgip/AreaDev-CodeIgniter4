@@ -27,6 +27,8 @@ class BaseController extends Controller
 	 *
 	 * @var IncomingRequest|CLIRequest
 	 */
+     
+ 
 	protected $request;
     protected $data = [];
 

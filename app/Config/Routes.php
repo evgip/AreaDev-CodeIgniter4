@@ -48,19 +48,24 @@ $routes->add('users', 'UsersController::index');
 $routes->get('u/(:any)', 'UsersController::usersProfile'); 
  
 // admin - Role 1
-$routes->group('admin', ['filter' => 'auth:Role,1'], function ($routes) {
-	$routes->match(['get', 'post'], 'setting', 'AuthController::setting');
+$routes->group('', ['filter' => 'auth:Role,1'], function ($routes) {
+    $routes->match(['get', 'post'], 'posts/create', 'PostsController::create');
+    $routes->match(['get', 'post'], 'setting', 'AuthController::setting');
+    $routes->match(['get', 'post'], 'comment/add', 'CommentsController::create');
+    $routes->post('votes/(:num)', 'VotesCommController::votes/$1'); 
+    $routes->match(['get', 'post'], 'posts/edit/(:num)', 'PostsController::edit/$1');
+    $routes->get('posts/edit/(:num)', 'AutocompleteSearch::index/$1');
     $routes->get('admin', 'AdminController::index');
 });
 
 // Role 2
 $routes->group('', ['filter' => 'auth:Role,2'], function ($routes){
-     $routes->match(['get', 'post'], 'posts/create', 'PostsController::create');
-	 $routes->match(['get', 'post'], 'setting', 'AuthController::setting');
-     $routes->match(['get', 'post'], 'comment/add', 'CommentsController::create');
-     $routes->post('votes/(:num)', 'VotesCommController::votes/$1'); 
-     
-     $routes->match(['get', 'post'], 'posts/edit/(:num)', 'PostsController::edit/$1');
+    $routes->match(['get', 'post'], 'posts/create', 'PostsController::create');
+    $routes->match(['get', 'post'], 'setting', 'AuthController::setting');
+    $routes->match(['get', 'post'], 'comment/add', 'CommentsController::create');
+    $routes->post('votes/(:num)', 'VotesCommController::votes/$1'); 
+    $routes->match(['get', 'post'], 'posts/edit/(:num)', 'PostsController::edit/$1');
+    $routes->get('posts/edit/(:num)', 'AutocompleteSearch::index/$1');
 });
 
  

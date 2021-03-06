@@ -102,7 +102,7 @@ class PostsController extends BaseController
             $row->content    = $Parsedown->text($row->comment_content);
             $row->date       = Time::parse($row->comment_date, 'Europe/Moscow')->humanize();
             $row->after      = $row->comment_after;
-            $row->del        = $row->comment_del;
+            $row->del        = $row->comment_is_delete;
             $row->comm_vote_status = $comm_vote_status->getVoteStatus($row->comment_id, session()->get('id'));
             $result[$ind]    = $row;
          
@@ -119,7 +119,7 @@ class PostsController extends BaseController
     // Добавление поста
     public function create()
     {
-        
+
         // Авторизировались или нет
         if (!session()->get('isLoggedIn'))
 		{
@@ -199,6 +199,7 @@ class PostsController extends BaseController
             }
 
             // Получаем id тега
+            $tag_id = [];
             $tag_id = $this->request->getPost('tag');
            
             $edit_data = [
@@ -212,8 +213,8 @@ class PostsController extends BaseController
             $model_post->update($post_id, $edit_data);
             
             // Добавляем теги
-            // $model_tag =  new TagsModel();
-            //  $model_tag->TagsAddPosts($tag_id, $post_id);
+            // $model_tags =  new TagsModel();
+            // $model_tags->TagsAddPosts($tag_id, $post_id);
         
             return redirect()->to('/');
 
@@ -232,10 +233,13 @@ class PostsController extends BaseController
                  return redirect()->to('/');
             }
      
+            $model_tags =  new TagsModel();
+     
             $data = [
                 'id'        => $post->post_id,
                 'title'     => $post->post_title,
                 'content'   => $post->post_content,
+                'tag'       => $model_tags->getTagsPost($post->post_id),
             ];
             
             $this->data['post'] = $data;   
