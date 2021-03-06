@@ -578,14 +578,21 @@ ol.comment-telo {
     border-color: transparent transparent #ac130d transparent;
     color: #ac130d;
 }    
-
-@media screen and (max-width: 510px) {
+@media screen and (max-width: 720px) {
+    .no-mob {
+       display: none; 
+    }
+}
+@media screen and (max-width: 610px) {
     div.box label, div.boxline label {
         display: block;
         width: 100% !important;
     }
     .box label {
         margin-bottom: 0;
+    }
+    .no-mob-two {
+       display: none; 
     }
 }
 

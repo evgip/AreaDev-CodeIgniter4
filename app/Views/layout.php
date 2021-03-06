@@ -24,10 +24,10 @@
                 <a title="На главную" class="logo" href="/">My</a> 
                 <div class="menu-left">
                     <ul> 
-                        <li class="nav">
+                        <li class="nav no-mob">
                             <a title="На главную" class="home" href="/">Главная</a>
                         </li>
-                        <li class="nav<?= ($uri == 'comments' ? ' active' : null) ?>">
+                        <li class="nav no-mob-two<?= ($uri == 'comments' ? ' active' : null) ?>">
                             <a title="Все комментарии" class="comments" href="/comments">Комментарии</a>
                         </li>
                         <?php if ($auth) : ?>  
@@ -41,10 +41,10 @@
                 <a title="На главную" class="logo" href="/">My</a> 
                 <div class="menu-left">
                     <ul> 
-                        <li class="nav">
+                        <li class="nav no-mob">
                             <a title="На главную" class="home" href="/">AreaDev</a>
                         </li>
-                        <li class="nav">
+                        <li class="nav no-mob-two">
                             <a title="Все комментарии" class="comments" href="/comments">Комментарии</a>
                         </li>
                         <?php if ($auth) { ?> 
