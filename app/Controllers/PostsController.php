@@ -39,7 +39,7 @@ class PostsController extends BaseController
          
         }
         // Показываем количество комментариев
-        $userCommNum = new CommentsModel();
+        //$userCommNum = new CommentsModel();
    
         $this->data['posts'] = $result;
         $this->data['title'] = 'Посты';
@@ -256,6 +256,55 @@ class PostsController extends BaseController
             }
         }
 		return $tree;
-    }      
+    }
+    
+    // Посты участника
+     public function userPosts()
+    {
+        
+        $model_tags = new TagsModel(); 
+        $model_post = new PostsModel();
+        
+        $slug  = service('uri')->getSegment(2);
+        
+        $posts  = $model_post->getUsersPosts($slug); 
+        
+        // Покажем 404
+        if(!$posts) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+        
+        $result = Array();
+        foreach($posts as $ind => $row){
+             
+            if(!$row->avatar ) {
+                $row->avatar  = 'noavatar.png';
+            } 
+ 
+            $row->tags    = $model_tags->getTagsPost($row->post_id);
+            $row->avatar  = $row->avatar;
+            $row->title   = $row->post_title;
+            $row->slug    = $row->post_slug;
+            $row->date    = Time::parse($row->post_date, 'Europe/Moscow')->humanize();
+            $result[$ind] = $row;
+         
+        }
+ 
+        $this->data['yes_uri'] = 1; 
+        $this->data['uri_post'] = service('uri')->getSegment(2);        
+         
+        // Показываем количество комментариев
+        //$userCommNum = new CommentsModel();
+        $this->data['posts']   = $result;
+        
+        $this->data['title']   = 'Посты   ' . $slug;
+        return $this->render('posts/postsuser');
+    }
+    
+    // post_is_delete 0/1
+    public function delete($id)
+    {
+
+    }
     
 }

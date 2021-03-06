@@ -74,6 +74,9 @@ $routes->post('comments/addform/(:num)', 'CommentsController::addform/$1');
 
 // Страница комментариев пользователя
 $routes->get('threads/(:any)', 'CommentsController::userComments'); 
+// Страница постов пользователя
+$routes->get('newest/(:any)', 'PostsController::userPosts');
+
 
 // Теги
 $routes->add('tags',     'TagsController::index');

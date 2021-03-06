@@ -30,6 +30,11 @@
                         <li class="nav<?= ($uri == 'comments' ? ' active' : null) ?>">
                             <a title="Все комментарии" class="comments" href="/comments">Комментарии</a>
                         </li>
+                        <?php if ($auth) : ?>  
+                            <li class="nav<?php if (isset($yes_uri)) { ?><?= ($uri .'/'. $uri_post == 'newest/' . $usr_nickname ? ' active' : null) ?><?php } ?>">
+                                <a title="Мои посты" class="mypost" href="/newest/<?= $usr_nickname ?>">Мои посты</a>
+                            </li>
+                        <?php endif; ?>
                     </ul>    
                 </div>
             <?php } else { ?>
@@ -42,6 +47,11 @@
                         <li class="nav">
                             <a title="Все комментарии" class="comments" href="/comments">Комментарии</a>
                         </li>
+                        <?php if ($auth) { ?> 
+                            <li class="nav">
+                                <a title="Мои посты" class="mypost" href="/newest/<?= $usr_nickname ?>">Мои посты</a>
+                            </li>
+                        <?php } ?>
                     </ul>    
                 </div> 
             <?php } ?>

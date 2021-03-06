@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Users;
 use App\Models\CommentsModel;
+use App\Models\PostsModel;
  
 class UsersController extends BaseController
 {
@@ -46,7 +47,11 @@ class UsersController extends BaseController
         
         // Показываем количество комментариев
         $userCommNum = new CommentsModel();
-        $this->data['comm_num_user']     = $userCommNum->getUsersCommentsNum($user['nickname']);
+        $this->data['comm_num_user']     = $userCommNum->getUsersCommentsNum($user['id']);
+        
+        // Показываем количество постов
+        $userPostNum = new PostsModel();
+        $this->data['post_num_user']     = $userPostNum->getUsersPostsNum($user['id']);
         
         $this->data['title'] = 'Профиль пользователя';
         

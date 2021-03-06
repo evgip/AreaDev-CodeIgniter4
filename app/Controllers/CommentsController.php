@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\RESTful\ResourceController;
-use CodeIgniter\API\ResponseTrait;
 use App\Libraries\Parsedown;
 use App\Models\CommentsModel;
 use App\Models\PostsModel;
@@ -13,8 +11,7 @@ $myTime = new Time('now', 'Europe/Moscow', 'ru_RU');
 
 class CommentsController extends BaseController
 {
-    use ResponseTrait;
-    // get all product
+
     public function index()
     {
         
@@ -176,59 +173,13 @@ class CommentsController extends BaseController
         
         $this->data['comments'] = $result;
         
-        $this->data['title'] = 'Комментарии участника';
-        return $this->render('comments/user');
+        $this->data['title'] = 'Комментарии ' . $slug;
+        return $this->render('comments/commuser');
     }
 
-    // update product
-    public function update2($id = null)
+    //  comment_is_delete 0/1 
+    public function delete($id)
     {
-        $model = new CommentsModel();
-        $json = $this->request->getJSON();
-        if ($json) {
-            $data = [
-                'article_id' => $json->article_id,
-                'comment' => $json->comment,
-                'user_id' => $json->user_id,
-            ];
-        } else {
-            $input = $this->request->getRawInput();
-            $data = [
-                'article_id' => $input['article_id'],
-                'comment' => $input['comment'],
-                'user_id' => $input['user_id'],
-            ];
-        }
-        // Insert to Database
-        $model->update($id, $data);
-        $response = [
-            'status' => 200,
-            'error' => null,
-            'messages' => [
-                'success' => 'Data Updated'
-            ]
-        ];
-        return $this->respond($response);
-    }
 
-    // delete product
-    public function delete($id = null)
-    {
-        $model = new CommentsModel();
-        $data = $model->find($id);
-        if ($data) {
-            $model->delete($id);
-            $response = [
-                'status' => 200,
-                'error' => null,
-                'messages' => [
-                    'success' => 'Data Deleted'
-                ]
-            ];
-
-            return $this->respondDeleted($response);
-        } else {
-            return $this->failNotFound('No Data Found with id ' . $id);
-        }
     }
 }

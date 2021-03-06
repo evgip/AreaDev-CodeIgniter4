@@ -2,7 +2,7 @@
     Учасники
 </a>
 
-<h1><?= esc($title) ?></h1>
+<h1 class="top"><?= esc($title) ?></h1>
 
 <div class="telo comments">
     <?php if (!empty($comments)) : ?>

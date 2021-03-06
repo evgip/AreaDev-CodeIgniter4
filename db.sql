@@ -116,6 +116,7 @@ CREATE TABLE `posts` (
   `post_blog_id` int(11) DEFAULT NULL,
   `post_src` enum('web','api','mobile','phone') NOT NULL DEFAULT 'web',
   `post_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `edit_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `post_user_id` int(11) unsigned NOT NULL,
   `post_visible` enum('all','friends') NOT NULL DEFAULT 'all',
   `post_ip_int` decimal(39,0) DEFAULT NULL,
@@ -167,7 +168,7 @@ CREATE TABLE `comments` (
   `comment_after` smallint(6) NOT NULL DEFAULT 0,
   `comment_votes` smallint(4) NOT NULL DEFAULT 0,
   `comment_content` text NOT NULL,
-  `comment_del` tinyint(1) NOT NULL DEFAULT 0,
+  `comment_is_delete` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`comment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

@@ -1,19 +1,16 @@
 <a title="Участники" class="avatar-user right" href="/users/">
     Участники
 </a>
-<?php if (!$auth) : ?>
-   <h1 class="top"><?= esc($title) ?></h1> 
-<?php endif; ?>
+<h1 class="top"><?= esc($title) ?></h1>
 
-<div class="telo">
+<div class="telo posts">
     <?php if (!empty($posts)) : ?>
   
-        <?php foreach ($posts as  $post ): ?>
-        
+        <?php foreach ($posts as  $post ): ?> 
+
             <div id="vot<?php echo $post->post_id ?>" class="voters">
                 <div data-csrf_name="<?= csrf_token() ?>" data-csrf="<?= csrf_hash() ?>" data-id="<?php echo $post->post_id ?>" class="post-up-id"></div>
                 <div class="score"><?= $post->post_votes ?></div>
-          
             </div>
         
             <div class="post-telo">
@@ -43,13 +40,14 @@
                     <?php } ?>
                 </div>  
             </div>
+   
         <?php endforeach; ?>
 
     <?php else : ?>
 
-        <h3>Нет постов</h3>
+        <h3>Нет комментариев</h3>
 
-        <p>К сожалению постов нет...</p>
+        <p>К сожалению комментариев нет...</p>
 
     <?php endif ?>
 </div> 

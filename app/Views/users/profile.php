@@ -16,20 +16,24 @@
    
     <br>
 
-    <label class="required">Постов:</label>
-    <span class="d">
-        в разработке...
-    </span>
+    <?php if($post_num_user != 0) { ?>
+        <label class="required">Постов:</label>
+        <span class="d">
+            <a title="Всего постов <?= esc($nickname) ?>" href="/newest/<?= esc($nickname) ?>">
+                <?= $post_num_user ?>
+            </a>
+        </span>
+    <?php } ?> 
     
     <br>
 
     <?php if($comm_num_user != 0) { ?>
-    <label class="required">Комментариев:</label>
-    <span class="d">
-        <a title="Все комментарии <?= esc($nickname) ?>" href="/threads/<?= esc($nickname) ?>">
-            <?= $comm_num_user ?>
-        </a>
-    </span>
+        <label class="required">Комментариев:</label>
+        <span class="d">
+            <a title="Все комментарии <?= esc($nickname) ?>" href="/threads/<?= esc($nickname) ?>">
+                <?= $comm_num_user ?>
+            </a>
+        </span>
     <?php } ?>
     
         <br>

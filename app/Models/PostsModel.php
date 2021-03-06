@@ -103,6 +103,34 @@ class PostsModel extends Model
         
     } 
 
+    // Страница постов участника
+    public function getUsersPosts($slug)
+    {
+        
+        $db = \Config\Database::connect();
+        $builder = $db->table('posts AS a');
+        $builder->select('a.*, b.id, b.nickname, b.avatar');
+        $builder->join("users AS b", "b.id = a.post_user_id");
+        $builder->where('b.nickname', $slug);
+        $builder->orderBy('a.post_id', 'DESC');     
+   
+        $result = $builder->get()->getResult();
 
+        return $result;
+    } 
+
+    // Количество постов на странице профиля
+    public function getUsersPostsNum($slug)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('posts AS a');
+        $builder->select('a.*, b.id, b.nickname, b.avatar');
+        $builder->join("users AS b", "b.id = a.post_user_id");
+        $builder->where('b.id', $slug);
+        
+        $result = $builder->countAllResults();
+
+        return $result;
+    } 
 }
  

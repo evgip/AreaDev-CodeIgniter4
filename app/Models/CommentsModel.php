@@ -42,7 +42,7 @@ class CommentsModel extends Model
     
     }
 
-    // Комментарии участника
+    // Страница комментариев участника
     public function getUsersComments($slug)
     {
         
@@ -59,14 +59,14 @@ class CommentsModel extends Model
         return $result;
     } 
    
-    // Комментарии участника на странице профиля
+    // Количество комментариев на странице профиля
     public function getUsersCommentsNum($slug)
     {
         $db = \Config\Database::connect();
         $builder = $db->table('comments AS a');
         $builder->select('a.*, b.id, b.nickname, b.avatar');
         $builder->join("users AS b", "b.id = a.comment_user_id");
-        $builder->where('b.nickname', $slug);
+        $builder->where('b.id', $slug);
         
         $result = $builder->countAllResults();
 
