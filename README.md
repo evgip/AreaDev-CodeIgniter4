@@ -9,3 +9,5 @@ https://github.com/codeigniter4/CodeIgniter4
 ![AreaDev](https://areadev.ru/upload/blogs/2021/db7458bfecbf9ab6f79b65a3adadc720.jpg)
 
 Работы по изучению закончены. 
+
+Новая ветка: https://github.com/Toxu-ru/AreaDev
